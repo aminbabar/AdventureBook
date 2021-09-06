@@ -10,8 +10,9 @@ class Api::SessionsController < ApplicationController
 
         if @user
             login(@user)
+            # debugger
             # QUESTION WHY
-            render "api/users/user"
+            render "api/users/show"
         else
             render json: ["Invalid username or password"], status: 401
         end
@@ -23,7 +24,7 @@ class Api::SessionsController < ApplicationController
         @user = current_user
         if @user
             logout
-            render "api/users/user"
+            render json: ["logged out"]
         else
             render json: ["not logged in"], status: 404
         end
