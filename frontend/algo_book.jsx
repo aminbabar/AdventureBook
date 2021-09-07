@@ -9,9 +9,25 @@ document.addEventListener("DOMContentLoaded", () => {
     // window.login = login;
     // window.logout = logout;
     // window.signup = signup;
-    const store = configureStore();
+
+    let store;
+    if (window.currentUser) {
+        const preloadedState = {
+            entities: {
+                users: {[window.currentUser.id]: window.currentUser }
+            },
+            session: {currentUser: window.currentUser.id}
+        };
+        store = configureStore(preloadedState);
+        // delete window.currentUser;
+    } else {
+        store = configureStore();
+    };
+
+
+
     // debugger;
-    // window.getState = store.getState;
+    window.getState = store.getState;
     // window.dispatch = store.dispatch;
 
 
