@@ -5,7 +5,7 @@ import Signup from "./signup";
 
 const mdtp = (dispatch) => {
     return {
-        signup: (formUser) => dispatch(signup(formUser))
+        signup: (formUser) => dispatch(signup(formUser)),
     };
 };
 
