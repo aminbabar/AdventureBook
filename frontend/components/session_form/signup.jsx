@@ -14,7 +14,7 @@ class Signup extends React.Component {
             city: "",
             work: ""
         };
-
+        
         this.handleSubmit = this.handleSubmit.bind(this);
     };
 
