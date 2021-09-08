@@ -7,6 +7,10 @@ class User < ApplicationRecord
 
     after_initialize :ensure_session_token
 
+    has_many :posts,
+        foreign_key: :author_id,
+        class_name: :Post
+
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
         if user
@@ -42,6 +46,7 @@ class User < ApplicationRecord
     def ensure_session_token
         self.session_token ||= User.generate_session_token()
     end
+
 
 
 end
