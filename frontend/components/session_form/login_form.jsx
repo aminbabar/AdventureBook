@@ -29,8 +29,13 @@ class LoginForm extends React.Component {
 
     render() {
         return (
-            <div>
-                <form>
+            <div className="login-form-container">
+
+                <div>
+                    <img src="https://lh3.googleusercontent.com/proxy/HtU0a_h_wjaViEyAiiCU3ivY2-ullrROdSDpRlfACis1w3ds0ntElc7oj7NXhlh3cjLIg03ymIi2AaX7Kh0VjgHzUinANqwkOeD0UvCE-eZwo8JEq1TjJus3n9SJUXHG0vFptjuZuIR7Iqz7SUm3LErP" alt="image tag" />
+                    Connect with friends and the world around you on AlgoBook
+                </div>
+                <form className="login-form">
                     <label>
                         <input 
                             type="text"
@@ -40,7 +45,6 @@ class LoginForm extends React.Component {
                         />
                     </label>
 
-                    <br />
 
                     <label>
                         <input
@@ -51,8 +55,12 @@ class LoginForm extends React.Component {
                         />
                     </label>
 
-                    <button onClick={this.handleSubmit}>Log In</button>
-                    <Link to={"/signup"}>Create New Account</Link>
+                    <button 
+                        className="login-button" 
+                        onClick={this.handleSubmit}>
+                            Log In
+                    </button>
+                    <Link className="signup-link" to={"/signup"}>Create New Account</Link>
                 </form>
             </div>
         );
