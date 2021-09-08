@@ -45,7 +45,7 @@ class NavBar extends React.Component {
 
                 <div className="right">
                     <span>
-                        Name of user here!
+                        {this.props.currentUser.fname}
                     </span>
                     {logoutButton}
                 </div>

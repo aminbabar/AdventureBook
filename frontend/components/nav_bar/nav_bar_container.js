@@ -7,9 +7,9 @@ import {logout} from "../../actions/session_actions"
 
 
 const mstp = (state) => {
-    return ({
-        currentUser: state.session.currentUser
-    });
+    return {
+        currentUser: state.entities.users[state.session.currentUser]
+    };
 };
 
 
