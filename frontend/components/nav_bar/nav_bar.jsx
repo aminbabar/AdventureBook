@@ -30,7 +30,6 @@ class NavBar extends React.Component {
         const logoutButton = this.props.currentUser ? (
             <button onClick={this.props.logout}>Logout</button>
         ) : (<p> Not signed in</p>);
-        // debugger;
 
         return(
             <nav>
