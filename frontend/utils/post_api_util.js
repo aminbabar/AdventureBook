@@ -8,9 +8,9 @@ export const fetchPosts = () => {
 };
 
 
-export const fetchPost = (id) => {
+export const fetchPost = (postId) => {
     return $.ajax({
-        url: `/api/posts/${id}`,
+        url: `/api/posts/${postId}`,
         method: "GET"
     });
 };
@@ -25,9 +25,9 @@ export const createPost = (post) => {
 };
 
 
-export const deletePost = (id) => {
+export const deletePost = (postId) => {
     return $.ajax({
-        url: `/api/posts/${id}`,
+        url: `/api/posts/${postId}`,
         method: "DELETE"
     });
 };

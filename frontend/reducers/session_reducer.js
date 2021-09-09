@@ -1,11 +1,12 @@
 import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from "../actions/session_actions";
 
 const _nullSession = {
-    id: null
+    currentUser: null
 };
 
 
 const sessionReducer = (state=_nullSession, action) => {
+    // debugger;
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
