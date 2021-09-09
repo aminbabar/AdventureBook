@@ -8,7 +8,6 @@ import {fetchPosts, fetchPost, createPost, deletePost, updatePost} from "./actio
 // import {login, logout, signup} from "./utils/session_api_util"
 
 document.addEventListener("DOMContentLoaded", () => {
-
     // Testing
     // window.login = login;
     // window.logout = logout;
@@ -20,12 +19,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // window.deletePost = deletePost;
     // window.updatePost = updatePost;
 
-    // window.fetchPosts = fetchPosts();
+    window.fetchPosts = fetchPosts;
+    
     // window.fetchPost = fetchPost(4);
     // let post = {body:"AAAA"}
     // window.createPost = createPost(post);
     // window.deletePost = deletePost(17);
     // window.updatePost = updatePost();
+
 
 
     let store;

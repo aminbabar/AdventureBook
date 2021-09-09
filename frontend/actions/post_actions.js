@@ -7,6 +7,7 @@ import * as PostApiUtil from "../utils/post_api_util";
 
 // action creators
 const receivePosts = posts => {
+    // debugger;
     return ({
         type: RECEIVE_ALL_POSTS,
         posts 
