@@ -2,6 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import configureStore from "./store/store";
 import Root from "./components/root";
+import { fetchPosts, fetchPost, createPost, deletePost, updatePost } from "./utils/post_api_util";
+
+
 // import {login, logout, signup} from "./utils/session_api_util"
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -9,6 +12,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // window.login = login;
     // window.logout = logout;
     // window.signup = signup;
+
+    window.fetchPost = fetchPost;
+    window.fetchPosts = fetchPosts;
+    window.createPost = createPost;
+    window.deletePost = deletePost;
+    window.updatePost = updatePost;
 
     let store;
     if (window.currentUser) {
