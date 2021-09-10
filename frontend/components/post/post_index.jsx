@@ -9,10 +9,12 @@ class PostIndex extends React.Component {
     };
 
     render() {
+        let posts = this.props.posts.reverse();
+        debugger;
         return (
             <div>
                 <ul>
-                    {this.props.posts.map((post) => {
+                    {posts.map((post) => {
                         return (<PostIndexItem
                                     post={post} 
                                     deletePost={this.props.deletePost}
