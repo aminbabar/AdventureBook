@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // window.fetchPost = fetchPost;
     // window.fetchPosts = fetchPosts;
-    // window.createPost = createPost;
+    window.createPost = createPost;
     // window.deletePost = deletePost;
     // window.updatePost = updatePost;
 
