@@ -26,6 +26,10 @@ class LoginForm extends React.Component {
         };
     };
 
+    componentWillUnmount() {
+        this.props.resetErrors();
+    }
+
 
     render() {
         return (
@@ -36,6 +40,11 @@ class LoginForm extends React.Component {
                     Connect with friends and the world around you on AlgoBook
                 </div>
                 <form className="login-form">
+                    <ul>
+                        {this.props.errors.map((error, i) => {
+                            return (<li key={`error-${i}`}>{error}</li>)
+                        })}
+                    </ul>
                     <label>
                         <input 
                             type="text"

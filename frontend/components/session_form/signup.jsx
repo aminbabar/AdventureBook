@@ -24,16 +24,24 @@ class Signup extends React.Component {
         };
     };
 
+    componentWillUnmount() {
+        this.props.resetErrors();
+    }
+
     handleSubmit(e) {
         e.preventDefault();
-        this.props.signup(this.state)
-        .then( () => this.props.history.push("/feed"));
-    }
+        this.props.signup(this.state);
+    };
 
 
     render() {
         return (
             <div className="signup-form">
+                <ul>
+                    {this.props.errors.map((error, i) => {
+                        return (<li key={`error-${i}`}>{error}</li>)
+                    })}
+                </ul>
                 <h2>Create a New Account</h2>
                 <h4>It's quick and easy.</h4>
                 <hr />

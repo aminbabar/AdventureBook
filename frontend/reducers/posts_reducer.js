@@ -1,7 +1,6 @@
 import { RECEIVE_ALL_POSTS, RECEIVE_POST, REMOVE_POST } from "../actions/post_actions";
 
 const PostsReducer = (oldState={}, action) => {
-    debugger;
     Object.freeze(oldState);
     let newState = Object.assign({}, oldState);
     switch (action.type) {
