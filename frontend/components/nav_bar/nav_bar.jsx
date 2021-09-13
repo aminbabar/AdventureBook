@@ -2,6 +2,7 @@ import React from "react";
 import { BsFillCaretDownFill } from "react-icons/bs";
 import { IoMdNotifications} from "react-icons/io"
 import { CgMenuGridO} from "react-icons/cg";
+import { GrLogout } from "react-icons/gr";
 
 import { FaFacebookMessenger } from "react-icons/fa";
 import Dropdown from "./dropdown";
@@ -47,22 +48,23 @@ class NavBar extends React.Component {
                 <div className="middle">
 
                 </div>
-
+                
 
                 <div className="right">
                     <span>
                         {this.props.currentUser.fname}
                     </span>
 
-                    {/* <div className="logout-dropdown">
-                        <BsFillCaretDownFill size={"15px"} />
-                    </div> */}
+                    
                     <Dropdown icon={<CgMenuGridO size={"25px"} />} />
+
                     <Dropdown icon={<FaFacebookMessenger size={"20px"}/>}/>
                     <Dropdown icon={<IoMdNotifications size={"20px"}/>}/>
-                    <Dropdown icon={<BsFillCaretDownFill size={"15px"} />}/>
-                    
-                    {logoutButton}
+                    <Dropdown icon={<BsFillCaretDownFill size={"15px"} />}>
+                        <li onClick={this.props.logout}>
+                            <GrLogout /> <span>Log out</span>
+                        </li>
+                    </ Dropdown>
                 </div>
             </nav>
         );
