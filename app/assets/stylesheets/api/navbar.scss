@@ -14,4 +14,39 @@ nav {
     justify-content: space-between;
 }
 
+.logout-dropdown {
+    background-color: #E0E2E8;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.dropdown-container:hover {
+    background-color: #D2D5D8;
+    cursor: pointer;
+}
+
+.dropdown-container {
+    border: none;
+    background-color: #E0E2E8;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown-show {
+    background-color: white;
+    position: fixed;
+    top: 79px;
+    right: 20px;
+}
+
+.dropdown-hide {
+    display: none;
+}

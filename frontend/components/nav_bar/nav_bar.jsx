@@ -1,4 +1,10 @@
 import React from "react";
+import { BsFillCaretDownFill } from "react-icons/bs";
+import { IoMdNotifications} from "react-icons/io"
+import { CgMenuGridO} from "react-icons/cg";
+
+import { FaFacebookMessenger } from "react-icons/fa";
+import Dropdown from "./dropdown";
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -24,6 +30,7 @@ class NavBar extends React.Component {
     // messenger
     // notificatinos
     // dropdown for logout, feedback, settings
+    
     render() {
 
 
@@ -46,6 +53,15 @@ class NavBar extends React.Component {
                     <span>
                         {this.props.currentUser.fname}
                     </span>
+
+                    {/* <div className="logout-dropdown">
+                        <BsFillCaretDownFill size={"15px"} />
+                    </div> */}
+                    <Dropdown icon={<CgMenuGridO size={"25px"} />} />
+                    <Dropdown icon={<FaFacebookMessenger size={"20px"}/>}/>
+                    <Dropdown icon={<IoMdNotifications size={"20px"}/>}/>
+                    <Dropdown icon={<BsFillCaretDownFill size={"15px"} />}/>
+                    
                     {logoutButton}
                 </div>
             </nav>
