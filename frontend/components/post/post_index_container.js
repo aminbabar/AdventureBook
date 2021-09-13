@@ -7,7 +7,8 @@ import { fetchPosts, deletePost } from "../../actions/post_actions";
 
 const mstp = (state) => {
     return ({
-        posts: Object.values(state.entities.posts)
+        posts: Object.values(state.entities.posts),
+        currentUserId: state.session.currentUser
     });
 };
 
@@ -15,7 +16,8 @@ const mstp = (state) => {
 const mdtp = (dispatch) => {
     return ({
         fetchPosts: () => dispatch(fetchPosts()),
-        deletePost: (postId) => dispatch(deletePost(postId))
+        deletePost: (postId) => dispatch(deletePost(postId)),
+
     });
 };
 

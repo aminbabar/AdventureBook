@@ -8,8 +8,19 @@ const NewsFeedIndex = (props) => {
     return (
         <div>
             <NavBarContainer />
-            <CreatePostContainer />
-            <PostIndexContainer />
+
+            <div className="newsfeed">
+                <div>
+                        Left scroll bar
+                </div>
+
+                <PostIndexContainer />
+
+                <div>
+                    Right scroll bar
+                </div>
+
+            </div>
         </div>
     );
 };

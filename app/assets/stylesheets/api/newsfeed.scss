@@ -1,0 +1,120 @@
+// Place all the styles related to the api/posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.post {
+    padding: 15px;
+    background-color: white;
+    margin: 15px;
+    border-radius: 7px;
+}
+
+
+.newsfeed {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.newsfeed-middle {
+    width: 40%;
+}
+
+
+.hr {
+    border-bottom: 1px solid #C7CACE;
+}
+
+.post-body {
+    font-family:Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+
+.post-header-photo {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color:#C7CACE;
+}
+
+.post-header {
+    display: flex;
+    flex-direction: row;
+    // align-items: space-between;
+    justify-content: space-between;
+    // background-color: red;
+}
+
+.post-header-middle {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    width: 87%;
+}
+
+.post-author-name {
+    font-weight: 700;
+    color: black;
+}
+
+.post-author-name:hover {
+    text-decoration: underline;
+}
+
+.post-date {
+    color: #C7CACE;
+    font-size: 0.8125rem;
+}
+.post-date:hover {
+    text-decoration: underline;
+}
+
+.post-header-dropdown {
+    width: 30px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+    background-color: inherit;
+    // background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    // margin: 100px;
+}
+
+.post-header-dropdown:hover {
+    background-color: #F0F0F0;
+}
+
+.hide-post-header-dropdown {
+    display: none;
+}
+
+
+.show-post-header-dropdown {
+    background-color: white;
+    position: relative;
+    top: 30px;
+    right: 7vw;
+    width: 15vw;
+    border-radius: 7px;
+    box-shadow: 0 0 10px #F0F0F0;
+}
+
+.show-post-header-dropdown li:hover {
+    background-color: #F0F0F0;
+}
+
+.show-post-header-dropdown li {
+    display: flex;
+}
+
+
+
+
+.post-body {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

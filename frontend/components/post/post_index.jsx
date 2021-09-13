@@ -1,6 +1,6 @@
 import React from "react"
 import PostIndexItem from "./post_index_item";
-
+import CreatePostContainer from "./create_post_container";
 
 class PostIndex extends React.Component {
 
@@ -9,17 +9,19 @@ class PostIndex extends React.Component {
     };
 
     render() {
+
         let posts = this.props.posts.reverse();
-        debugger;
         return (
-            <div>
+            <div className="newsfeed-middle">
+                {<CreatePostContainer />}
                 <ul>
                     {posts.map((post) => {
-                        return (<PostIndexItem
-                                    post={post} 
-                                    deletePost={this.props.deletePost}
-                                    key={post.id}
-                                />
+                        return (  <PostIndexItem
+                                        post={post} 
+                                        deletePost={this.props.deletePost}
+                                        currentUserId={this.props.currentUserId}
+                                        key={post.id}
+                                    />
                             );
                     })}
                 </ul>
