@@ -88,7 +88,9 @@ class PostIndexItem extends React.Component {
                     {this.props.post.body}
                 </div>
 
-
+                <div>
+                    <img src={`${this.props.post.photoUrl}`} alt="" />
+                </div>
 
                 <div className="post-likes-comments-count">
 
