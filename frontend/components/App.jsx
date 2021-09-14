@@ -6,7 +6,7 @@ import LoginFormContainer from "./session_form/login_form_container";
 import { AuthRoute, ProtectedRoute} from "../utils/route_util";
 import NewsFeedIndex from "./newsfeed/news_feed_index";
 
-import Modal from "modal/modal";
+import Modal from "./modal/modal";
 
 const App = () => {
     return(

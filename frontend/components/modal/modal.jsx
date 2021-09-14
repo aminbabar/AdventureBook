@@ -1,6 +1,7 @@
 import React from "react";
 import { closeModal } from "../../actions/modal_actions";
 import { connect } from "react-redux";
+import CreatePostContainer from "../post/create_post_container";
 
 const Modal = ({modal, closeModal}) => {
     if (!modal) {
@@ -9,7 +10,7 @@ const Modal = ({modal, closeModal}) => {
     let component;
     switch (modal) {
         case "create_post":
-            // component = <CreatePostContainer here!!    
+            component = <CreatePostContainer />
             break;
         default:
             return null;
