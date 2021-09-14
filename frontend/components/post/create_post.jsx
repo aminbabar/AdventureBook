@@ -5,12 +5,12 @@ import { openModal } from "../../actions/modal_actions";
 const CreatePost = (props) => {
     return(
         <div className="create-post-top">
-            <textarea 
-                placeholder={`What's on your mind, ${props.currentUser.fname}?`}
+            <button 
                 onClick={() => props.openModal("create_post")}
             >
+                {`What's on your mind, ${props.currentUser.fname}?`}
 
-            </textarea>
+            </button>
         </div>
 
     );

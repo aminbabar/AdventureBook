@@ -27,13 +27,13 @@ class PostForm extends React.Component {
 
     render() {
         return (
-            <form>
+            <div className="post-modal">
                 <label>
                     <textarea onChange={this.update("body")} value={this.state.body} placeholder="What's on your mind"></textarea>
                 </label>
 
                 <button onClick={this.handleSubmit}>Post</button>
-            </form>
+            </div>
         );
     };
 };
