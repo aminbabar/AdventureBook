@@ -42,12 +42,10 @@ class PostForm extends React.Component {
         if (file) {
             fileReader.readAsDataURL(file);
         };
-        console.log(this.state);
     };
 
 
     render() {
-        console.log(this.state);
         const preview = this.state.photoUrl ? <img src={this.state.photoUrl} /> : null;
         return (
             <div className="post-modal">
