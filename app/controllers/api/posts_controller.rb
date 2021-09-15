@@ -5,9 +5,10 @@ class Api::PostsController < ApplicationController
     end
 
     def create
-        debugger
+
         @post = Post.new(post_params)
         @post.author_id = current_user.id
+        debugger
         if @post.save
             render :show
         else

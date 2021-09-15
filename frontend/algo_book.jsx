@@ -15,12 +15,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // window.fetchPost = fetchPost;
     // window.fetchPosts = fetchPosts;
-    window.createPost = createPost;
+    // window.createPost = createPost;
     // window.deletePost = deletePost;
     // window.updatePost = updatePost;
 
-    window.fetchPosts = fetchPosts;
-    // debugger;
+    // window.fetchPosts = fetchPosts;
     
     // window.fetchPost = fetchPost(4);
     // let post = {body:"AAAA"}
@@ -45,9 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
 
-    window.dispatch = store.dispatch;
+    // window.dispatch = store.dispatch;
 
-    debugger;
 
     // window.getState = store.getState;
     // window.dispatch = store.dispatch;

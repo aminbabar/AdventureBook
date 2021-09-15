@@ -16,9 +16,6 @@ class PostIndexItem extends React.Component {
         this.closeDropDown = this.closeDropDown.bind(this);
     };
 
-    componentDidMount() {
-        debugger;
-    }
 
     capitalize(word) {
         if (word) {

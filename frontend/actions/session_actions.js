@@ -9,7 +9,6 @@ export const RESET_ERRORS = "RESET_ERRORS";
 
 // Action creators
 const receiveCurrentUser = (user) => {
-    debugger;
     return ({
         type: RECEIVE_CURRENT_USER,
         user
@@ -17,14 +16,12 @@ const receiveCurrentUser = (user) => {
 }
 
 const logoutCurrentUser = () => {
-    debugger;
     return ({
         type: LOGOUT_CURRENT_USER
     });
 };
 
 export const receiveErrors = (errors) => {
-    debugger;
     return({
         type: RECEIVE_SESSION_ERRORS,
         errors
@@ -32,7 +29,6 @@ export const receiveErrors = (errors) => {
 };
 
 export const resetErrors = () => {
-    debugger;
     return ({
         type: RESET_ERRORS
     });

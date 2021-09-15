@@ -31,20 +31,17 @@ const removePost = postId => {
 
 // Thunk action creators
 export const fetchPosts = () => (dispatch) => {
-    debugger;
     return PostApiUtil.fetchPosts()
         .then((posts) => dispatch(receivePosts(posts)));
 };
 
 export const fetchPost = (postId) => (dispatch) => {
-    debugger;
     return PostApiUtil.fetchPost(postId)
         .then((post) => dispatch(receivePost(post)));
 };
 
 
 export const createPost = (post) => (dispatch) => {
-    debugger;
     return PostApiUtil.createPost(post)
         .then((post) => dispatch(receivePost(post)));
 };
