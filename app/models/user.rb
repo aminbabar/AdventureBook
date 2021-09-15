@@ -13,6 +13,10 @@ class User < ApplicationRecord
 
     has_one_attached :profile_photo
 
+    has_many :comments,
+        foreign_key: :comment_author_id,
+        class_name: :Comment
+
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
         if user
