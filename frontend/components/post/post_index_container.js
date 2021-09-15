@@ -9,6 +9,7 @@ import { openModal } from "../../actions/modal_actions";
 const mstp = (state) => {
     return ({
         posts: Object.values(state.entities.posts),
+        users: state.entities.users,
         currentUserId: state.session.currentUser
     });
 };

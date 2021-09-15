@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // window.updatePost = updatePost;
 
     window.fetchPosts = fetchPosts;
+    // debugger;
     
     // window.fetchPost = fetchPost(4);
     // let post = {body:"AAAA"}
@@ -46,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.dispatch = store.dispatch;
 
-
+    debugger;
 
     // window.getState = store.getState;
     // window.dispatch = store.dispatch;

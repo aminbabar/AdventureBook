@@ -1,6 +1,7 @@
 
 
 export const fetchPosts = () => {
+    debugger;
     return $.ajax({
         url: "/api/posts",
         method: "GET"
@@ -9,6 +10,7 @@ export const fetchPosts = () => {
 
 
 export const fetchPost = (postId) => {
+    debugger;
     return $.ajax({
         url: `/api/posts/${postId}`,
         method: "GET"
@@ -17,6 +19,7 @@ export const fetchPost = (postId) => {
 
 
 export const createPost = (formData) => {
+    debugger;
     return $.ajax({
         url: `/api/posts`,
         method: "POST",
@@ -28,6 +31,7 @@ export const createPost = (formData) => {
 
 
 export const deletePost = (postId) => {
+    debugger;
     return $.ajax({
         url: `/api/posts/${postId}`,
         method: "DELETE"
@@ -36,6 +40,7 @@ export const deletePost = (postId) => {
 
 
 export const updatePost = (post) => {
+    debugger;
     return $.ajax({
         url: `/api/posts/${post.id}`,
         method: "PATCH",

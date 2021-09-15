@@ -16,6 +16,10 @@ class PostIndexItem extends React.Component {
         this.closeDropDown = this.closeDropDown.bind(this);
     };
 
+    componentDidMount() {
+        debugger;
+    }
+
     capitalize(word) {
         if (word) {
             return word[0].toUpperCase() + word.slice(1).toLowerCase();
@@ -60,7 +64,7 @@ class PostIndexItem extends React.Component {
 
 
     render() {
-        let postAuthor = this.capitalize(this.props.post.fname) + " " + this.capitalize(this.props.post.lname);
+        let postAuthor = this.capitalize(this.props.user.fname) + " " + this.capitalize(this.props.user.lname);
         let createdDate = this.processTime(this.props.post.created_at);
 
         return (
