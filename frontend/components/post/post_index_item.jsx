@@ -23,6 +23,7 @@ class PostIndexItem extends React.Component {
         };
     };
 
+
     processTime(date) {
         // let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -61,9 +62,9 @@ class PostIndexItem extends React.Component {
 
 
     render() {
-        let postAuthor = this.capitalize(this.props.user.fname) + " " + this.capitalize(this.props.user.lname);
+        let postAuthor = this.capitalize(this.props.postUser.fname) + " " + this.capitalize(this.props.postUser.lname);
         let createdDate = this.processTime(this.props.post.created_at);
-
+        let postImage = this.props.post.photoUrl ? <img className="post-photo" src={this.props.post.photoUrl} /> : null;
         return (
 
 
@@ -90,7 +91,7 @@ class PostIndexItem extends React.Component {
                 </div>
 
                 <div>
-                    <img src={`${this.props.post.photoUrl}`} alt="" />
+                    {postImage}
                 </div>
 
                 <div className="post-likes-comments-count">
