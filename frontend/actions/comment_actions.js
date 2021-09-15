@@ -26,7 +26,7 @@ const receiveComment = (comment) => {
 const removeComment = (commentId) => {
     return ({
         type: REMOVE_COMMENT,
-        comments
+        commentId
     });
 };
 
