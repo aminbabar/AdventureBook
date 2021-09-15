@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import configureStore from "./store/store";
 import Root from "./components/root";
 import {fetchPosts, fetchPost, createPost, deletePost, updatePost} from "./actions/post_actions";
+import { fetchComments } from "./utils/comment_api_util";
 // Testing
 // import { fetchPosts, fetchPost, createPost, deletePost, updatePost } from "./utils/post_api_util";
 // import {login, logout, signup} from "./utils/session_api_util"
@@ -26,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // window.createPost = createPost(post);
     // window.deletePost = deletePost(17);
     // window.updatePost = updatePost();
-
+    window.fetchComments = fetchComments;
 
 
     let store;
