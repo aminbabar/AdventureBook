@@ -8,8 +8,9 @@
     end
     json.users do
         json.set! post.author_id do
-            json.extract! post.author, :fname, :lname
-            json.photoUrl url_for(post.profile_photo) if post.author.profile_photo.attached?
+            user = post.author
+            json.extract! user, :fname, :lname
+            json.photoUrl url_for(user.profile_photo) if user.profile_photo.attached?
         end
     end
 end
