@@ -11,6 +11,7 @@ class LoginForm extends React.Component {
             password: ""
         }
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.loginDemo = this.loginDemo.bind(this);
     };
 
     handleSubmit(e) {
@@ -28,7 +29,18 @@ class LoginForm extends React.Component {
 
     componentWillUnmount() {
         this.props.resetErrors();
-    }
+    };
+
+    loginDemo() {
+        // note: this.setstate is asynchronous, so have to pass it a callback
+        this.setState({
+            email: "a",
+            password: "123456"
+        }, () => {
+            this.props.login(this.state)
+            // .then(() => this.props.history.push("./"));
+        });
+    };
 
 
     render() {
@@ -83,7 +95,7 @@ class LoginForm extends React.Component {
                     </div>
                     
                     <div className="">
-                        <a></a>
+                        <a onClick={this.loginDemo}>Demo Login</a>
                     </div>
 
 
