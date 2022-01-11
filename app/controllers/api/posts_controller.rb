@@ -1,6 +1,6 @@
 class Api::PostsController < ApplicationController
     def index
-        @posts = Post.all.includes(:author, :photo_blob, :photo_attachment)
+        @posts = Post.all.includes(:author, :photo_blob, :photo_attachment, author: [:profile_photo_blob, :profile_photo_attachment])
         render :index
     end
 

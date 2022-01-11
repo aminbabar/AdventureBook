@@ -36,7 +36,7 @@ class LoginForm extends React.Component {
             <div className="login-form-container">
 
                 <div>
-                    <img src="https://lh3.googleusercontent.com/proxy/HtU0a_h_wjaViEyAiiCU3ivY2-ullrROdSDpRlfACis1w3ds0ntElc7oj7NXhlh3cjLIg03ymIi2AaX7Kh0VjgHzUinANqwkOeD0UvCE-eZwo8JEq1TjJus3n9SJUXHG0vFptjuZuIR7Iqz7SUm3LErP" alt="image tag" />
+                    {/* <img src="https://lh3.googleusercontent.com/proxy/HtU0a_h_wjaViEyAiiCU3ivY2-ullrROdSDpRlfACis1w3ds0ntElc7oj7NXhlh3cjLIg03ymIi2AaX7Kh0VjgHzUinANqwkOeD0UvCE-eZwo8JEq1TjJus3n9SJUXHG0vFptjuZuIR7Iqz7SUm3LErP" alt="image tag" /> */}
                     Connect with friends and the world around you on AlgoBook
                 </div>
                 <form className="login-form">

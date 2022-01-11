@@ -8,7 +8,8 @@ const usersReducer = (state={}, action) => {
         case RECEIVE_CURRENT_USER:
             return Object.assign({}, state, {[action.user.id]: action.user})
         case RECEIVE_ALL_POSTS:
-            return Object.assign({}, action.posts.users, state);  // IS THIS BAD
+            
+            return Object.assign({}, state, action.posts.users);  // IS THIS BAD
         case RECEIVE_POST:
             return Object.assign({}, state, {[action.post.post.author_id]: action.post.user});
         default:
