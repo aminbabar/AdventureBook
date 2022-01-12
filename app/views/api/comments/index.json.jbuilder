@@ -9,7 +9,7 @@
     json.users do
         json.set! comment.author_id do
             user = comment.author
-            json.extract! user, :fname, :lname
+            json.extract! user, :id, :fname, :lname
             json.photoUrl url_for(user.profile_photo) if user.profile_photo.attached?
         end
     end

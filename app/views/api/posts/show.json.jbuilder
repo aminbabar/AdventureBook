@@ -5,7 +5,7 @@ json.post do
 end
 
 json.user do
-    json.extract! @post.author, :fname, :lname
+    json.extract! @post.author, :id, :fname, :lname
     json.photoUrl url_for(@post.profile_photo) if @post.author.profile_photo.attached?
 end
 

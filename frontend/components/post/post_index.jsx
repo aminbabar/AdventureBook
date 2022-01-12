@@ -22,6 +22,7 @@ class PostIndex extends React.Component {
                                         deletePost={this.props.deletePost}
                                         postUser = {this.props.users[post.author_id]}
                                         currentUser={this.props.users[this.props.currentUserId]}
+                                        currentUserId={this.props.currentUserId}
                                         key={post.id}
                                         // comments={this.props.comments}
                                     />
