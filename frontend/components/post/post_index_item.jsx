@@ -36,7 +36,8 @@ class PostIndexItem extends React.Component {
 
     dropDownItems() {
         let className = this.state.dropdown ? "show-post-header-dropdown" : "hide-post-header-dropdown";
-        if (this.props.currentUser.id ===  this.props.post.author_id) {
+
+        // if (this.props.currentUser.id ===  this.props.post.author_id) {
             return (
                 <div className={className}>
                     <ul>
@@ -45,7 +46,7 @@ class PostIndexItem extends React.Component {
                     </ul>
                 </div>
             );
-        };
+        // };
     };
 
 
