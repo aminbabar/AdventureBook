@@ -14,6 +14,8 @@ class PostIndexItem extends React.Component {
         this.state = {dropdown: false};
         this.toggleDropDown = this.toggleDropDown.bind(this);
         this.closeDropDown = this.closeDropDown.bind(this);
+
+        this.doThis = this.doThis.bind(this);
     };
 
 
@@ -34,13 +36,17 @@ class PostIndexItem extends React.Component {
 
     };
 
+    doThis() {
+        this.props.openModal("edit_post", this.props.post.id)
+    };
+
     dropDownItems() {
         let className = this.state.dropdown ? "show-post-header-dropdown" : "hide-post-header-dropdown";
         if (this.props.currentUser.id ===  this.props.post.author_id) {
             return (
                 <div className={className}>
                     <ul>
-                        <li>Edit</li>
+                        <li onClick={this.doThis}>Edit</li>
                         <li onClick={() => this.props.deletePost(this.props.post.id)}>Delete</li>
                     </ul>
                 </div>

@@ -35,11 +35,13 @@ export const deletePost = (postId) => {
 };
 
 
-export const updatePost = (post) => {
+export const updatePost = (formData, id) => {
     return $.ajax({
-        url: `/api/posts/${post.id}`,
+        url: `/api/posts/${id}`,
         method: "PATCH",
-        data: {post}
+        data: formData,
+        contentType: false,
+        processData: false
     });
 };
 

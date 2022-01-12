@@ -19,7 +19,7 @@ const mdtp = (dispatch) => {
     return ({
         fetchPosts: () => dispatch(fetchPosts()),
         deletePost: (postId) => dispatch(deletePost(postId)),
-        openModal: (modal) => dispatch(openModal(modal)),
+        openModal: (modal, id) => dispatch(openModal(modal, id))
     });
 };
 

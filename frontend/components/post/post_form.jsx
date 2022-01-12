@@ -5,12 +5,11 @@ class PostForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            body: this.props.post.body,
-            photoFile: null,
-            photoUrl: null
+            body: props.post.body,
+            photoFile: props.post.photoFile,
+            photoUrl: props.post.photoUrl
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-
     };
 
 
@@ -28,7 +27,8 @@ class PostForm extends React.Component {
         if (this.state.photoFile) {
             formData.append('post[photo]', this.state.photoFile);
         };
-        this.props.action(formData)
+        const id = this.props.post.id;
+        this.props.action(formData, id)
         .then(this.setState({ body: "" }))
         .then(this.props.closeModal());
     };
@@ -49,18 +49,21 @@ class PostForm extends React.Component {
         const preview = this.state.photoUrl ? <img src={this.state.photoUrl} /> : null;
         return (
             <div className="post-modal">
-                <label>
-                    <textarea onChange={this.update("body")} value={this.state.body} placeholder="What's on your mind"></textarea>
-                </label>
+                <form action="" onSubmit={this.handleSubmit}>
+                    <label>
+                        <textarea onChange={this.update("body")} value={this.state.body} placeholder="What's on your mind"></textarea>
+                    </label>
 
-                <div>
-                    {/* <span>Preview:</span> */}
-                    {preview}
-                </div>
+                    <div>
+                        {/* <span>Preview:</span> */}
+                        {preview}
+                    </div>
 
-                <input type="file" onChange={this.handleFile.bind(this)}/>
+                    <input type="file" onChange={this.handleFile.bind(this)} />
 
-                <button onClick={this.handleSubmit}>Post</button>
+                    <button>Post</button>
+                </form>
+                
             </div>
         );
     };

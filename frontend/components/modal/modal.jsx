@@ -2,15 +2,19 @@ import React from "react";
 import { closeModal } from "../../actions/modal_actions";
 import { connect } from "react-redux";
 import CreatePostContainer from "../post/create_post_container";
+import EditPostContainer from "../post/edit_post_container";
 
 const Modal = ({modal, closeModal}) => {
     if (!modal) {
         return null;
     }
     let component;
-    switch (modal) {
+    switch (modal.modal) {
         case "create_post":
             component = <CreatePostContainer />
+            break;
+        case "edit_post":
+            component = <EditPostContainer postId={modal.id}/>
             break;
         default:
             return null;
