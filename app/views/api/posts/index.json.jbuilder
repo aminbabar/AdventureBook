@@ -5,9 +5,14 @@
         json.set! post.id do
             json.extract! post, :author_id, :body, :id, :created_at
             json.photoUrl url_for(post.photo) if post.photo.attached?
+
             # keep track of all the comment ids in each post
+            comment_ids = []
+            comments.each do |comment|
+                comment_ids << comment.id
+            end
             json.comments do
-                json.array! comments, :id
+                json.array! comment_ids
             end
         end
     end
