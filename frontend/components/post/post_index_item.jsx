@@ -2,6 +2,7 @@ import React from "react";
 import { createPost } from "../../utils/post_api_util";
 import Dropdown from "../nav_bar/dropdown";
 import { BsThreeDots} from "react-icons/bs";
+import CreateCommentContainer from "../comment/create_comment_container";
 
 
 // Post header
@@ -126,7 +127,11 @@ class PostIndexItem extends React.Component {
 
 
                 <div className="post-comments">
-                    
+
+                </div>
+
+                <div className="create-comment">
+                    <CreateCommentContainer postId={this.props.post.id}/>
                 </div>
             </div>
         );

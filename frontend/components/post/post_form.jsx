@@ -49,7 +49,7 @@ class PostForm extends React.Component {
         const preview = this.state.photoUrl ? <img src={this.state.photoUrl} /> : null;
         return (
             <div className="post-modal">
-                <form action="" onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit}>
                     <label>
                         <textarea onChange={this.update("body")} value={this.state.body} placeholder="What's on your mind"></textarea>
                     </label>

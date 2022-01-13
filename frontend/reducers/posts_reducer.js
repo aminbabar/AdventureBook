@@ -1,4 +1,5 @@
 import { RECEIVE_ALL_POSTS, RECEIVE_POST, REMOVE_POST } from "../actions/post_actions";
+import { RECEIVE_COMMENT } from "../actions/comment_actions";
 
 const PostsReducer = (oldState={}, action) => {
     Object.freeze(oldState);
@@ -11,6 +12,10 @@ const PostsReducer = (oldState={}, action) => {
             return newState;
         case REMOVE_POST:
             delete newState[action.postId];
+            return newState;
+        case RECEIVE_COMMENT:
+            debugger;
+            newState[action.comment.post_id].comments.push(action.comment.id);
             return newState;
         default:
             return oldState;
