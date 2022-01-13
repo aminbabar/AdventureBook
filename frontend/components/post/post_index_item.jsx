@@ -126,7 +126,7 @@ class PostIndexItem extends React.Component {
 
 
                 <div className="post-comments">
-
+                    
                 </div>
             </div>
         );
