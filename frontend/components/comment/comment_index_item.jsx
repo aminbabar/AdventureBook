@@ -4,7 +4,7 @@ import React from "react";
 
 class CommentIndexItem extends React.Component {
     render() {
-        return <div>Comment item</div>
+        return <div>{this.props.comment.body}</div>
     };
 };
 

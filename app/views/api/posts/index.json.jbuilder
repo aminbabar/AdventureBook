@@ -27,7 +27,7 @@
     json.comments do
         comments.each do |comment|
             json.set! comment.id do
-                json.extract! comment, :id, :post_id, :comment_author_id, :created_at
+                json.extract! comment, :id, :post_id, :comment_author_id, :created_at, :body
             end
         end
     end

@@ -16,23 +16,18 @@ class CreateComment extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log("hi");
         this.props.createComment(this.state);
         this.setState({body: ""});
     };
 
     enterPressed(e) {
-        // debugger;
         if (e.key === 'Enter') {
-            // debugger
             this.handleSubmit(e);
         };
     };
 
     updateBody(e) {
-        // debugger;
         this.setState({body: e.currentTarget.value});
-        console.log("bye")
     };
 
 

@@ -4,14 +4,20 @@ import { connect } from "react-redux";
 import CommentIndexItem from "./comment_index_item";
 
 const CommentIndex = (props) => {
+    const comments = props.commentsArr.map((commentId, idx) => {
+        return (<CommentIndexItem comment={props.comments[commentId]} key={commentId} />)
+    });
+    // debugger;
     return (
-        <CommentIndexItem />
+        <>
+            {comments}
+        </>
     );
 };
 
 const mstp = (state, ownProps) => {
     return ({
-        comments: state.comments,
+        comments: state.entities.comments,
         commentsArr: ownProps.commentsArr
     });
 };
