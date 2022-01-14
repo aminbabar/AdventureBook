@@ -23,10 +23,10 @@ const receiveComment = (comment) => {
 
 
 
-const removeComment = (commentId) => {
+const removeComment = (comment) => {
     return ({
         type: REMOVE_COMMENT,
-        commentId
+        comment
     });
 };
 
@@ -44,7 +44,7 @@ export const createComment = (comment) => (dispatch) => {
 
 export const deleteComment = (commentId) => (dispatch) => {
     return CommentApiUtil.deleteComment(commentId)
-        .then((commentId) => dispatch(removeComment(commentId)));
+        .then((comment) => dispatch(removeComment(comment)));
 };
 
 export const updateComment = (comment) => (dispatch) => {
