@@ -14,6 +14,15 @@ class CommentIndexItem extends React.Component {
         this.switchToggle = this.switchToggle.bind(this);
         this.dropDown = this.dropDown.bind(this);
         this.editOrDisplay = this.editOrDisplay.bind(this);
+        this.drop = this.drop.bind(this);
+        this.editToggle = this.editToggle.bind(this);
+    };
+
+    editToggle() {
+        this.setState({dropDownBool: false}, () => {
+            console.log(this.state.dropDownBool);
+            this.switchToggle("editBool");
+        });
     };
 
 
@@ -22,18 +31,22 @@ class CommentIndexItem extends React.Component {
             const commentId = this.props.comment.id;
             return(
                 <div>
-                    <div onClick={() => this.switchToggle("editBool")}>Edit</div>
+                    <div className="edit-button-now" onClick={this.editToggle}>Edit</div>
                     <div onClick={()=> this.props.deleteComment(commentId)}>Delete</div>
                 </div>
             );
-        } else {
-            return <div onClick={()=>this.switchToggle("dropDownBool")}>dots</div>
         };
     };
 
     switchToggle(field) {
+        // if (field == "dropDownBool") {
+        //     debugger;
+        // }
+        // debugger;
+        console.log(field);
         this.setState((prevState) => {
-            return{[field]: !prevState.field};
+            // debugger;
+            return{[field]: !prevState[field]};
         });
     };
 
@@ -51,12 +64,27 @@ class CommentIndexItem extends React.Component {
         };
     };
 
+    drop(e) {
+        // debugger;
+        // console.log(e.target)
+        // console.log(this.state.dropDownBool)
+        // setTimeout(() => this.switchToggle("dropDownBool"), 1000);
+
+        if (this.state.dropDownBool) {
+            console.log("drop");
+            this.setState({ dropDownBool: false });
+        }
+    };
+
 
     render() {
+
         return (
         <div>
             {this.editOrDisplay()}
-            <div>{this.dropDown()}</div>
+                <button onClick={() => this.switchToggle("dropDownBool")} onBlur={this.drop} >
+                    <div onClick={(e) => e.stopPropagation()}>{this.dropDown()}</div>
+                </button>
         </div>
         );
     };

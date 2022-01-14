@@ -25,7 +25,7 @@ class Dropdown extends React.Component {
         let cName = this.state.show ? "dropdown-show" : "dropdown-hide";
         return (
             <button className="dropdown-container" onClick={this.changeState} onBlur={this.closeDropdown}>
-                {this.props.icon}
+                <div className="dropdown-container-icon"> {this.props.icon}</div>
                 
                 <ul className={cName} onClick={e => e.stopPropagation()}>
                     {this.props.children}
