@@ -1,13 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
+import { deleteComment } from "../../actions/comment_actions";
 // import { fetchComments } from "../../actions/comment_actions";
 import CommentIndexItem from "./comment_index_item";
 
 const CommentIndex = (props) => {
-    const comments = props.commentsArr.map((commentId, idx) => {
-        return (<CommentIndexItem comment={props.comments[commentId]} key={commentId} />)
+    const comments = props.commentsArr.map((commentId) => {
+        return (<CommentIndexItem 
+                    comment={props.comments[commentId]} 
+                    key={commentId} 
+                    deleteComment={props.deleteComment}
+                />);
     });
-    // debugger;
     return (
         <>
             {comments}
@@ -23,11 +27,11 @@ const mstp = (state, ownProps) => {
 };
 
 
-// const mdtp = (dispatch) => {
-//     return ({
-//         // fetchComments: () => dispatch(fetchComments)
-//     });
-// };
+const mdtp = (dispatch) => {
+    return ({
+        deleteComment: (id) => dispatch(deleteComment(id))
+    });
+};
 
 
-export default connect(mstp, null)(CommentIndex);
+export default connect(mstp, mdtp)(CommentIndex);
