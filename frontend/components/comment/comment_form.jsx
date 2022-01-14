@@ -1,6 +1,6 @@
 import React from "react";
 
-class CreateComment extends React.Component {
+class CommentForm extends React.Component {
 
     constructor(props) {
         super(props);
@@ -8,16 +8,17 @@ class CreateComment extends React.Component {
         this.updateBody = this.updateBody.bind(this);
         this.enterPressed = this.enterPressed.bind(this);
         this.state = {
-                        body: "",
-                        post_id: this.props.postId
+                        body: this.props.comment.body,
+                        post_id: this.props.comment.post_id
                     };
     };
 
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.createComment(this.state);
-        this.setState({body: ""});
+        const comment = Object.assign({}, this.state);
+        comment.id = this.props.comment.id;
+        this.props.action(comment).then(this.setState({ body: "" }));
     };
 
     enterPressed(e) {
@@ -41,4 +42,4 @@ class CreateComment extends React.Component {
 };
 
 
-export default CreateComment;
+export default CommentForm;

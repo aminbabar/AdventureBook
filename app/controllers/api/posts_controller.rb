@@ -36,7 +36,7 @@ class Api::PostsController < ApplicationController
 
         # CHECK Hopefully more secure. Only current user allowed to update
         @post = current_user.posts.find(params[:id])
-        if @post
+        if @post && @post.author_id == current_user.id
             @post.update(post_params)
             render :show
         else
@@ -47,6 +47,6 @@ class Api::PostsController < ApplicationController
     private
 
     def post_params
-        params.require(:post).permit(:body, :photo)
+        params.require(:post).permit(:body, :photo, :author_id)
     end
 end

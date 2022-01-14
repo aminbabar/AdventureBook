@@ -1,18 +1,18 @@
 import { connect } from "react-redux";
 import { createComment } from "../../actions/comment_actions";
-import CreateComment from "./create_comment";
+import CreateComment from "./comment_form";
 
 
 const mstp = (state, ownProps) => {
     return({
-        postId: ownProps.postId
+        comment: { body: "", post_id: ownProps.postId}
     });
 };
 
 
 const mdtp = (disptach) => {
     return({
-        createComment: (comment) => disptach(createComment(comment))
+        action: (comment) => disptach(createComment(comment))
     });
 };
 

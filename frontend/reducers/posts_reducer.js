@@ -18,6 +18,9 @@ const PostsReducer = (oldState={}, action) => {
             // Have to dup the post object, and then dup the array to avoid
             // changing old state!
             const arr = Array.from(newState[action.comment.post_id].comments);
+            if (arr.includes(action.comment.id)) {
+                return newState;
+            };
             const post = Object.assign({}, newState[action.comment.post_id]);
             newState[action.comment.post_id] = post;
             newState[action.comment.post_id].comments = arr;
