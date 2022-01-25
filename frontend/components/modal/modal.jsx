@@ -3,6 +3,7 @@ import { closeModal } from "../../actions/modal_actions";
 import { connect } from "react-redux";
 import CreatePostContainer from "../post/create_post_container";
 import EditPostContainer from "../post/edit_post_container";
+import SignupContainer from "../session_form/signup_container";
 
 const Modal = ({modal, closeModal}) => {
     if (!modal) {
@@ -15,6 +16,9 @@ const Modal = ({modal, closeModal}) => {
             break;
         case "edit_post":
             component = <EditPostContainer postId={modal.id}/>
+            break;
+        case "create_user":
+            component = <SignupContainer />
             break;
         default:
             return null;

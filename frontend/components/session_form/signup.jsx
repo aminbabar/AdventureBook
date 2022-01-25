@@ -30,7 +30,10 @@ class Signup extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.signup(this.state);
+        this.props.signup(this.state).then(
+            () => this.props.closeModal(),
+            (err) => null
+        );
     };
 
 
@@ -151,8 +154,6 @@ class Signup extends React.Component {
                     <br />
 
                     <button onClick={this.handleSubmit}>Sign Up</button>
-
-                    <Link to={"/login"}>Already have an account?</Link>
 
                 </form>
 

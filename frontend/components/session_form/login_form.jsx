@@ -12,6 +12,7 @@ class LoginForm extends React.Component {
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.loginDemo = this.loginDemo.bind(this);
+        this.openSignupModal = this.openSignupModal.bind(this);
     };
 
     handleSubmit(e) {
@@ -25,6 +26,11 @@ class LoginForm extends React.Component {
         return (e) => {
             this.setState({[type]: e.target.value})
         };
+    };
+
+    openSignupModal(e) {
+        e.preventDefault();
+        this.props.openModal("create_user");
     };
 
     componentWillUnmount() {
@@ -100,7 +106,12 @@ class LoginForm extends React.Component {
 
 
                     <div className="signup-link-div">
-                        <Link className="signup-link" to={"/signup"}>Create New Account</Link>
+                        {/* <Link className="signup-link" to={"/signup"}>Create New Account</Link> */}
+                        <button 
+                            className="signup-link"
+                            onClick={this.openSignupModal}>
+                            Sign Up
+                        </button>
                     </div>
 
 

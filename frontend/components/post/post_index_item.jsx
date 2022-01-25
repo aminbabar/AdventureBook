@@ -17,7 +17,7 @@ class PostIndexItem extends React.Component {
         this.toggleDropDown = this.toggleDropDown.bind(this);
         this.closeDropDown = this.closeDropDown.bind(this);
 
-        this.doThis = this.doThis.bind(this);
+        this.openEditPostModal = this.openEditPostModal.bind(this);
     };
 
 
@@ -38,7 +38,7 @@ class PostIndexItem extends React.Component {
 
     };
 
-    doThis() {
+    openEditPostModal() {
         this.props.openModal("edit_post", this.props.post.id)
     };
 
@@ -48,7 +48,7 @@ class PostIndexItem extends React.Component {
             return (
                 <div className={className}>
                     <ul>
-                        <li onClick={this.doThis}>Edit</li>
+                        <li onClick={this.openEditPostModal}>Edit</li>
                         <li onClick={() => this.props.deletePost(this.props.post.id)}>Delete</li>
                     </ul>
                 </div>
