@@ -56,11 +56,11 @@ class NavBar extends React.Component {
                     </span>
 
                     
-                    <Dropdown icon={<CgMenuGridO size={"25px"} />} />
-
-                    <Dropdown icon={<FaFacebookMessenger size={"20px"}/>}/>
-                    <Dropdown icon={<IoMdNotifications size={"20px"}/>}/>
-                    <Dropdown icon={<BsFillCaretDownFill size={"15px"} />}>
+                    <Dropdown icon={<CgMenuGridO size={"25px"} />} myclass="navbar"/>
+                
+                    <Dropdown icon={<FaFacebookMessenger size={"20px"} />} myclass="navbar"/>
+                    <Dropdown icon={<IoMdNotifications size={"20px"} />} myclass="navbar"/>
+                    <Dropdown icon={<BsFillCaretDownFill size={"15px"} />} myclass="navbar">
                         <li onClick={this.props.logout}>
                             <GrLogout /> <span>Log out</span>
                         </li>

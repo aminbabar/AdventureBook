@@ -43,7 +43,7 @@ class CommentIndexItem extends React.Component {
         return (
         <div>
             {this.editOrDisplay()}
-            <Dropdown icon={<BsFillCaretDownFill size={"15px"} />}>
+            <Dropdown icon={<BsFillCaretDownFill size={"15px"} />} myclass="comment">
                 <li className="edit-button-now" onClick={() => this.switchToggle("editBool")}>Edit</li>
                 <li onClick={() => this.props.deleteComment(commentId)}>Delete</li>
                 {/* <li onClick={this.props.logout}>
