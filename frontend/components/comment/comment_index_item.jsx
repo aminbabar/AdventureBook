@@ -1,51 +1,23 @@
 
 import React from "react";
 import EditCommentContainer  from "./edit_comment_container";
+import { BsFillCaretDownFill } from "react-icons/bs";
+import Dropdown from "../nav_bar/dropdown";
 
 class CommentIndexItem extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            dropDownBool: false,
             editBool: false
         };
 
         this.switchToggle = this.switchToggle.bind(this);
-        this.dropDown = this.dropDown.bind(this);
         this.editOrDisplay = this.editOrDisplay.bind(this);
-        this.drop = this.drop.bind(this);
-        this.editToggle = this.editToggle.bind(this);
-    };
-
-    editToggle() {
-        this.setState({dropDownBool: false}, () => {
-            console.log(this.state.dropDownBool);
-            this.switchToggle("editBool");
-        });
-    };
-
-
-    dropDown() {
-        if (this.state.dropDownBool) {
-            const commentId = this.props.comment.id;
-            return(
-                <div>
-                    <div className="edit-button-now" onClick={this.editToggle}>Edit</div>
-                    <div onClick={()=> this.props.deleteComment(commentId)}>Delete</div>
-                </div>
-            );
-        };
     };
 
     switchToggle(field) {
-        // if (field == "dropDownBool") {
-        //     debugger;
-        // }
-        // debugger;
-        console.log(field);
         this.setState((prevState) => {
-            // debugger;
             return{[field]: !prevState[field]};
         });
     };
@@ -64,27 +36,20 @@ class CommentIndexItem extends React.Component {
         };
     };
 
-    drop(e) {
-        // debugger;
-        // console.log(e.target)
-        // console.log(this.state.dropDownBool)
-        // setTimeout(() => this.switchToggle("dropDownBool"), 1000);
-
-        if (this.state.dropDownBool) {
-            console.log("drop");
-            this.setState({ dropDownBool: false });
-        }
-    };
-
 
     render() {
 
+        const commentId = this.props.comment.id;
         return (
         <div>
             {this.editOrDisplay()}
-                <button onClick={() => this.switchToggle("dropDownBool")} onBlur={this.drop} >
-                    <div onClick={(e) => e.stopPropagation()}>{this.dropDown()}</div>
-                </button>
+            <Dropdown icon={<BsFillCaretDownFill size={"15px"} />}>
+                <li className="edit-button-now" onClick={() => this.switchToggle("editBool")}>Edit</li>
+                <li onClick={() => this.props.deleteComment(commentId)}>Delete</li>
+                {/* <li onClick={this.props.logout}>
+                    <GrLogout /> <span>Log out</span>
+                </li> */}
+            </ Dropdown>
         </div>
         );
     };
