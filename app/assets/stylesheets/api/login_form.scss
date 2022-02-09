@@ -47,6 +47,7 @@
 
 .login-form {
     padding: 10px;
+    box-shadow: 0 0 10px #C8C9CC;
 }
 
 .login-form input, label {
@@ -77,12 +78,12 @@
     height: 50px;
     padding: 5px;
     font-weight: bold;
-    transition: border 0.2s;
-    transition: background-color 0.4s;
+    transition: background-color 0.4s, border 0.2s;
 }
 
 .login-button:hover, .demo-login-button:hover {
     background-color: #166fe5;
+    transition: background-color 0.2s;
 }
 
 .login-button:active:focus, .demo-login-button:active:focus {
@@ -95,14 +96,13 @@
 
 .signup-link {
     background-color: #42b72a;
+    transition: background-color 0.4s, border 0.2s;
     padding: 14px 17px;
     border-radius: 5px;
     font-size: 17px;
     font-weight: bold;
     color: white;
     border: 1px solid #42b72a;
-    transition: background-color 0.4s;
-    transition: border 0.2s;
 }
 
 .signup-link:hover {
