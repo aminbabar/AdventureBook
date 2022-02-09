@@ -55,12 +55,12 @@ class LoginForm extends React.Component {
 
                 <div className="splash-logo-div">
                     <div className="splash-logo">
-                        Algobook
+                        algobook
                     </div>
                     {/* <img src="https://lh3.googleusercontent.com/proxy/HtU0a_h_wjaViEyAiiCU3ivY2-ullrROdSDpRlfACis1w3ds0ntElc7oj7NXhlh3cjLIg03ymIi2AaX7Kh0VjgHzUinANqwkOeD0UvCE-eZwo8JEq1TjJus3n9SJUXHG0vFptjuZuIR7Iqz7SUm3LErP" alt="image tag" /> */}
 
                     <div className="splash-text">
-                        Connect with friends and the world around you on AlgoBook
+                        Connect with friends and the world around you on Algobook.
                     </div>
                 </div>
 
@@ -76,7 +76,7 @@ class LoginForm extends React.Component {
                             <input 
                                 type="text"
                                 value={this.state.email}
-                                placeholder="Email or Phone Number"
+                                placeholder="Email or phone Number"
                                 onChange={this.handleInput("email")}
                             />
                         </label>
@@ -110,7 +110,7 @@ class LoginForm extends React.Component {
                         <button 
                             className="signup-link"
                             onClick={this.openSignupModal}>
-                            Sign Up
+                            Create new account
                         </button>
                     </div>
 
