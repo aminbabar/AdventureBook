@@ -37,7 +37,8 @@ class LoginForm extends React.Component {
         this.props.resetErrors();
     };
 
-    loginDemo() {
+    loginDemo(e) {
+        e.preventDefault();
         // note: this.setstate is asynchronous, so have to pass it a callback
         this.setState({
             email: "a",
@@ -76,7 +77,7 @@ class LoginForm extends React.Component {
                             <input 
                                 type="text"
                                 value={this.state.email}
-                                placeholder="Email or phone Number"
+                                placeholder="Email or phone number"
                                 onChange={this.handleInput("email")}
                             />
                         </label>
@@ -100,8 +101,16 @@ class LoginForm extends React.Component {
                         </button>
                     </div>
                     
-                    <div className="">
-                        <a onClick={this.loginDemo}>Demo Login</a>
+                    <div className="demo-login-div">
+                        {/* <a onClick={this.loginDemo}>Demo Login</a> */}
+                        <button
+                            className="demo-login-button"
+                            onClick={this.loginDemo}>
+                            Demo Log In
+                        </button>
+                    </div>
+
+                    <div className="grey-line">
                     </div>
 
 
