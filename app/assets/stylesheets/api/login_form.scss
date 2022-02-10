@@ -75,6 +75,7 @@
 }
 
 .login-button, .demo-login-button {
+    cursor: pointer;
     background-color: #1877f2; 
     height: 30px;
     border-radius: 5px;
@@ -102,6 +103,7 @@
 }
 
 .signup-link {
+    cursor: pointer;
     background-color: #42b72a;
     transition: background-color 0.4s, border 0.2s;
     padding: 14px 17px;
