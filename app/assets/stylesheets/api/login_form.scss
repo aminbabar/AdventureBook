@@ -49,6 +49,12 @@
     width: 95%;
 }
 
+.login-form input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #828993;
+  opacity: 1; /* Firefox */
+}
+
+
 .login-form input{
     font-size: 17px;
     padding: 6px;
@@ -130,7 +136,7 @@
 }
 
 
-@media only screen and (max-width: 911px) {
+@media only screen and (max-width: 958px) {
 
     .login-form {
         margin-left: auto;

@@ -40,22 +40,27 @@ class Signup extends React.Component {
     render() {
         return (
             <div className="signup-form">
-                <ul>
-                    {this.props.errors.map((error, i) => {
-                        return (<li key={`error-${i}`}>{error}</li>)
-                    })}
-                </ul>
-                <h2>Create a New Account</h2>
-                <h4>It's quick and easy.</h4>
-                <hr />
+                <div className="signup-form-head">
+                    <ul>
+                        {this.props.errors.map((error, i) => {
+                            return (<li key={`error-${i}`}>{error}</li>)
+                        })}
+                    </ul>
+                    <h2>Sign Up</h2>
+                    <h4>It's quick and easy.</h4>
 
-                <form>
+                </div>
+
+                <div className="signup-line"></div>
+
+                <form className="signup-form-body">
                     <label>
                         <input 
                             type="text"
                             value={this.state.fname}
                             onChange={this.handleInput("fname")}
                             placeholder="First name"
+                            className="first-name"
                         />
                     </label>
 
@@ -65,6 +70,7 @@ class Signup extends React.Component {
                             value={this.state.lname}
                             onChange={this.handleInput("lname")}
                             placeholder="Last name"
+                            className="last-name"
                         />
                     </label>
 
