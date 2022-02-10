@@ -137,5 +137,11 @@
 @media only screen and (max-width: 800px) {
     .login-form {
         margin-left: -20px;
+        width: 80vw;
+        margin-top: 10vh;
+    }
+
+    .splash-logo-div {
+        margin-top: 0px;
     }
 }
