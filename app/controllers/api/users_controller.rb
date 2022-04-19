@@ -1,8 +1,10 @@
 class Api::UsersController < ApplicationController
+    before_action :ensure_logged_in, except: [:create]
 
-
-    # def new
-    # end
+    def show
+        @user = User.find_by(id: params[:id])
+        render :show
+    end
 
     def create
         @user = User.new(user_params)
@@ -15,10 +17,6 @@ class Api::UsersController < ApplicationController
 
     end
 
-
-
-    # def destroy
-    # end
 
     private
 

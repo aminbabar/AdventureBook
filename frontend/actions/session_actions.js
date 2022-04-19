@@ -2,9 +2,10 @@ import * as APIUtil from '../utils/session_api_util'
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
-// export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
+
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RESET_ERRORS = "RESET_ERRORS";
+export const RECEIVE_USER = "RECEIVE_USER";
 
 
 // Action creators
@@ -14,6 +15,13 @@ const receiveCurrentUser = (user) => {
         user
     });
 }
+
+const receiveUser = (payload) => {
+    return ({
+        type: RECEIVE_USER,
+        payload
+    });
+};
 
 const logoutCurrentUser = () => {
     return ({
@@ -53,3 +61,7 @@ export const login = formUser => dispatch => APIUtil.login(formUser)
 
 export const logout = () => dispatch => APIUtil.logout()
     .then(() => dispatch(logoutCurrentUser()));
+
+
+export const fetchUser = (userId) => dispatch => APIUtil.fetchUser(userId)
+        .then((payload) => dispatch(receiveUser(payload)));

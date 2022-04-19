@@ -19,6 +19,10 @@ class Profile extends React.Component {
                     Profile picture
                 </div>
 
+                <div>
+                    Nav bar for the profile page with posts and friends tab and add friends
+                </div>
+
                 <div className='profile-body'>
                     <div className='profile-left'>
                         intro and friends container go here

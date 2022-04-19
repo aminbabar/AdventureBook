@@ -12,6 +12,7 @@ class User < ApplicationRecord
         class_name: :Post
 
     has_one_attached :profile_photo
+    has_one_attached :cover_photo
 
     has_many :comments,
         foreign_key: :comment_author_id,

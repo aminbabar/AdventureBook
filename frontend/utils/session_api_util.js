@@ -3,7 +3,7 @@
 // User signup
 export const signup = (user) => {
     return $.ajax ({
-        url: '/api/user',
+        url: '/api/users',
         method: "POST",
         data: {user}
     });
@@ -28,3 +28,10 @@ export const logout = () => {
 };
 
 // let user = { fname: "1", lname: "1", email: "1", birthday: 12/12/12, password:"123456" }
+
+export const fetchUser = (userId) => {
+    return $.ajax({
+        url: `/api/users/${userId}`,
+        method: "GET"
+    });
+};

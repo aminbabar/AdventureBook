@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import configureStore from "./store/store";
 import Root from "./components/root";
 import {fetchPosts, fetchPost, createPost, deletePost, updatePost} from "./actions/post_actions";
+import { fetchUser } from "./actions/session_actions";
 import { fetchComments } from "./utils/comment_api_util";
 // Testing
 // import { fetchPosts, fetchPost, createPost, deletePost, updatePost } from "./utils/post_api_util";
@@ -27,7 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // window.createPost = createPost(post);
     // window.deletePost = deletePost(17);
     // window.updatePost = updatePost();
-    window.fetchComments = fetchComments;
+    // window.fetchComments = fetchComments;
+
 
 
     let store;
@@ -45,12 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
 
-    // window.dispatch = store.dispatch;
-
-
-    // window.getState = store.getState;
-    // window.dispatch = store.dispatch;
-
+    window.store = store;
+    window.fetchUser = fetchUser;
 
     const root = document.getElementById("root");
 
