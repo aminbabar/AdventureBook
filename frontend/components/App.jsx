@@ -7,14 +7,17 @@ import { AuthRoute, ProtectedRoute} from "../utils/route_util";
 import NewsFeedIndex from "./newsfeed/news_feed_index";
 
 import Modal from "./modal/modal";
+import ProfileContainer from "./profile/profile_container";
 
 const App = () => {
     return(
         <div>
             <Modal />
             <ProtectedRoute exact path="/" component={NewsFeedIndex}/>
+            <ProtectedRoute path="/users/:userId" component={ProfileContainer} />
             {/* <AuthRoute path="/signup" component={SignupContainer}/> */}
             <AuthRoute path="/login" component={LoginFormContainer}/>
+
         </div>
     );
 };

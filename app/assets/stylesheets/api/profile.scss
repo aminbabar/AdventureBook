@@ -1,0 +1,14 @@
+
+.profile-body {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-right {
+    width: 500px;
+    background-color: red;
+}
+
+.profile-right > .newsfeed-middle {
+    width: 100%;
+}
