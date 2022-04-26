@@ -1,5 +1,5 @@
-import * as APIUtil from '../utils/session_api_util'
-
+import * as APIUtil from '../utils/session_api_util';
+import * as UserApiUtil from '../utils/user_api_util';
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
 
@@ -64,4 +64,8 @@ export const logout = () => dispatch => APIUtil.logout()
 
 
 export const fetchUser = (userId) => dispatch => APIUtil.fetchUser(userId)
+        .then((payload) => dispatch(receiveUser(payload)));
+
+
+export const updateUser = (user) => dispatch => UserApiUtil.updateUser(user)
         .then((payload) => dispatch(receiveUser(payload)));

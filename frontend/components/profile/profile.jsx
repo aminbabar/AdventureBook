@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBarContainer from '../nav_bar/nav_bar_container';
 import PostIndexContainer from '../post/post_index_container';
+import ProfileAndCoverPhoto from './profile_and_cover_photo';
 
 class Profile extends React.Component {
     constructor(props) {
@@ -9,14 +10,18 @@ class Profile extends React.Component {
     }
 
     render() {
+        const {updateUser, userId, fetchUser, user} = this.props;
+
         return(
             <>
                 <NavBarContainer />
                 <div>
-                    Background cover
-                </div>
-                <div>
-                    Profile picture
+                    <ProfileAndCoverPhoto 
+                        updateUser={updateUser} 
+                        userId={userId}
+                        fetchUser={fetchUser}
+                        user={user}
+                    />
                 </div>
 
                 <div>
