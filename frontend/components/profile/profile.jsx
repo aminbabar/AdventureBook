@@ -15,7 +15,7 @@ class Profile extends React.Component {
         return(
             <>
                 <NavBarContainer />
-                <div>
+                <div className='profile-and-cover-photo'>
                     <ProfileAndCoverPhoto 
                         updateUser={updateUser} 
                         userId={userId}

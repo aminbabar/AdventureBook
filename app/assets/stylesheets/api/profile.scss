@@ -1,4 +1,4 @@
-
+// STYLING FOR PROFILE PHOTO AND COVER PHOTO ON USER PROFILES
 .profile-body {
     display: flex;
     justify-content: center;
@@ -13,10 +13,75 @@
 }
 
 
-.cover-photo {
-    width: 90%;
+.profile-cover-photo-div {
+    width: 75%;
     background-color: grey;
     height: 300px;
     margin-left: auto;
     margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.profile-cover-photo-div > img {
+    // display: block;
+    // padding-top: auto;
+    // padding-bottom: auto;
+
+    width: 100%;
+    // height: inherit;
+    // object-fit: contain;
+    // z-index: -100;
+}
+
+// .custom-file-input::before {
+//     content: 'Select some files';
+//     display: inline-block;
+//     background: linear-gradient(top, #f9f9f9, #e3e3e3);
+//     border: 1px solid #999;
+//     border-radius: 3px;
+//     padding: 5px 8px;
+//     outline: none;
+//     white-space: nowrap;
+//     -webkit-user-select: none;
+//     cursor: pointer;
+//     text-shadow: 1px 1px #fff;
+//     font-weight: 700;
+//     font-size: 10pt;
+// }
+
+.profile-cover-photo-button {
+    position: absolute;
+    right: 0px;
+}
+
+.profile-profile-photo-div {
+    width: 140px;
+    height: 140px;
+    background-color: grey;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3.5px solid white;
+    position: absolute;
+    left: 15vw;
+    bottom: -55px;
+    // z-index: -1;
+}
+
+.profile-profile-photo-div > img {
+    width: 120%;
+    // z-index: -1;
+}
+
+.profile-and-cover-photo {
+    position: relative;
+    z-index: -1;
+    background-color: white;
 }

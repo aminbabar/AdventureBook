@@ -21,10 +21,6 @@ class ProfileAndCoverPhoto extends React.Component {
             const formData = new FormData();
             this.setState({ photoFile: e.currentTarget.files[0] }, () => {
     
-
-                // fileType = fileType == 'profilePhotoFile' ? 'profile_photo' : 'cover_photo';
-
-                // only send along the photo if the user uploads it. 
                 if (this.state.photoFile) {
                     formData.append(`user[${fileType}]`, this.state.photoFile)
                 }
@@ -45,16 +41,15 @@ class ProfileAndCoverPhoto extends React.Component {
         console.log(coverPhoto);
         return (
             <>
-                <div className='cover-photo'>
+                <div className='profile-cover-photo-div'>
                     <img src={coverPhoto} />
-                    <input type="file" onChange={this.handlePhotoSubmit('cover_photo')}/>
-
                 </div>
+                <input className='profile-cover-photo-button' type="file" onChange={this.handlePhotoSubmit('cover_photo')}/>
 
-                <div className='profile-photo'>
+                <div className='profile-profile-photo-div'>
                     <img src={profilePhoto} />
-                    <input type="file" onChange={this.handlePhotoSubmit('profile_photo')}/>
                 </div>
+                <input type="file" onChange={this.handlePhotoSubmit('profile_photo')}/>
             </>
         );
     }

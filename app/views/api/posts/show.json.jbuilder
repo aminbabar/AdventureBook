@@ -14,7 +14,7 @@ end
 
 json.user do
     json.extract! @post.author, :id, :fname, :lname
-    json.photoUrl url_for(@post.profile_photo) if @post.author.profile_photo.attached?
+    json.photoUrl url_for(@post.author.profile_photo) if @post.author.profile_photo.attached?
 end
 
 
