@@ -44,12 +44,19 @@ class ProfileAndCoverPhoto extends React.Component {
                 <div className='profile-cover-photo-div'>
                     <img src={coverPhoto} />
                 </div>
-                <input className='profile-cover-photo-button' type="file" onChange={this.handlePhotoSubmit('cover_photo')}/>
+                <label className='profile-cover-photo-button-label'>
+                    Add Cover Photo
+                    <input className='profile-cover-photo-button' type="file" onChange={this.handlePhotoSubmit('cover_photo')}/>
+                </label>
 
                 <div className='profile-profile-photo-div'>
                     <img src={profilePhoto} />
                 </div>
-                <input type="file" onChange={this.handlePhotoSubmit('profile_photo')}/>
+
+                <label className='profile-profile-photo-button-label'>
+                    profile
+                    <input className='profile-profile-photo-button' type="file" onChange={this.handlePhotoSubmit('profile_photo')}/>
+                </label>
             </>
         );
     }
