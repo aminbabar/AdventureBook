@@ -2,6 +2,7 @@ import React from 'react';
 import NavBarContainer from '../nav_bar/nav_bar_container';
 import PostIndexContainer from '../post/post_index_container';
 import ProfileAndCoverPhoto from './profile_and_cover_photo';
+import Intro from './intro';
 
 class Profile extends React.Component {
     constructor(props) {
@@ -30,7 +31,8 @@ class Profile extends React.Component {
 
                 <div className='profile-body'>
                     <div className='profile-left'>
-                        intro and friends container go here
+                        <Intro />
+
                     </div>
 
                     <div className='profile-right'>

@@ -16,10 +16,11 @@
             end
         end
     end
+
     json.users do
         json.set! post.author_id do
             user = post.author
-            json.extract! user, :id, :fname, :lname
+            json.extract! user, :id, :fname, :lname, :bio
             json.profilePhoto url_for(user.profile_photo) if user.profile_photo.attached?
             json.coverPhoto url_for(user.cover_photo) if user.cover_photo.attached?
         end
