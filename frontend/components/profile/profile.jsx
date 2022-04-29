@@ -31,7 +31,7 @@ class Profile extends React.Component {
 
                 <div className='profile-body'>
                     <div className='profile-left'>
-                        <Intro />
+                        <Intro user={user}/>
 
                     </div>
 

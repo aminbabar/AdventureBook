@@ -9,7 +9,7 @@ class Intro extends React.Component {
         return (
             <div>
                 <h1>Intro</h1>
-                <Bio />
+                <Bio user={this.props.user}/>
                 inside of intro.jsx
             </div>
         );
