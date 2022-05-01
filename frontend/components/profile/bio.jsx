@@ -1,4 +1,5 @@
 import React from "react";
+import EditBio from "./editBio";
 
 class Bio extends React.Component {
     constructor(props) {
@@ -12,19 +13,24 @@ class Bio extends React.Component {
     }
 
     bioOrEditBio() {
+        const {updateUser, user} = this.props;
         if (this.state.bioEditBool) {
-            return( <textarea> </textarea>);// <EditBioContainer />);
+            return( <EditBio 
+                        bio={user?.bio} 
+                        updateUser={updateUser}
+                        user={user}
+                        switchToggle={this.switchToggle}
+                    />);
         } 
-        else if (this.props.user.bio) {
+        else {
+            const buttonText = (user?.bio) ? "Edit Bio" : "Add Bio";
             return(
                 <div className="profile-bio">
-                    {this.props.user.bio}
+                    {this.props.user?.bio}
+                    <button onClick={this.switchToggle}>{buttonText}</button>
                 </div>
             );
         } 
-        else {
-            return (null);
-        };
     }
 
     switchToggle(e) {
@@ -37,7 +43,6 @@ class Bio extends React.Component {
 
     render() {
         const {user} = this.props;
-        const buttonText = user.bio ? "Edit Bio" : "Add Bio";
         return (
             <div>
                 <div>a</div>
@@ -46,7 +51,6 @@ class Bio extends React.Component {
                 <div>a</div>
 
                 {this.bioOrEditBio()}
-                <button onClick={this.switchToggle}>{buttonText}</button>
             </div>
 
         );

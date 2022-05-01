@@ -6,10 +6,11 @@ class Intro extends React.Component {
     };
 
     render() {
+        const {user, updateUser} = this.props;
         return (
             <div>
                 <h1>Intro</h1>
-                <Bio user={this.props.user}/>
+                <Bio user={user} updateUser={updateUser}/>
                 inside of intro.jsx
             </div>
         );
