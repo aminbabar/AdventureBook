@@ -27,9 +27,11 @@ class EditBio extends React.Component {
 
 
     render() {
-        const {bio} = this.state;
+        let {bio} = this.state;
 
-        const charsLength = bio.length > 0 ? 101 - bio.length : 0;
+        // removing all the carriage returns
+        bio = bio.replaceAll(/[\r]/g, '');
+        const charsLength = bio.length >= 0 ? 101 - bio.length : 101;
         
         let buttonClass = null;
         if (this.prevBio === bio || charsLength < 0) {
@@ -39,7 +41,7 @@ class EditBio extends React.Component {
         return(
             <>
                 <textarea 
-                    onChange={this.updateBio} 
+                    onChange={this.updateBio}
                     value={this.state.bio}
                 />
                 <span>
