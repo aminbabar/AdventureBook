@@ -10,10 +10,12 @@ class ProfileAndCoverPhoto extends React.Component {
             // profilePhotoFile: null
         }
 
-
-        // this.handleCoverPhotoSubmit = this.handleCoverPhotoSubmit.bind(this);
-        // this.handleProfilePhotoSubmit = this.handleProfilePhotoSubmit.bind(this);
         this.handlePhotoSubmit = this.handlePhotoSubmit.bind(this);
+        this.editProfile = this.editProfile.bind(this);
+    }
+
+    editProfile() {
+        this.props.openModal("edit_profile", this.props.userId);
     }
 
     handlePhotoSubmit(fileType) {
@@ -41,22 +43,36 @@ class ProfileAndCoverPhoto extends React.Component {
         console.log(coverPhoto);
         return (
             <>
-                <div className='profile-cover-photo-div'>
-                    <img src={coverPhoto} />
-                </div>
-                <label className='profile-cover-photo-button-label'>
-                    Add Cover Photo
-                    <input className='profile-cover-photo-button' type="file" onChange={this.handlePhotoSubmit('cover_photo')}/>
-                </label>
+                <div className="profile-cover-photo-and-button">
+                    <div className='profile-cover-photo-div'>
+                        <img src={coverPhoto} />
+                    </div>
+                    <label className='profile-cover-photo-button-label'>
+                        Add Cover Photo
+                        <input className='profile-cover-photo-button' type="file" onChange={this.handlePhotoSubmit('cover_photo')}/>
+                    </label>
 
-                <div className='profile-profile-photo-div'>
-                    <img src={profilePhoto} />
                 </div>
 
-                <label className='profile-profile-photo-button-label'>
-                    profile
-                    <input className='profile-profile-photo-button' type="file" onChange={this.handlePhotoSubmit('profile_photo')}/>
-                </label>
+                <div className='profile-profile-photo-bar'>
+                    <div className='profile-profile-photo-and-button'>
+                        <div className='profile-profile-photo-div'>
+                            <img src={profilePhoto} />
+                        </div>
+
+                        <label className='profile-profile-photo-button-label'>
+                            profile
+                            <input className='profile-profile-photo-button' type="file" onChange={this.handlePhotoSubmit('profile_photo')}/>
+                        </label>
+                    </div>
+                    
+                    <div onClick={this.editProfile}>
+                        Edit profile or add friend
+                    </div>
+
+
+                </div>
+
             </>
         );
     }

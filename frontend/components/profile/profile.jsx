@@ -11,7 +11,7 @@ class Profile extends React.Component {
     }
 
     render() {
-        const {updateUser, userId, fetchUser, user} = this.props;
+        const {updateUser, userId, fetchUser, user, openModal} = this.props;
 
         return(
             <>
@@ -22,6 +22,7 @@ class Profile extends React.Component {
                         userId={userId}
                         fetchUser={fetchUser}
                         user={user}
+                        openModal={openModal}
                     />
                 </div>
 

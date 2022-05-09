@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import CreatePostContainer from "../post/create_post_container";
 import EditPostContainer from "../post/edit_post_container";
 import SignupContainer from "../session_form/signup_container";
+import EditProfileContainer from "../profile/edit_profile_container";
+
 
 const Modal = ({modal, closeModal}) => {
     if (!modal) {
@@ -19,6 +21,9 @@ const Modal = ({modal, closeModal}) => {
             break;
         case "create_user":
             component = <SignupContainer />
+            break;
+        case "edit_profile":
+            component = <EditProfileContainer userId={modal.id} />
             break;
         default:
             return null;
