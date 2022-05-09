@@ -13,6 +13,8 @@ class EditProfile extends React.Component {
             work: user.work || "",
             portfolio: user.portfolio || ""
         };
+
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     update(field) {
@@ -23,7 +25,16 @@ class EditProfile extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        // debugger;
+        const formData = new FormData();
+        formData.append('user[fname]', this.state.fname);
+        formData.append('user[lname]', this.state.lname);
+        formData.append('user[city]', this.state.city);
+        formData.append('user[education]', this.state.education);
+        formData.append('user[work]', this.state.work);
+        formData.append('user[portfolio]', this.state.portfolio);
+        formData.id = this.props.user.id;
+        this.props.updateUser(formData)
+            .then(this.props.closeModal());
     }
 
     render() {
