@@ -23,7 +23,7 @@ class EditProfile extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        debugger;
+        // debugger;
     }
 
     render() {
