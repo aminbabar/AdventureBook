@@ -3,7 +3,47 @@ import Bio from "./bio";
 class Intro extends React.Component {
     constructor(props) {
         super(props);
+        this.email = this.email.bind(this);
+        this.work = this.work.bind(this);
+        this.city = this.city.bind(this);
+        this.education = this.education.bind(this);
+        this.portfolio = this.portfolio.bind(this);
     };
+
+    email() {
+        const {email} = this.props.user;
+        if (email) {
+            return (<div>Email me at {email}</div>)
+        };
+    }
+
+    work() {
+        const { work } = this.props.user;
+        if (work) {
+            return (<div>Works at {work}</div>)
+        };
+    }
+
+    city() {
+        const { city } = this.props.user;
+        if (city) {
+            return (<div>Lives in {city}</div>)
+        };
+    }
+
+    education() {
+        const { education } = this.props.user;
+        if (education) {
+            return (<div>Studied at {education}</div>)
+        };
+    }
+
+    portfolio() {
+        const { portfolio } = this.props.user;
+        if (portfolio) {
+            return (<div>Here's my portfolio website {portfolio}</div>)
+        };
+    }
 
     render() {
         const {user, updateUser} = this.props;
@@ -11,7 +51,11 @@ class Intro extends React.Component {
             <div>
                 <h1>Intro</h1>
                 <Bio user={user} updateUser={updateUser}/>
-                inside of intro.jsx
+                {this.city()}
+                {this.work()}
+                {this.education()}
+                {this.email()}
+                {this.portfolio()}
             </div>
         );
     };
