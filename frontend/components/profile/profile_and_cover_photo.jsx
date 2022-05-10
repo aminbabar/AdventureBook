@@ -55,7 +55,6 @@ class ProfileAndCoverPhoto extends React.Component {
     render() {
         const profilePhoto = this.props.user?.profilePhoto;
         const coverPhoto = this.props.user?.coverPhoto;
-        console.log(coverPhoto);
         return (
             <>
                 <div className="profile-cover-photo-and-button">

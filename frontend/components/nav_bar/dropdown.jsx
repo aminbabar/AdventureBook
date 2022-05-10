@@ -27,7 +27,6 @@ class Dropdown extends React.Component {
 
     render() {
         let cName = this.state.show ? `dropdown-show-${this.props.myclass}` : `dropdown-hide-${this.props.myclass}`;
-        console.log(`dropdown-container-${this.props.myclass}`)
         return (
             <button className={`dropdown-container-${this.props.myclass}`} onClick={this.changeState} onBlur={this.closeDropdown}>
                 <div className={`dropdown-container-icon-${this.props.myclass}`}> {this.props.icon}</div>

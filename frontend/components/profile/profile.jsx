@@ -14,6 +14,14 @@ class Profile extends React.Component {
         this.props.fetchFriendRequests();
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.userId !== prevProps.userId) {
+            this.props.fetchUser(this.props.userId);
+        };
+    }
+
+
+
     render() {
         const {updateUser, userId, fetchUser, user, openModal, currentUserId} = this.props;
 
