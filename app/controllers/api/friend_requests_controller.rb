@@ -9,6 +9,7 @@ class Api::FriendRequestsController < ApplicationController
 
     def create
         @friend_request = FriendRequest.new(friend_request_params)
+        @friend_request.requester_id = current_user.id
 
         if @friend_request.save
             render :show
