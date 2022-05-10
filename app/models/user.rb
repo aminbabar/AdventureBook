@@ -18,6 +18,11 @@ class User < ApplicationRecord
         foreign_key: :comment_author_id,
         class_name: :Comment
 
+    def friend_requests
+        FriendRequest
+            .where("friend_requests.recipient_id = ? OR friend_requests.requester_id = ?", self.id, self.id)
+    end
+
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
         if user
