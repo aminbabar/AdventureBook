@@ -2,7 +2,6 @@ class Api::FriendRequestsController < ApplicationController
     before_action :ensure_logged_in
 
     def index
-        debugger
         @friend_requests = current_user.friend_requests
         render :index
     end

@@ -10,6 +10,10 @@ class Profile extends React.Component {
 
     }
 
+    componentDidMount() {
+        this.props.fetchFriendRequests();
+    }
+
     render() {
         const {updateUser, userId, fetchUser, user, openModal, currentUserId} = this.props;
 

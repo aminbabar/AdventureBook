@@ -7,7 +7,7 @@ const friendRequestsReducer = (oldState={}, action) => {
 
     switch (action.type) {
         case RECEIVE_ALL_FRIEND_REQUESTS:
-            return action.friend_requests;
+            return action.friendRequests;
         case RECEIVE_FRIEND_REQUEST:
             newState[action.friendRequest.id] = action.friendRequest;
             return newState;
