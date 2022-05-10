@@ -3,11 +3,6 @@ import Bio from "./bio";
 class Intro extends React.Component {
     constructor(props) {
         super(props);
-        this.email = this.email.bind(this);
-        this.work = this.work.bind(this);
-        this.city = this.city.bind(this);
-        this.education = this.education.bind(this);
-        this.portfolio = this.portfolio.bind(this);
     };
 
     email() {

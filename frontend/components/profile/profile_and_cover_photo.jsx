@@ -1,4 +1,5 @@
 import React from 'react';
+import FriendButton from './friend_button';
 
 
 class ProfileAndCoverPhoto extends React.Component {
@@ -36,6 +37,20 @@ class ProfileAndCoverPhoto extends React.Component {
         this.props.fetchUser(this.props.userId);
     }
 
+    editProfileOrFriend() {
+        if (this.props.currentUserId == this.props.user?.id) {
+            return(
+                <div onClick={this.editProfile}>
+                    <button>Edit profile</button>
+                </div>
+            );
+        } else {
+            return(
+                <FriendButton user={this.props.user}/>
+            );
+        };
+    }
+
 
     render() {
         const profilePhoto = this.props.user?.profilePhoto;
@@ -66,9 +81,7 @@ class ProfileAndCoverPhoto extends React.Component {
                         </label>
                     </div>
                     
-                    <div onClick={this.editProfile}>
-                        Edit profile or add friend
-                    </div>
+                    {this.editProfileOrFriend()}
 
 
                 </div>

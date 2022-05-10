@@ -8,7 +8,8 @@ const mstp = (state, ownProps) => {
     return {
         test: state,
         userId: ownProps.match.params.userId,
-        user: state.entities.users[userId]
+        user: state.entities.users[userId],
+        currentUserId: state.session.currentUser
     };
 };
 
