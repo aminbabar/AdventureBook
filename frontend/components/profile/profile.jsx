@@ -32,7 +32,11 @@ class Profile extends React.Component {
 
                 <div className='profile-body'>
                     <div className='profile-left'>
-                        <Intro user={user} updateUser={updateUser}/>
+                        <Intro 
+                            user={user} 
+                            updateUser={updateUser}
+                            openModal={openModal}
+                        />
 
                     </div>
 

@@ -56,6 +56,7 @@ class Intro extends React.Component {
                 {this.education()}
                 {this.email()}
                 {this.portfolio()}
+                <button onClick={() => this.props.openModal("edit_profile", user.id)}>Edit Profile</button>
             </div>
         );
     };
