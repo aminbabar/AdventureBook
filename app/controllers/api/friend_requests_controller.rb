@@ -23,7 +23,7 @@ class Api::FriendRequestsController < ApplicationController
         if @friend_request
             @friend_request.destroy
         else
-            render json: @friend_request.errors.full_messages
+            render json: @friend_request.errors.full_messages, status: 422
         end
     end
 
