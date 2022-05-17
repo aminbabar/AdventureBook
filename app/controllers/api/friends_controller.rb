@@ -7,36 +7,36 @@ class Api::FriendsController < ApplicationController
     end
 
     def create
-        @friend_request = Friend.new(friend_request_params)
-        @friend_request.requester_id = current_user.id
+        @friend = Friend.new(friend_params)
+        @friend.user_id = current_user.id
 
-        if @friend_request.save
+        if @friend.save
             render :show
         else
-            render json: @friend_request.errors.full_messages, status: 422
+            render json: @friend.errors.full_messages, status: 422
         end
     end
 
     def destroy
-        @friend_request = current_user.friend_requests.find(params[:id])
+        @friend = current_user.friends.find(params[:id])
 
-        if @friend_request
-            @friend_request.destroy
+        if @friend
+            @friend.destroy
         else
-            render json: @friend_request.errors.full_messages, status: 422
+            render json: @friend.errors.full_messages, status: 422
         end
     end
 
     # def show
-    #     @friend_request = FriendRequest.find(params[:id])
+    #     @friend = Friend.find(params[:id])
     #     render :show
     # end
 
 
     private
 
-    def friend_request_params
-        params.require(:friend_request).permit(:recipient_id)
+    def friend_params
+        params.require(:friend).permit(:friend_id)
     end
 
 end
