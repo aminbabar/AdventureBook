@@ -1,10 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createFriendRequest, deleteFriendRequest } from "../../actions/friend_request_actions";
+import { createFriend, deleteFriend } from "../../actions/friend_actions";
 import { friendRequest } from "../../reducers/selectors";
 // delete friend request
 // post friend request
 // delete friend
+//  COME BACK
 class FriendButton extends React.Component {
     constructor(props) {
         super(props);
@@ -14,12 +15,12 @@ class FriendButton extends React.Component {
 
     createFriendRequest(e) {
         e.preventDefault();
-        this.props.createFriendRequest({recipient_id: this.props.user.id})
+        this.props.createFriend({friend_id: this.props.user.id})
     }
 
     deleteFriendRequest(e) {
         e.preventDefault();
-        this.props.deleteFriendRequest(this.props.friendRequest.id);
+        this.props.deleteFriend(this.props.friendRequest.id);
     }
 
     createOrDeleteFriendRequest() {
@@ -42,14 +43,14 @@ class FriendButton extends React.Component {
 
 const mdtp = (dispatch) => {
     return {
-        createFriendRequest: (friendRequest) => dispatch(createFriendRequest(friendRequest)),
-        deleteFriendRequest: (friendRequestId) => dispatch(deleteFriendRequest(friendRequestId))
+        createFriend: (friend) => dispatch(createFriend(friend)),
+        deleteFriend: (friendId) => dispatch(deleteFriend(friendId))
     };
 };
 
 const mstp = (state, ownProps) => {
     return {
-        friendRequest: friendRequest(state.entities.friendRequests, ownProps.user?.id)
+        friendRequest: friendRequest(state.entities.friends, ownProps.user?.id)
     };
 };
 

@@ -1,4 +1,4 @@
-export const RECEIVE_ALL_FRIEND = "RECEIVE_ALL_FRIEND";
+export const RECEIVE_ALL_FRIENDS = "RECEIVE_ALL_FRIENDS";
 export const RECEIVE_FRIEND = "RECEIVE_FRIEND";
 export const REMOVE_FRIEND = "REMOVE_FRIEND";
 
@@ -8,7 +8,7 @@ import * as friendApiUtil from "../utils/friend_api_util";
 // action creators
 const receiveFriends = friends => {
     return ({
-        type: RECEIVE_ALL_FRIEND,
+        type: RECEIVE_ALL_FRIENDS,
         friends
     });
 };

@@ -11,7 +11,7 @@ class Profile extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchFriendRequests();
+        this.props.fetchFriends();
     }
 
     componentDidUpdate(prevProps) {

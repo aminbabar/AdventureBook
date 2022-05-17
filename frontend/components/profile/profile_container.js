@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Profile from './profile';
 import { fetchUser, updateUser } from "../../actions/session_actions";
 import { openModal } from "../../actions/modal_actions";
-import { fetchFriendRequests } from "../../actions/friend_request_actions";
+import { fetchFriends } from "../../actions/friend_actions";
 const mstp = (state, ownProps) => {
     const userId = ownProps.match.params.userId;
     return {
@@ -19,7 +19,7 @@ const mdtp = (dispatch) => {
         updateUser: (user) => dispatch(updateUser(user)),
         fetchUser: (userId) => dispatch(fetchUser(userId)),
         openModal: (modal, user_id) => dispatch(openModal(modal, user_id)),
-        fetchFriendRequests: () => dispatch(fetchFriendRequests())
+        fetchFriends: () => dispatch(fetchFriends())
     };
 };
 
