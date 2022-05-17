@@ -1,13 +1,13 @@
-class Api::FriendRequestsController < ApplicationController
+class Api::FriendsController < ApplicationController
     before_action :ensure_logged_in
 
     def index
-        @friend_requests = current_user.friend_requests
+        @friends = current_user.friends
         render :index
     end
 
     def create
-        @friend_request = FriendRequest.new(friend_request_params)
+        @friend_request = Friend.new(friend_request_params)
         @friend_request.requester_id = current_user.id
 
         if @friend_request.save

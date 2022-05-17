@@ -1,6 +1,8 @@
-class FriendRequest < ApplicationRecord
-    validates :recipient_id, :requester_id, presence: true
-    validates :requester_id, uniqueness: {scope: :recipient_id}
+class Friend < ApplicationRecord
+    validates :user_id, :friend_id, presence: true
+    validates :user_id, uniqueness: {scope: :friend_id}
+    validates :friend_status, inclusion: { in: [true, false] }
+
 
 
     # Not needed because going to do a custom active record query
