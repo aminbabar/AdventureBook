@@ -27,6 +27,16 @@ class Api::FriendsController < ApplicationController
         end
     end
 
+    def update
+        @friend =  current_user.friends.find_by(friend_id: params[:id]) || current_user.friends.find_by(user_id: params[:id])
+        if @friend
+            @friend.update(friend_status: true)
+            render :show
+        else
+            render @friend.errors.full_messages, status: 422
+        end
+    end
+
     # def show
     #     @friend = Friend.find(params[:id])
     #     render :show

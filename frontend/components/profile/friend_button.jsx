@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createFriend, deleteFriend } from "../../actions/friend_actions";
+import { createFriend, deleteFriend, updateFriend } from "../../actions/friend_actions";
 import { incomingFriendRequest, isFriend, outgoingFriendRequest} from "../../reducers/selectors";
 // delete friend request
 // post friend request
@@ -20,8 +20,11 @@ class FriendButton extends React.Component {
 
     deleteFriendRequest(e) {
         e.preventDefault();
-        this.props.deleteFriend(this.props.outgoingFriendRequest.id);
+        let id = this.props.outgoingFriendRequest?.id || this.props.incomingFriendRequest?.id;
+        this.props.deleteFriend(id);
     }
+
+
 
     createOrDeleteFriendRequest() {
         if (this.props.outgoingFriendRequest) {
@@ -31,8 +34,8 @@ class FriendButton extends React.Component {
         } else if (this.props.incomingFriendRequest) {
             return (
                 <>
-                    <button>confirm request</button>
-                    <button> delete request</button>
+                    <button onClick={ () => this.props.updateFriend(this.props.user.id) }>confirm request</button>
+                    <button onClick={this.deleteFriendRequest}> delete request</button>
                 </>
             );
         } else if (this.props.isFriend) {
@@ -56,7 +59,8 @@ class FriendButton extends React.Component {
 const mdtp = (dispatch) => {
     return {
         createFriend: (friend) => dispatch(createFriend(friend)),
-        deleteFriend: (friendId) => dispatch(deleteFriend(friendId))
+        deleteFriend: (friendId) => dispatch(deleteFriend(friendId)),
+        updateFriend: (id) => dispatch(updateFriend(id))
     };
 };
 
