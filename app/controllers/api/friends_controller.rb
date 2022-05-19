@@ -19,7 +19,6 @@ class Api::FriendsController < ApplicationController
 
     def destroy
         @friend = current_user.friends.find(params[:id])
-
         if @friend
             @friend.destroy
         else
