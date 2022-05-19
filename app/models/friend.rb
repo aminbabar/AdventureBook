@@ -9,6 +9,12 @@ class Friend < ApplicationRecord
         if self.friend_id == self.user_id
             errors[:friend_id] << "can't be friends with yourself"
         end
+
+        dup_arr = Friend.find_by(friend_id: self.user_id, user_id: self.friend_id)
+        if dup_arr
+            errors[:friend_id] << "the combination of friend id and user id should be unique"
+        end
+
     end
 
     # Not needed because going to do a custom active record query

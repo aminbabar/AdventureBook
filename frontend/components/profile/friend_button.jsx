@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createFriend, deleteFriend } from "../../actions/friend_actions";
-import { outgoingFriendRequest} from "../../reducers/selectors";
+import { incomingFriendRequest, isFriend, outgoingFriendRequest} from "../../reducers/selectors";
 // delete friend request
 // post friend request
 // delete friend
@@ -25,8 +25,20 @@ class FriendButton extends React.Component {
 
     createOrDeleteFriendRequest() {
         if (this.props.outgoingFriendRequest) {
-            return (<button onClick={this.deleteFriendRequest}>Cancel Request</button>);
-        } else {
+            return (
+                <button onClick={this.deleteFriendRequest}>Cancel Request</button>
+            );
+        } else if (this.props.incomingFriendRequest) {
+            return (
+                <>
+                    <button>confirm request</button>
+                    <button> delete request</button>
+                </>
+            );
+        } else if (this.props.isFriend) {
+            return (<h1>Friends</h1>);
+        }
+        else {
             return(<button onClick={this.createFriendRequest}>Add Friend</button>);
         };
     }
@@ -50,7 +62,9 @@ const mdtp = (dispatch) => {
 
 const mstp = (state, ownProps) => {
     return {
-        outgoingFriendRequest: outgoingFriendRequest(state.entities.friends, ownProps.user?.id, state.session.currentUser)
+        outgoingFriendRequest: outgoingFriendRequest(state.entities.friends, ownProps.user?.id, state.session.currentUser),
+        incomingFriendRequest: incomingFriendRequest(state.entities.friends, ownProps.user?.id, state.session.currentUser),
+        isFriend: isFriend(state.entities.friends, ownProps.user?.id, state.session.currentUser)
     };
 };
 

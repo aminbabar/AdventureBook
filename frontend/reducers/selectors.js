@@ -18,3 +18,13 @@ export const incomingFriendRequest = function(friends, userProfileId, currentUse
     });
     return friendRequest;
 }
+
+export const isFriend = function(friends, userProfileId, currentUserId) {
+    let friend;
+    Object.values(friends).forEach((ele) => {
+        if ((ele.user_id === userProfileId || ele.friend_id === userProfileId) && (ele.friend_id === currentUserId || ele.friend_id === userProfileId) && ele.friend_status) {
+            friend = ele;
+        }
+    });
+    return friend;
+}
