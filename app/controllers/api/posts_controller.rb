@@ -16,7 +16,7 @@ class Api::PostsController < ApplicationController
     end
 
     def destroy
-        @post = current_user.posts.find_id(id: params[:id])
+        @post = current_user.posts.find_by(id: params[:id])
 
         if @post
             @post.destroy
