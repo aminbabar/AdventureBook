@@ -18,7 +18,7 @@ class Api::FriendsController < ApplicationController
     end
 
     def destroy
-        @friend = current_user.friends.find(params[:id])
+        @friend = current_user.friends.find_by(id: params[:id])
         if @friend
             @friend.destroy
         else
