@@ -1,6 +1,6 @@
 import { RECEIVE_LIKE, REMOVE_LIKE } from "../actions/like_actions";
 
-const LikesReducer = (oldState={}, action) => {
+const likesReducer = (oldState={}, action) => {
     Object.freeze(oldState);
 
     let newState = Object.assign({}, oldState);
@@ -17,4 +17,4 @@ const LikesReducer = (oldState={}, action) => {
     };
 };
 
-export default LikesReducer;
+export default likesReducer;
