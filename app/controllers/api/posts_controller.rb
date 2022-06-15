@@ -32,9 +32,6 @@ class Api::PostsController < ApplicationController
     end
 
     def update
-        # @post = Post.find(params[:id])
-
-        # CHECK Hopefully more secure. Only current user allowed to update
         @post = current_user.posts.find_by(id: params[:id])
         if @post && @post.author_id == current_user.id
             @post.update(post_params)

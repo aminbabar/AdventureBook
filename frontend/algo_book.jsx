@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import configureStore from "./store/store";
 import Root from "./components/root";
-import {fetchPosts, fetchPost, createPost, deletePost, updatePost} from "./actions/post_actions";
+// import {fetchPosts, fetchPost, createPost, deletePost, updatePost} from "./actions/post_actions";
 import { fetchUser } from "./actions/session_actions";
-import { fetchComments } from "./utils/comment_api_util";
+// import { fetchComments } from "./utils/comment_api_util";
 import { createLike, deleteLike } from "./actions/like_actions";
 // Testing
 // import { fetchPosts, fetchPost, createPost, deletePost, updatePost } from "./utils/post_api_util";
@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // window.login = login;
     // window.logout = logout;
     // window.signup = signup;
+    // window.fetchUser = fetchUser;
+
 
     // window.fetchPost = fetchPost;
     // window.fetchPosts = fetchPosts;
@@ -23,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // window.updatePost = updatePost;
 
     // window.fetchPosts = fetchPosts;
-    
+
     // window.fetchPost = fetchPost(4);
     // let post = {body:"AAAA"}
     // window.createPost = createPost(post);
@@ -31,6 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // window.updatePost = updatePost();
     // window.fetchComments = fetchComments;
 
+    // window.like = { likeable_type: "Comment", likeable_id: 1 }
+    // window.createLike = createLike;
+    // window.deleteLike = deleteLike;
 
 
     let store;
@@ -47,11 +52,10 @@ document.addEventListener("DOMContentLoaded", () => {
         store = configureStore();
     };
 
-    window.like = { likeable_type: "Comment", likeable_id: 1 }
     window.store = store;
-    window.fetchUser = fetchUser;
-    // window.createLike = createLike;
-    // window.deleteLike = deleteLike;
+    window.like = { likeable_type: "Comment", likeable_id: 65 }
+    window.createLike = createLike;
+    window.deleteLike = deleteLike;
 
     const root = document.getElementById("root");
 

@@ -12,10 +12,10 @@ const receiveLike = (like) => {
     });
 };
 
-const removeLike = (likeId) => {
+const removeLike = (like) => {
     return ({
         type: REMOVE_LIKE,
-        likeId
+        like
     });
 };
 
@@ -29,5 +29,5 @@ export const createLike = (like) => (dispatch) => {
 
 export const deleteLike = (likeId) => dispatch => {
     return LikeApiUtil.deleteLike(likeId)
-        .then(() => dispatch(removeLike(likeId)));
+        .then((like) => dispatch(removeLike(like)));
 };

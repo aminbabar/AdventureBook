@@ -1,5 +1,6 @@
 import { RECEIVE_ALL_POSTS, RECEIVE_POST, REMOVE_POST } from "../actions/post_actions";
 import { RECEIVE_COMMENT, REMOVE_COMMENT } from "../actions/comment_actions";
+import { RECEIVE_LIKE, REMOVE_LIKE } from "../actions/like_actions";
 
 const PostsReducer = (oldState={}, action) => {
     Object.freeze(oldState);
@@ -34,6 +35,22 @@ const PostsReducer = (oldState={}, action) => {
             newState[action.comment.post_id] = post2;
             const filteredArr = arr2.filter((ele) => ele != action.comment.id)
             newState[action.comment.post_id].comments = filteredArr;
+            return newState;
+        case RECEIVE_LIKE:
+            if (action.like.likeable_type === "Post") {
+                const postId = action.like.likeable_id;
+                const post = Object.assign({}, newState[postId]);
+                newState[postId] = post;
+                newState[postId].likes = [...newState[postId].likes, action.like.id]
+            }
+            return newState;
+        case REMOVE_LIKE:
+            if (action.like.likeable_type === "Post") {
+                const postId = action.like.likeable_id;
+                const post = Object.assign({}, newState[postId]);
+                newState[postId] = post;
+                newState[postId].likes = newState[postId].likes.filter((ele) => ele != action.like.id)
+            }
             return newState;
         default:
             return oldState;
