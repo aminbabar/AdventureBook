@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     window.store = store;
-    window.like = { likeable_type: "Comment", likeable_id: 65 }
+    window.like = { likeable_type: "Post", likeable_id: 165 }
     window.createLike = createLike;
     window.deleteLike = deleteLike;
 

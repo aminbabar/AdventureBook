@@ -23,7 +23,6 @@ class FriendButton extends React.Component {
 
     render() {
         const { friend, profileId } = this.props;
-        // debugger;
 
         // if two users are not friends
         if (!friend) {

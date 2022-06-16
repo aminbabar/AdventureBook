@@ -7,3 +7,16 @@ export const selectFriendForProfile = function (friends, userProfileId, currentU
     });
     return friend;
 }
+
+export const selectLikesForPost = function (likes, likesArr, currentUserId) {
+    const result = {};
+    for (let ele of likesArr) {
+        if (likes[ele].author_id === currentUserId) {
+            // to check if the current user has liked or not liked the post
+            result.currentUser = likes[ele];
+        } else {
+            result[ele] = likes[ele];
+        }
+    }
+    return result;
+}

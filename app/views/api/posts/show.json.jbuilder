@@ -6,7 +6,7 @@ json.likes do
     @post.likes.each do |like|
         post_like_ids << like.id
         json.set! like.id do
-            json.extract! like, :author_id, :likeable_id, :likeable_type
+            json.extract! like, :id, :author_id, :likeable_id, :likeable_type
         end
     end
 
@@ -14,7 +14,7 @@ json.likes do
         comment.likes.each do |like|
             comment_like_ids << like.id
             json.set! like.id do
-                json.extract! like, :author_id, :likeable_id, :likeable_type
+                json.extract! like, :id, :author_id, :likeable_id, :likeable_type
             end
         end
     end

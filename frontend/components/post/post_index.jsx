@@ -24,7 +24,8 @@ class PostIndex extends React.Component {
                                         currentUser={this.props.users[this.props.currentUserId]}
                                         openModal={this.props.openModal}                                        
                                         key={post.id}
-                                        // comments={this.props.comments}
+                                        createLike={this.props.createLike}
+                                        deleteLike={this.props.deleteLike}
                                     />
                             );
                     })}

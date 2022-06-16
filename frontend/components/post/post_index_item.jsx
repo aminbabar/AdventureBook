@@ -4,7 +4,8 @@ import Dropdown from "../nav_bar/dropdown";
 import { BsThreeDots} from "react-icons/bs";
 import CreateCommentContainer from "../comment/create_comment_container";
 import CommentIndexContainer from "../comment/comment_index_container";
-
+import LikeContainer from "../like/like_container";
+import LikeButton from "../like/like_button";
 
 // Post header
 
@@ -18,7 +19,20 @@ class PostIndexItem extends React.Component {
         this.closeDropDown = this.closeDropDown.bind(this);
 
         this.openEditPostModal = this.openEditPostModal.bind(this);
+        this.postLikedByCurrentUser = false;
+
+        this.likePostButton = this.likePostButton.bind(this);
+        this.unlikePostButton = this.unlikePostButton.bind(this);
     };
+
+
+    likePostButton(like) {
+        this.setState({postLikedByCurrentUser: like});
+    }
+
+    unlikePostButton() {
+        this.setState({ postLikedByCurrentUser: false });
+    }
 
 
     capitalize(word) {
@@ -75,7 +89,14 @@ class PostIndexItem extends React.Component {
         this.setState({ dropdown: false });
     };
 
-
+    commentCount() {
+        const commentLength = this.props.post.comments.length;
+        if (commentLength > 1) {
+            return <div>{commentLength} Comments</div>
+        } else if (commentLength > 0) {
+            return <div>{commentLength} Comment</div>
+        }
+    }
 
 
     render() {
@@ -112,16 +133,28 @@ class PostIndexItem extends React.Component {
                 </div>
 
                 <div className="post-likes-comments-count">
+                    <LikeContainer 
+                        likesArr={this.props.post.likes} 
+                        likePostButton={this.likePostButton} 
+                        openModal={this.props.openModal}
+                    />
 
+                    {this.commentCount()}
                 </div>
 
 
 
                 <div className="hr" />
                 <div className="post-buttons">
-                    <button>Like</button>
+                    <LikeButton 
+                        postLikedByCurrentUser={this.state.postLikedByCurrentUser}
+                        createLike={this.props.createLike}
+                        deleteLike={this.props.deleteLike}
+                        likePostButton={this.likePostButton}
+                        unlikePostButton={this.unlikePostButton}
+                        postId={this.props.post.id}
+                    />
                     <button>Comment</button>
-                    {/* <button>Share</button> */}
                 </div>
                 <div className="hr" />
 

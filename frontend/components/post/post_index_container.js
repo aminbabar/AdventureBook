@@ -4,6 +4,7 @@ import PostIndex from "./post_index"
 
 import { fetchPosts, deletePost } from "../../actions/post_actions";
 import { openModal } from "../../actions/modal_actions";
+import { createLike, deleteLike } from "../../actions/like_actions";
 
 
 const mstp = (state) => {
@@ -19,7 +20,9 @@ const mdtp = (dispatch) => {
     return ({
         fetchPosts: () => dispatch(fetchPosts()),
         deletePost: (postId) => dispatch(deletePost(postId)),
-        openModal: (modal, id) => dispatch(openModal(modal, id))
+        openModal: (modal, id) => dispatch(openModal(modal, id)),
+        createLike: (like) => dispatch(createLike(like)),
+        deleteLike: (likeId) => dispatch(deleteLike(likeId))
     });
 };
 
