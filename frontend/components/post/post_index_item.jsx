@@ -14,12 +14,16 @@ class PostIndexItem extends React.Component {
     constructor(props) {
         super(props);
         // this.dropdown = false; 
-        this.state = {dropdown: false};
+        this.state = {
+            dropdown: false,
+            postLikedByCurrentUser: false,
+            displayComments: true
+        };
+
         this.toggleDropDown = this.toggleDropDown.bind(this);
         this.closeDropDown = this.closeDropDown.bind(this);
 
         this.openEditPostModal = this.openEditPostModal.bind(this);
-        this.postLikedByCurrentUser = false;
 
         this.likePostButton = this.likePostButton.bind(this);
         this.unlikePostButton = this.unlikePostButton.bind(this);
@@ -91,10 +95,34 @@ class PostIndexItem extends React.Component {
 
     commentCount() {
         const commentLength = this.props.post.comments.length;
+        let commentCountText;
         if (commentLength > 1) {
-            return <div>{commentLength} Comments</div>
+            commentCountText = `${commentLength} Comments`
         } else if (commentLength > 0) {
-            return <div>{commentLength} Comment</div>
+            commentCountText = `${commentLength} Comment`
+        }
+        return (
+            <div onClick={() => this.setState((prevProps) => {return {displayComments: !prevProps.displayComments}})}>
+                {commentCountText}
+            </div>
+        );
+    }
+
+    comments() {
+        if (this.state.displayComments) {
+            return (
+                <>
+                    <div className="post-comments">
+                        <CommentIndexContainer commentsArr={this.props.post.comments} />
+                    </div>
+
+                    <div className="create-comment">
+                        <CreateCommentContainer postId={this.props.post.id} />
+                    </div>
+                </>
+            );
+        } else {
+            return null;
         }
     }
 
@@ -155,19 +183,16 @@ class PostIndexItem extends React.Component {
                         unlikePostButton={this.unlikePostButton}
                         postId={this.props.post.id}
                     />
-                    <button>Comment</button>
+
+                    <button onClick={() => this.setState({displayComments: true})}>
+                        Comment
+                    </button>
                 </div>
                 <div className="hr" />
 
 
+                {this.comments()}
 
-                <div className="post-comments">
-                    <CommentIndexContainer commentsArr={this.props.post.comments}/>
-                </div>
-
-                <div className="create-comment">
-                    <CreateCommentContainer postId={this.props.post.id}/>
-                </div>
             </div>
         );
 
