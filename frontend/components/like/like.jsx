@@ -30,7 +30,11 @@ class Like extends React.Component {
                 return null;
             }
         }
-        return <div>{likeText}</div>
+        return (
+            <div onClick={() => this.props.openModal("like_index", this.props.postId)}>
+                {likeText}
+            </div>
+        );
     }
 
     render() {

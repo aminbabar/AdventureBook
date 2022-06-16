@@ -27,6 +27,11 @@ class User < ApplicationRecord
             .where("friends.user_id = ? OR friends.friend_id = ?", self.id, self.id)
     end
 
+    def self.get_users(users_set)
+        User
+            .where(id: users_set)
+    end
+
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
         if user

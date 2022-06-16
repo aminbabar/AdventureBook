@@ -137,6 +137,7 @@ class PostIndexItem extends React.Component {
                         likesArr={this.props.post.likes} 
                         likePostButton={this.likePostButton} 
                         openModal={this.props.openModal}
+                        postId={this.props.post.id}
                     />
 
                     {this.commentCount()}

@@ -5,7 +5,7 @@ import CreatePostContainer from "../post/create_post_container";
 import EditPostContainer from "../post/edit_post_container";
 import SignupContainer from "../session_form/signup_container";
 import EditProfileContainer from "../profile/edit_profile_container";
-
+import LikeIndex from "../like/like_index";
 
 const Modal = ({modal, closeModal}) => {
     if (!modal) {
@@ -27,6 +27,7 @@ const Modal = ({modal, closeModal}) => {
             break;
         case "like_index":
             component = <LikeIndex postOrCommentId={modal.id} /> 
+            break;
         default:
             return null;
     };
