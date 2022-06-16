@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:index, :create, :destroy, :update]
     resources :friends, only: [:index, :create, :destroy, :update] #, :show]
     resources :likes, only: [:index, :create, :destroy]
+    post '/users/search', to: "users#search"
   end
 
   root 'static_pages#root'

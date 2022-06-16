@@ -1,6 +1,16 @@
 class Api::UsersController < ApplicationController
     before_action :ensure_logged_in, except: [:create]
 
+    def search
+        query = params[:query].downcase
+        @users = User
+                    .all
+                    .where("lower(CONCAT_WS(' ', fname, lname)) LIKE ?", "%#{query}%")
+                    # .order("id ASC")
+                    .limit(8)
+        render :search
+    end
+
     def show
         @user = User.find_by(id: params[:id])
         render :show

@@ -8,6 +8,12 @@ export const updateUser = (user) => {
     });
 };
 
-
+export const search = (query) => {
+    return $.ajax({
+        url: `/api/users/search`,
+        method: "POST",
+        data: {query}
+    });
+};
 
 

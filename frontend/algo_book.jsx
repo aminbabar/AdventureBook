@@ -6,6 +6,7 @@ import Root from "./components/root";
 import { fetchUser } from "./actions/session_actions";
 // import { fetchComments } from "./utils/comment_api_util";
 import { createLike, deleteLike } from "./actions/like_actions";
+import { search } from "./utils/user_api_util";
 // Testing
 // import { fetchPosts, fetchPost, createPost, deletePost, updatePost } from "./utils/post_api_util";
 // import {login, logout, signup} from "./utils/session_api_util"
@@ -56,6 +57,8 @@ document.addEventListener("DOMContentLoaded", () => {
     window.like = { likeable_type: "Post", likeable_id: 165 }
     window.createLike = createLike;
     window.deleteLike = deleteLike;
+
+    window.search = search;
 
     const root = document.getElementById("root");
 
