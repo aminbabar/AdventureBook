@@ -7,7 +7,6 @@ import { selectLikesForPost } from "../../reducers/selectors";
 const mstp = (state, ownProps) => {
     const likesArr = state.entities.comments[ownProps.commentId].likes;
     const  currentUserId = state.session.currentUser;
-    console.log(currentUserId);
     const likes = state.entities.likes;
     return ({
         comment: state.entities.comments[ownProps.commentId],
