@@ -30,7 +30,6 @@ const Modal = ({modal, closeModal}) => {
             component = <LikeIndex postOrCommentId={modal.id} indexType={"posts"}/> 
             break;
         case "like_index_comments":
-            debugger;
             component = <LikeIndex postOrCommentId={modal.id} indexType={"comments"}/> 
             break;
         default:
