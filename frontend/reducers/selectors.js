@@ -20,3 +20,27 @@ export const selectLikesForPost = function (likes, likesArr, currentUserId) {
     }
     return result;
 }
+
+
+export const selectPhotos = function (posts, user) {
+    if (!user) {
+        return [];
+    };
+
+    const photos = [];
+    Object.values(posts).forEach((post) => {
+        if (post.photoUrl && post.author_id === parseInt(user.id)) {
+            photos.push(post.photoUrl)
+        };
+    });
+
+    if (user.profilePhoto) {
+        photos.push(user.profilePhoto);
+    };
+
+    if (user.coverPhoto) {
+        photos.push(user.coverPhoto);
+    };
+
+    return photos;
+}

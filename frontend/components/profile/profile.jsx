@@ -3,6 +3,7 @@ import NavBarContainer from '../nav_bar/nav_bar_container';
 import PostIndexContainer from '../post/post_index_container';
 import ProfileAndCoverPhoto from './profile_and_cover_photo';
 import Intro from './intro';
+import Photos from './photos';
 
 class Profile extends React.Component {
     constructor(props) {
@@ -23,7 +24,7 @@ class Profile extends React.Component {
 
 
     render() {
-        const {updateUser, userId, fetchUser, user, openModal, currentUserId} = this.props;
+        const {updateUser, userId, fetchUser, user, openModal, currentUserId, photos} = this.props;
 
         return(
             <>
@@ -50,6 +51,8 @@ class Profile extends React.Component {
                             updateUser={updateUser}
                             openModal={openModal}
                         />
+                        
+                        <Photos photos={photos}/>
 
                     </div>
 

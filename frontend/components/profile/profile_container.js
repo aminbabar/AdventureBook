@@ -4,13 +4,18 @@ import Profile from './profile';
 import { fetchUser, updateUser } from "../../actions/session_actions";
 import { openModal } from "../../actions/modal_actions";
 import { fetchFriends } from "../../actions/friend_actions";
+import { selectPhotos } from "../../reducers/selectors";
+
 const mstp = (state, ownProps) => {
     const userId = ownProps.match.params.userId;
+    const user = state.entities.users[userId];
+
     return {
         test: state,
-        userId: ownProps.match.params.userId,
-        user: state.entities.users[userId],
-        currentUserId: state.session.currentUser
+        userId: userId,
+        user: user,
+        currentUserId: state.session.currentUser,
+        photos: selectPhotos(state.entities.posts, user)
     };
 };
 
