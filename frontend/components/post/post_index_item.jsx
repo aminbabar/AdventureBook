@@ -3,7 +3,7 @@ import { createPost } from "../../utils/post_api_util";
 import Dropdown from "../nav_bar/dropdown";
 import { BsThreeDots} from "react-icons/bs";
 import CreateCommentContainer from "../comment/create_comment_container";
-import CommentIndexContainer from "../comment/comment_index_container";
+import CommentIndex from "../comment/comment_index";
 import LikeContainer from "../like/like_container";
 import LikeButton from "../like/like_button";
 
@@ -113,7 +113,7 @@ class PostIndexItem extends React.Component {
             return (
                 <>
                     <div className="post-comments">
-                        <CommentIndexContainer commentsArr={this.props.post.comments} />
+                        <CommentIndex commentsArr={this.props.post.comments} />
                     </div>
 
                     <div className="create-comment">

@@ -5,7 +5,7 @@ all_associated_users = Set.new
     comments = post.comments
 
     post_like_ids = []
-    comment_like_ids = []
+    comment_like_ids = Hash.new {|h, k| h[k] = Array.new}
 
 
     json.likes do
@@ -20,7 +20,7 @@ all_associated_users = Set.new
         comments.each do |comment|
             comment.likes.each do |like|
                 all_associated_users << like.author_id
-                comment_like_ids << like.id
+                comment_like_ids[comment.id] << like.id
                 json.set! like.id do
                     json.extract! like, :id, :author_id, :likeable_id, :likeable_type
                 end
@@ -64,7 +64,7 @@ all_associated_users = Set.new
             json.set! comment.id do
                 json.extract! comment, :id, :post_id, :comment_author_id, :created_at, :body
                 json.likes do
-                    json.array! comment_like_ids
+                    json.array! comment_like_ids[comment.id]
                 end
             end
         end

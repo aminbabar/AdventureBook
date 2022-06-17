@@ -14,6 +14,7 @@ const likesReducer = (oldState={}, action) => {
             delete newState[action.like.id];
             return newState;
         case RECEIVE_ALL_POSTS:
+            debugger;
             return Object.assign(newState, action.posts.likes);
         default:
             return oldState;
