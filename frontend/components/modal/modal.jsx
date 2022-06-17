@@ -25,8 +25,13 @@ const Modal = ({modal, closeModal}) => {
         case "edit_profile":
             component = <EditProfileContainer userId={modal.id} />
             break;
+        // like index for posts
         case "like_index":
-            component = <LikeIndex postOrCommentId={modal.id} /> 
+            component = <LikeIndex postOrCommentId={modal.id} indexType={"posts"}/> 
+            break;
+        case "like_index_comments":
+            debugger;
+            component = <LikeIndex postOrCommentId={modal.id} indexType={"comments"}/> 
             break;
         default:
             return null;

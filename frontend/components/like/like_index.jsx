@@ -9,10 +9,10 @@ class LikeIndex extends React.Component {
         super(props);
     }
 
-    likeItem(like) {
+    likeItem(like, idx) {
         const user = this.props.users[like.author_id];
         return (
-            <>
+            <div key={`${like.id.toString()} ${idx.toString()}`}>
                 <Link to={`/users/${like.author_id}`} onClick={this.props.closeModal}>
                     <div className='like-photo'>
                         <img src={user.profilePhoto} />
@@ -23,13 +23,13 @@ class LikeIndex extends React.Component {
                     </div>
 
                 </Link>
-            </>
+            </div>
         );
     }
 
     likeIndex() {
-        return Object.values(this.props.likes).map((like) => {
-            return this.likeItem(like);
+        return Object.values(this.props.likes).map((like, idx) => {
+            return this.likeItem(like, idx);
         });
     };
 
@@ -43,7 +43,8 @@ class LikeIndex extends React.Component {
 // export default LikeIndex;
 
 const mstp = (state, ownProps) => {
-    const likesArr = state.entities.posts[ownProps.postOrCommentId].likes;
+    const postOrComment = ownProps.indexType;
+    const likesArr = state.entities[postOrComment][ownProps.postOrCommentId].likes;
     const currentUserId = state.session.currentUser;
 
     return({

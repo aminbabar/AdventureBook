@@ -39,7 +39,9 @@ class CommentIndexItem extends React.Component {
     numLikesBox() {
         const numLikes = Object.values(this.props.likes).length;
         return (
-            <span>num likes:{numLikes}</span>
+            <span onClick={() => this.props.openModal("like_index_comments", this.props.commentId)}>
+                num likes:{numLikes}
+            </span>
         );
     }
 
@@ -73,9 +75,11 @@ class CommentIndexItem extends React.Component {
                 </div>
 
                 <div>
-                    {this.likeButton()}
 
-                    {this.numLikesBox()}
+                    
+                    {!this.state.editBool && this.likeButton()}
+
+                    {!this.state.editBool && this.numLikesBox()}
                 </div>
             </>
         );
