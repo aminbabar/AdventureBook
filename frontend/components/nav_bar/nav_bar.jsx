@@ -6,6 +6,7 @@ import { GrLogout } from "react-icons/gr";
 
 import { FaFacebookMessenger } from "react-icons/fa";
 import Dropdown from "./dropdown";
+import Search from "../search/search";
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -42,7 +43,7 @@ class NavBar extends React.Component {
         return(
             <nav>
                 <div className="left">
-
+                    <Search />
                 </div>
 
                 <div className="middle">
