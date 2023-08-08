@@ -5,10 +5,6 @@ import CreatePost from "./create_post";
 
 class PostIndex extends React.Component {
 
-    componentDidMount() {
-        this.props.fetchPosts();
-    };
-
     render() {
 
         let posts = this.props.posts.reverse();

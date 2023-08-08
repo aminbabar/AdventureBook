@@ -1,4 +1,6 @@
 import { RECEIVE_ALL_FRIENDS, RECEIVE_FRIEND, REMOVE_FRIEND } from "../actions/friend_actions";
+import { RECEIVE_ALL_POSTS } from "../actions/post_actions";
+
 
 const friendsReducer = (oldState={}, action) => {
     Object.freeze(oldState);
@@ -14,6 +16,8 @@ const friendsReducer = (oldState={}, action) => {
         case REMOVE_FRIEND:
             delete newState[action.friendId]
             return newState;
+        case RECEIVE_ALL_POSTS:
+            return action.posts.friends || {};
         default:
             return oldState;
     };

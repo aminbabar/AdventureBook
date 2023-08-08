@@ -37,7 +37,7 @@ class Api::FriendsController < ApplicationController
     end
 
     # def show
-    #     @friend = Friend.find(params[:id])
+    #     @friends = User.find_by(id: params[:id]).friends
     #     render :show
     # end
 

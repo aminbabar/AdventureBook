@@ -6,7 +6,7 @@ export const selectFriendForProfile = function (friends, userProfileId, currentU
         }
     });
     return friend;
-}
+};
 
 export const selectLikesForPost = function (likes, likesArr, currentUserId) {
     const result = {};
@@ -19,7 +19,7 @@ export const selectLikesForPost = function (likes, likesArr, currentUserId) {
         }
     }
     return result;
-}
+};
 
 
 export const selectPhotos = function (posts, user) {
@@ -43,4 +43,21 @@ export const selectPhotos = function (posts, user) {
     };
 
     return photos;
-}
+};
+
+
+export const selectFriends = function (friends, users, currentUserPageId) {
+    const friendItems = []
+    Object.values(friends).forEach((friendItem) => {
+        if (!friendItem.friend_status) {
+            return;
+        }
+        if (friendItem.friend_id !== parseInt(currentUserPageId)) {
+            friendItems.push(users[friendItem.friend_id]);
+        } 
+        else if (friendItem.user_id !== parseInt(currentUserPageId)) {
+            friendItems.push(users[friendItem.user_id]);
+        }
+    });
+    return friendItems;
+};

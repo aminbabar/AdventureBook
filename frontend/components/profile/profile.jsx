@@ -4,6 +4,7 @@ import PostIndexContainer from '../post/post_index_container';
 import ProfileAndCoverPhoto from './profile_and_cover_photo';
 import Intro from './intro';
 import Photos from './photos';
+import Friends from './friends';
 
 class Profile extends React.Component {
     constructor(props) {
@@ -12,19 +13,21 @@ class Profile extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchFriends();
+        this.props.fetchPosts(this.props.userId);
     }
+    
 
     componentDidUpdate(prevProps) {
         if (this.props.userId !== prevProps.userId) {
-            this.props.fetchUser(this.props.userId);
+            this.props.fetchPosts(this.props.userId);
+            window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
         };
     }
 
 
 
     render() {
-        const {updateUser, userId, fetchUser, user, openModal, currentUserId, photos} = this.props;
+        const {updateUser, userId, fetchUser, user, openModal, currentUserId, photos, friends} = this.props;
 
         return(
             <>
@@ -53,6 +56,13 @@ class Profile extends React.Component {
                         />
                         
                         <Photos photos={photos}/>
+
+
+                        <Friends friends={friends} />
+
+                        
+
+
 
                     </div>
 

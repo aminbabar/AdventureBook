@@ -1,5 +1,6 @@
 
 all_associated_users = Set.new
+user = User.find_by(id: params[:user_id])
 
 @posts.each do |post|
     comments = post.comments
@@ -72,6 +73,17 @@ all_associated_users = Set.new
 
 
 end
+
+json.friends do
+    user && user.friends.each do |friend|
+        json.set! friend.id do
+            all_associated_users << friend.friend_id
+            all_associated_users << friend.user_id
+            json.extract! friend, :id, :user_id, :friend_id, :friend_status
+        end
+    end
+end
+
 
 json.users do
     User.get_users(all_associated_users).each do |user|

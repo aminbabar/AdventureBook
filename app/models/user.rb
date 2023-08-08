@@ -71,3 +71,6 @@ class User < ApplicationRecord
 
 
 end
+
+
+# a = User.select("users.*, friends.*").joins("INNER JOIN friends ON users.id = friends.friend_id OR users.id = friends.user_id")

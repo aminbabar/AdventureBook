@@ -33,10 +33,6 @@ class ProfileAndCoverPhoto extends React.Component {
         }
     }
 
-    componentDidMount() {
-        this.props.fetchUser(this.props.userId);
-    }
-
     editProfileOrFriend() {
         if (this.props.currentUserId == this.props.user?.id) {
             return(
