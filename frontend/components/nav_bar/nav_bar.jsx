@@ -53,7 +53,7 @@ class NavBar extends React.Component {
 
                 <div className="right">
                     <span>
-                        {this.props.currentUser.fname}
+                        {this.props.currentUser.first_name}
                     </span>
 
                     

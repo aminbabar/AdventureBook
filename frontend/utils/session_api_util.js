@@ -27,7 +27,7 @@ export const logout = () => {
     });
 };
 
-// let user = { fname: "1", lname: "1", email: "1", birthday: 12/12/12, password:"123456" }
+// let user = { first_name: "1", last_name: "1", email: "1", birthday: 12/12/12, password:"123456" }
 
 export const fetchUser = (userId) => {
     return $.ajax({

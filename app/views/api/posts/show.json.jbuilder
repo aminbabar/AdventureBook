@@ -24,7 +24,7 @@ end
 json.post do
     json.extract! @post, :id, :author_id, :body, :created_at
     json.photoUrl url_for(@post.photo) if @post.photo.attached?
-    # json.extract! post.author, :fname, :lname
+    # json.extract! post.author, :first_name, :last_name
     # keep track of all the comment ids in each post
     comment_ids = []
     @post.comments.each do |comment|
@@ -40,7 +40,7 @@ json.post do
 end
 
 json.user do
-    json.extract! @post.author, :id, :fname, :lname, :bio
+    json.extract! @post.author, :id, :first_name, :last_name, :bio
     json.photoUrl url_for(@post.author.profile_photo) if @post.author.profile_photo.attached?
 end
 

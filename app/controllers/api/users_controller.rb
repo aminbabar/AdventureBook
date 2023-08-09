@@ -5,7 +5,7 @@ class Api::UsersController < ApplicationController
         query = params[:query].downcase
         @users = User
                     .all
-                    .where("lower(CONCAT_WS(' ', fname, lname)) LIKE ?", "%#{query}%")
+                    .where("lower(CONCAT_WS(' ', first_name, last_name)) LIKE ?", "%#{query}%")
                     # .order("id ASC")
                     .limit(8)
         render :search
@@ -40,7 +40,7 @@ class Api::UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:email, :password, :fname, :lname, :city, :work, :profile_photo, :cover_photo, :bio, :education, :portfolio)
+        params.require(:user).permit(:email, :password, :first_name, :last_name, :city, :work, :profile_photo, :cover_photo, :bio, :education, :portfolio, :birthday, :gender)
     end
 
 end

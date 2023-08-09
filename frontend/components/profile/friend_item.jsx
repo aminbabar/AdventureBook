@@ -10,7 +10,7 @@ const FriendItem = function (props) {
         <>
             <Link to={`${friend.id}`}>
                 <img className="test-photo" src={friend?.profilePhoto}/>
-                <p>{friend.fname} {friend.lname}</p>
+                <p>{friend.first_name} {friend.last_name}</p>
             </Link>
         </>
     );

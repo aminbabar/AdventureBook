@@ -105,7 +105,7 @@ class LoginForm extends React.Component {
                     <div className="demo-login-div">
                         <button
                             className="demo-login-button"
-                            onClick={this.loginDemo("a", "123456")}>
+                            onClick={this.loginDemo("demouser@gmail.com", "123456")}>
                             Demo Log In 1
                         </button>
                     </div>
@@ -113,7 +113,7 @@ class LoginForm extends React.Component {
                     <div className="demo-login-div">
                         <button
                             className="demo-login-button"
-                            onClick={this.loginDemo("3", "123456")}>
+                            onClick={this.loginDemo("demouser2@gmail.com", "123456")}>
                             Demo Log In 2
                         </button>
                     </div>

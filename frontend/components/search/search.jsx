@@ -31,7 +31,7 @@ class Search extends React.Component {
             <div key={user.id.toString() + idx.toString()}>
                 <Link to={`/users/${user.id}`} onClick={() => this.setState({query: "", searchResults: {}})}>
                     <img src={user.profilePhoto}/>
-                    {`${user.fname} ${user.lname}`}
+                    {`${user.first_name} ${user.last_name}`}
                 </Link>
             </div>
         );

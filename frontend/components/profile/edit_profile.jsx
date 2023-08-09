@@ -6,8 +6,8 @@ class EditProfile extends React.Component {
         super(props);
         const {user} = this.props;
         this.state = {
-            fname: user.fname || "",
-            lname: user.lname || "",
+            first_name: user.first_name || "",
+            last_name: user.last_name || "",
             city: user.city || "",
             education: user.education || "",
             work: user.work || "",
@@ -26,8 +26,8 @@ class EditProfile extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const formData = new FormData();
-        formData.append('user[fname]', this.state.fname);
-        formData.append('user[lname]', this.state.lname);
+        formData.append('user[first_name]', this.state.first_name);
+        formData.append('user[last_name]', this.state.last_name);
         formData.append('user[city]', this.state.city);
         formData.append('user[education]', this.state.education);
         formData.append('user[work]', this.state.work);
@@ -45,12 +45,12 @@ class EditProfile extends React.Component {
 
                 <label>
                     First Name
-                    <input type="text" value={this.state.fname} onChange={this.update("fname")} />
+                    <input type="text" value={this.state.first_name} onChange={this.update("first_name")} />
                 </label>
 
                 <label>
                     Last Name
-                    <input type="text" value={this.state.lname} onChange={this.update("lname")} />
+                    <input type="text" value={this.state.last_name} onChange={this.update("last_name")} />
                 </label>
 
                 <label>

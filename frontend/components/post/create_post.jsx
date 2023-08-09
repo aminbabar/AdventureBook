@@ -8,7 +8,7 @@ const CreatePost = (props) => {
             <button 
                 onClick={() => props.openModal("create_post")}
             >
-                {`What's on your mind, ${props.currentUser.fname}?`}
+                {`What's on your mind, ${props.currentUser.first_name}?`}
 
             </button>
         </div>

@@ -54,7 +54,7 @@ user = User.find_by(id: params[:user_id])
     # json.users do
     #     json.set! post.author_id do
     #         user = post.author
-    #         json.extract! user, :id, :email, :fname, :lname, :city, :work, :bio, :education, :portfolio
+    #         json.extract! user, :id, :email, :first_name, :last_name, :city, :work, :bio, :education, :portfolio
     #         json.profilePhoto url_for(user.profile_photo) if user.profile_photo.attached?
     #         json.coverPhoto url_for(user.cover_photo) if user.cover_photo.attached?
     #     end
@@ -88,7 +88,7 @@ end
 json.users do
     User.get_users(all_associated_users).each do |user|
         json.set! user.id do
-            json.extract! user, :id, :email, :fname, :lname, :city, :work, :bio, :education, :portfolio
+            json.extract! user, :id, :email, :first_name, :last_name, :city, :work, :bio, :education, :portfolio, :birthday
             json.profilePhoto url_for(user.profile_photo) if user.profile_photo.attached?
             json.coverPhoto url_for(user.cover_photo) if user.cover_photo.attached?
         end

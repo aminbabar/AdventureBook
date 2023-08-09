@@ -7,16 +7,16 @@ class Signup extends React.Component {
 
     constructor(props) {
         super(props);
+        this.currentDate = new Date();
         this.state = {
             email: "",
-            fname: "",
-            lname: "",
+            first_name: "",
+            last_name: "",
             password: "",
-            city: "",
-            work: ""
+            birthday: "",
+            gender: ""
         };
         
-        this.currentDate = new Date();
         this.handleSubmit = this.handleSubmit.bind(this);
     };
 
@@ -48,7 +48,7 @@ class Signup extends React.Component {
                 );
         };
         return (
-            <select name="day" defaultValue={this.currentDate.getDay()}>
+            <select name="day" defaultValue={this.currentDate.getDay()} onChange={this.handleInput("day")}>
                 {days}
             </select>
         );
@@ -64,7 +64,7 @@ class Signup extends React.Component {
                 </option>);
         };
         return (
-            <select name="year" defaultValue={currYear}>
+            <select name="year" defaultValue={currYear} onChange={this.handleInput("year")}>
                 {years}
             </select>
         );
@@ -84,7 +84,7 @@ class Signup extends React.Component {
         };
 
         return (
-            <select name="months" defaultValue={monthNames[this.currentDate.getMonth()]}>
+            <select name="months" defaultValue={monthNames[this.currentDate.getMonth()]} onChange={this.handleInput("month")}>
                 {monthOptions}
             </select>
         );
@@ -112,16 +112,16 @@ class Signup extends React.Component {
                     <div className="last-name-first-name-container">
                             <input 
                                 type="text"
-                                value={this.state.fname}
-                                onChange={this.handleInput("fname")}
+                                value={this.state.first_name}
+                                onChange={this.handleInput("first_name")}
                                 placeholder="First name"
                                 className="first-name"
                             />
 
                             <input
                                 type="text"
-                                value={this.state.lname}
-                                onChange={this.handleInput("lname")}
+                                value={this.state.last_name}
+                                onChange={this.handleInput("last_name")}
                                 placeholder="Last name"
                                 className="last-name"
                             />

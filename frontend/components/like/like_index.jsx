@@ -19,7 +19,7 @@ class LikeIndex extends React.Component {
                     </div>
 
                     <div>
-                        {user.fname + " " + user.lname}
+                        {user.first_name + " " + user.last_name}
                     </div>
 
                 </Link>
