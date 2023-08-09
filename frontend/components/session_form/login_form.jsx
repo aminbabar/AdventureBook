@@ -37,16 +37,18 @@ class LoginForm extends React.Component {
         this.props.resetErrors();
     };
 
-    loginDemo(e) {
-        e.preventDefault();
-        // note: this.setstate is asynchronous, so have to pass it a callback
-        this.setState({
-            email: "a",
-            password: "123456"
-        }, () => {
-            this.props.login(this.state)
-            // .then(() => this.props.history.push("./"));
-        });
+    loginDemo(username, password) {
+        return (e) => {
+            e.preventDefault();
+            // note: this.setstate is asynchronous, so have to pass it a callback
+            this.setState({
+                email: `${username}`,
+                password: `${password}`
+            }, () => {
+                this.props.login(this.state)
+                // .then(() => this.props.history.push("./"));
+            });
+        }
     };
 
 
@@ -58,7 +60,6 @@ class LoginForm extends React.Component {
                     <div className="splash-logo">
                         algobook
                     </div>
-                    {/* <img src="https://lh3.googleusercontent.com/proxy/HtU0a_h_wjaViEyAiiCU3ivY2-ullrROdSDpRlfACis1w3ds0ntElc7oj7NXhlh3cjLIg03ymIi2AaX7Kh0VjgHzUinANqwkOeD0UvCE-eZwo8JEq1TjJus3n9SJUXHG0vFptjuZuIR7Iqz7SUm3LErP" alt="image tag" /> */}
 
                     <div className="splash-text">
                         Connect with friends and the world around you on Algobook.
@@ -104,8 +105,16 @@ class LoginForm extends React.Component {
                     <div className="demo-login-div">
                         <button
                             className="demo-login-button"
-                            onClick={this.loginDemo}>
-                            Demo Log In
+                            onClick={this.loginDemo("a", "123456")}>
+                            Demo Log In 1
+                        </button>
+                    </div>
+
+                    <div className="demo-login-div">
+                        <button
+                            className="demo-login-button"
+                            onClick={this.loginDemo("3", "123456")}>
+                            Demo Log In 2
                         </button>
                     </div>
 

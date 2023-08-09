@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FiChevronDown } from 'react-icons/fi';
 
 
 class Signup extends React.Component {
@@ -20,7 +21,7 @@ class Signup extends React.Component {
 
     handleInput(type) {
         return (e) => {
-            this.setState({[type]: e.target.value});
+            this.setState({[type]: e.target.value}, () => {console.log(this.state)})
         };
     };
 
@@ -53,54 +54,47 @@ class Signup extends React.Component {
 
                 <div className="signup-line"></div>
 
-                <form className="signup-form-body">
-                    <label>
-                        <input 
-                            type="text"
-                            value={this.state.fname}
-                            onChange={this.handleInput("fname")}
-                            placeholder="First name"
-                            className="first-name"
-                        />
-                    </label>
+                <form className="form-body">
 
-                    <label>
-                        <input
-                            type="text"
-                            value={this.state.lname}
-                            onChange={this.handleInput("lname")}
-                            placeholder="Last name"
-                            className="last-name"
-                        />
-                    </label>
+                    <div className="last-name-first-name-container">
+                            <input 
+                                type="text"
+                                value={this.state.fname}
+                                onChange={this.handleInput("fname")}
+                                placeholder="First name"
+                                className="first-name"
+                            />
 
-                    <br />
+                            <input
+                                type="text"
+                                value={this.state.lname}
+                                onChange={this.handleInput("lname")}
+                                placeholder="Last name"
+                                className="last-name"
+                            />
 
-                    <label>
+                    </div>
+
                         <input
                             type="text"
                             value={this.state.email}
                             onChange={this.handleInput("email")}
                             placeholder="Mobile number or email"
+                            className="mobile"
                         />
-                    </label>
 
-                    <br />
-
-
-                    <label>
                         <input
                             type="password"
                             value={this.state.password}
                             onChange={this.handleInput("password")}
                             placeholder="New password"
+                            className="password"
                         />
-                    </label>
 
-                    <br />
 
                     {/* FIX MAKE THIS MORE DYNAMIC*/}
-                    <label>Birthday
+                    <div className="birthday">Birthday</div>
+                    <div className="birthday-selectors">
                         <select name="months">
                             <option>Month</option>
                             <option value="1">January</option>
@@ -116,6 +110,7 @@ class Signup extends React.Component {
                             <option value="11">November</option>
                             <option value="12">December</option>
                         </select>
+                        <FiChevronDown className="select-arrow" />
 
                         <select name="day">
                             <option value="day">Day</option>
@@ -126,7 +121,7 @@ class Signup extends React.Component {
                             <option value="5">5</option>
                             <option value="6">6</option>
                         </select>
-
+                        <FiChevronDown className="select-arrow" />
 
                         <select name="year">
                             <option value="year">Year</option>
@@ -137,29 +132,39 @@ class Signup extends React.Component {
                             <option value="2017">2017</option>
                             <option value="2016">2016</option>
                         </select>
-                    </label>
+                        <FiChevronDown className="select-arrow" />
+                    </div>
 
-                    <br />
+                    
+                    <div className="gender">Gender</div>
+                    <div className="radio-buttons-container" onChange={this.handleInput("gender")}>
+                        <label>
+                            Female
+                            <input type="radio" name="gender" value="female" />
+                        </label>
 
-                    <label>Gender
-                        <span>
-                            <label>female</label>
-                            <input type="radio" name="gender" value="female" checked onChange={this.handleInput("gender")}/>
-                        </span>
+                        <label>
+                            Day
+                            <input type="radio" name="gender" value="male" />
+                        </label>
 
-                        <span>
-                            <label>male</label>
-                            <input type="radio" name="gender" value="male" onChange={this.handleInput("gender")}/>
-                        </span>
+                        <label>
+                            Other
+                            <input type="radio" name="gender" value="other" />
+                        </label>
+                    </div>
 
-                        <span>
-                            <label>other</label>
-                            <input type="radio" name="gender" value="other" onChange={this.handleInput("gender")}/>
-                        </span>
-                    </label>
-                    <br />
+                    <div className="bottom-text">
+                        <p>People who use our service may have uploaded your contact information to Facebook.</p>
+                    </div>
 
-                    <button onClick={this.handleSubmit}>Sign Up</button>
+                    <div className="bottom-text">
+                        <p>By clicking Sign Up, you agree that this is a clone of Facebook. You may end up really liking this project, but you can always logout at any time.</p>
+                    </div>
+
+                    <div className="signup">
+                        <button onClick={this.handleSubmit}>Sign Up</button>
+                    </div>
 
                 </form>
 
