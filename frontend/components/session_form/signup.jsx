@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { FiChevronDown } from 'react-icons/fi';
 
 
@@ -10,10 +9,12 @@ class Signup extends React.Component {
         this.currentDate = new Date();
         this.state = {
             email: "",
-            first_name: "",
-            last_name: "",
+            firstName: "",
+            lastName: "",
             password: "",
-            birthday: "",
+            day: `${this.currentDate.getDay()}`,
+            month: `${this.currentDate.getMonth() + 1}`,
+            year: `${this.currentDate.getYear() + 1900}`,
             gender: ""
         };
         
@@ -22,7 +23,7 @@ class Signup extends React.Component {
 
     handleInput(type) {
         return (e) => {
-            this.setState({[type]: e.target.value}, () => {console.log(this.state)})
+            this.setState({[type]: e.target.value})
         };
     };
 
@@ -32,7 +33,15 @@ class Signup extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.signup(this.state).then(
+        const user = {
+            email: this.state.email,
+            first_name: this.state.firstName,
+            last_name: this.state.lastName,
+            password: this.state.password,
+            gender: this.state.gender,
+            birthday: `${this.state.year}-${this.state.month}-${this.state.day}`
+        }
+        this.props.signup(user).then(
             () => this.props.closeModal(),
             (err) => null
         );
@@ -78,13 +87,13 @@ class Signup extends React.Component {
         const monthOptions = [];
         for (let i = 0; i < monthNames.length; i++) {
             monthOptions.push(
-                <option key={`${i}months`}>
+                <option key={`${i}months`} value={`${i + 1}`}>
                     {monthNames[i]}
                 </option>);
         };
 
         return (
-            <select name="months" defaultValue={monthNames[this.currentDate.getMonth()]} onChange={this.handleInput("month")}>
+            <select name="months" defaultValue={this.currentDate.getMonth() + 1} onChange={this.handleInput("month")}>
                 {monthOptions}
             </select>
         );
@@ -112,16 +121,16 @@ class Signup extends React.Component {
                     <div className="last-name-first-name-container">
                             <input 
                                 type="text"
-                                value={this.state.first_name}
-                                onChange={this.handleInput("first_name")}
+                                value={this.state.firstName}
+                                onChange={this.handleInput("firstName")}
                                 placeholder="First name"
                                 className="first-name"
                             />
 
                             <input
                                 type="text"
-                                value={this.state.last_name}
-                                onChange={this.handleInput("last_name")}
+                                value={this.state.lastName}
+                                onChange={this.handleInput("lastName")}
                                 placeholder="Last name"
                                 className="last-name"
                             />
@@ -161,17 +170,17 @@ class Signup extends React.Component {
                     <div className="radio-buttons-container" onChange={this.handleInput("gender")}>
                         <label>
                             Female
-                            <input type="radio" name="gender" value="female" />
+                            <input type="radio" name="gender" value="Female" />
                         </label>
 
                         <label>
-                            Day
-                            <input type="radio" name="gender" value="male" />
+                            Male
+                            <input type="radio" name="gender" value="Male" />
                         </label>
 
                         <label>
                             Other
-                            <input type="radio" name="gender" value="other" />
+                            <input type="radio" name="gender" value="Other" />
                         </label>
                     </div>
 
