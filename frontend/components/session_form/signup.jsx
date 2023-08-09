@@ -16,6 +16,7 @@ class Signup extends React.Component {
             work: ""
         };
         
+        this.currentDate = new Date();
         this.handleSubmit = this.handleSubmit.bind(this);
     };
 
@@ -36,6 +37,58 @@ class Signup extends React.Component {
             (err) => null
         );
     };
+
+    generateDays() {
+        const days = [];
+        for (let i = 1; i <= 31; i++ ) {
+                days.push(
+                    <option key={`${i}days`}>
+                        {i}
+                    </option>
+                );
+        };
+        return (
+            <select name="day" defaultValue={this.currentDate.getDay()}>
+                {days}
+            </select>
+        );
+    }
+
+    generateYears() {
+        const years = [];
+        const currYear = parseInt(this.currentDate.getYear()) + 1900;
+        for (let i = currYear; i >= 1905; i--) {
+            years.push(
+                <option key={`${i}years`}>
+                    {i}
+                </option>);
+        };
+        return (
+            <select name="year" defaultValue={currYear}>
+                {years}
+            </select>
+        );
+    }
+
+    generateMonths() {
+        const monthNames = [
+            'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+        ];
+        const monthOptions = [];
+        for (let i = 0; i < monthNames.length; i++) {
+            monthOptions.push(
+                <option key={`${i}months`}>
+                    {monthNames[i]}
+                </option>);
+        };
+
+        return (
+            <select name="months" defaultValue={monthNames[this.currentDate.getMonth()]}>
+                {monthOptions}
+            </select>
+        );
+    }
 
 
     render() {
@@ -91,47 +144,15 @@ class Signup extends React.Component {
                             className="password"
                         />
 
-
-                    {/* FIX MAKE THIS MORE DYNAMIC*/}
                     <div className="birthday">Birthday</div>
                     <div className="birthday-selectors">
-                        <select name="months">
-                            <option>Month</option>
-                            <option value="1">January</option>
-                            <option value="2">February</option>
-                            <option value="3">March</option>
-                            <option value="4">April</option>
-                            <option value="5">May</option>
-                            <option value="6">June</option>
-                            <option value="7">July</option>
-                            <option value="8">August</option>
-                            <option value="9">September</option>
-                            <option value="10">October</option>
-                            <option value="11">November</option>
-                            <option value="12">December</option>
-                        </select>
+                        {this.generateMonths()}
                         <FiChevronDown className="select-arrow" />
 
-                        <select name="day">
-                            <option value="day">Day</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                        </select>
+                        {this.generateDays()}
                         <FiChevronDown className="select-arrow" />
 
-                        <select name="year">
-                            <option value="year">Year</option>
-                            <option value="2021">2021</option>
-                            <option value="2020">2020</option>
-                            <option value="2019">2019</option>
-                            <option value="2018">2018</option>
-                            <option value="2017">2017</option>
-                            <option value="2016">2016</option>
-                        </select>
+                        {this.generateYears()}
                         <FiChevronDown className="select-arrow" />
                     </div>
 
@@ -155,11 +176,16 @@ class Signup extends React.Component {
                     </div>
 
                     <div className="bottom-text">
-                        <p>People who use our service may have uploaded your contact information to Facebook.</p>
+                        <p>People who use our service may have uploaded your 
+                            contact information to Algobook.
+                        </p>
                     </div>
 
                     <div className="bottom-text">
-                        <p>By clicking Sign Up, you agree that this is a clone of Facebook. You may end up really liking this project, but you can always logout at any time.</p>
+                        <p>By clicking Sign Up, you agree that this is a clone 
+                            of Facebook. You may end up really liking this 
+                            project, but you can always logout.
+                        </p>
                     </div>
 
                     <div className="signup">
