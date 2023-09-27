@@ -1,5 +1,6 @@
 import React from "react";
 import { FiChevronDown } from 'react-icons/fi';
+import { MdError } from "react-icons/md";
 
 
 class Signup extends React.Component {
@@ -15,10 +16,15 @@ class Signup extends React.Component {
             day: `${this.currentDate.getDay()}`,
             month: `${this.currentDate.getMonth() + 1}`,
             year: `${this.currentDate.getYear() + 1900}`,
-            gender: ""
+            gender: "",
+            firstNameClass: "first-name",
+            lastNameClass: "last-name"
         };
         
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.validateFirstName = this.validateFirstName.bind(this);
+        this.validateLastName = this.validateLastName.bind(this);
+        this.focusState = this.focusState.bind(this);
     };
 
     handleInput(type) {
@@ -99,6 +105,31 @@ class Signup extends React.Component {
         );
     }
 
+    validateFirstName(e) {
+        e.stopPropagation();
+        if (this.state.firstName.length === 0) {
+            this.setState({firstNameClass: "first-name error"});
+        } else {
+            this.setState({ firstNameClass: "first-name" });
+        };
+    }
+
+    validateLastName(e) {
+        e.stopPropagation();
+        if (this.state.lastName.length === 0) {
+            this.setState({ lastNameClass: "last-name error" });
+        } else {
+            this.setState({ lastNameClass: "last-name" });
+        };
+    }
+
+    focusState(e, className) {
+        e.stopPropagation();
+        if (this.state[className].includes("error")) {
+            this.setState({ [className]: this.state[className].replace("error", "tool-tip")})
+        }
+    }
+
 
     render() {
         return (
@@ -119,21 +150,57 @@ class Signup extends React.Component {
                 <form className="form-body">
 
                     <div className="last-name-first-name-container">
-                            <input 
-                                type="text"
-                                value={this.state.firstName}
-                                onChange={this.handleInput("firstName")}
-                                placeholder="First name"
-                                className="first-name"
-                            />
+                        
+                        <div className="input-container" onBlur={this.validateFirstName} onFocus={(e) => this.focusState(e, 'firstNameClass')}>
 
-                            <input
-                                type="text"
-                                value={this.state.lastName}
-                                onChange={this.handleInput("lastName")}
-                                placeholder="Last name"
-                                className="last-name"
-                            />
+                                <input 
+                                    type="text"
+                                    value={this.state.firstName}
+                                    onChange={this.handleInput("firstName")}
+                                    placeholder="First name"
+                                    className={this.state.firstNameClass}
+                                    autoFocus
+                                    
+                                />
+
+                                {this.state.firstNameClass.includes("error") &&
+                                    <MdError className="error-logo" />}
+
+                                {this.state.firstNameClass.includes("tool-tip") && 
+                                    
+                                        <div className="info-field">
+                                            What's your name?
+
+                                            <div className="arrow-right"></div>
+                                        </div>
+                                }
+
+
+                        </div>
+
+
+                        <div className={"input-container"} onBlur={this.validateLastName} onFocus={(e) => this.focusState(e, 'lastNameClass')}>
+                                <input
+                                    type="text"
+                                    value={this.state.lastName}
+                                    onChange={this.handleInput("lastName")}
+                                    placeholder="Last name"
+                                    className={this.state.lastNameClass}
+                                />
+
+                            {this.state.lastNameClass.includes("error") &&
+                                <MdError className="error-logo"/>}
+
+                                {this.state.lastNameClass.includes("tool-tip") &&
+
+                                    <div className="info-field">
+                                        What's your name?
+
+                                        <div className="arrow-up"></div>
+                                    </div>
+                                }
+
+                        </div>
 
                     </div>
 
