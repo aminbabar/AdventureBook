@@ -13,18 +13,34 @@ class Signup extends React.Component {
             firstName: "",
             lastName: "",
             password: "",
-            day: `${this.currentDate.getDay()}`,
+            day: `${this.currentDate.getDate()}`,
             month: `${this.currentDate.getMonth() + 1}`,
             year: `${this.currentDate.getYear() + 1900}`,
             gender: "",
             firstNameClass: "first-name",
-            lastNameClass: "last-name"
+            lastNameClass: "last-name",
+            mobileOrEmailClass: "mobile-or-email",
+            passwordClass: "password",
+            birthdaySelectorClass: "birthday-selectors"
         };
         
         this.handleSubmit = this.handleSubmit.bind(this);
         this.validateFirstName = this.validateFirstName.bind(this);
         this.validateLastName = this.validateLastName.bind(this);
+        this.validateMobileOrEmail = this.validateMobileOrEmail.bind(this);
+        this.validatePassword = this.validatePassword.bind(this);
         this.focusState = this.focusState.bind(this);
+        this.validateBirthday = this.validateBirthday.bind(this);
+
+        this.inputRef = React.createRef();
+
+
+        this.emailRef = React.createRef();
+        this.firstNameRef = React.createRef();
+        this.lastNameRef = React.createRef();
+        this.passwordRef = React.createRef();
+        this.birthdayRef = React.createRef();
+
     };
 
     handleInput(type) {
@@ -63,7 +79,7 @@ class Signup extends React.Component {
                 );
         };
         return (
-            <select name="day" defaultValue={this.currentDate.getDay()} onChange={this.handleInput("day")}>
+            <select ref={this.birthdayRef} name="day" defaultValue={this.currentDate.getDate()} onChange={this.handleInput("day")}>
                 {days}
             </select>
         );
@@ -123,6 +139,43 @@ class Signup extends React.Component {
         };
     }
 
+    validateMobileOrEmail(e) {
+        e.stopPropagation();
+        if (this.state.email.length === 0) {
+            this.setState({ mobileOrEmailClass: "mobile-or-email error" });
+        } else {
+            this.setState({ mobileOrEmailClass: "mobile-or-email" });
+        };
+    };
+
+
+    validatePassword(e) {
+        e.stopPropagation();
+        if (this.state.password.length === 0) {
+            this.setState({ passwordClass: "password error" });
+        } else {
+            this.setState({ passwordClass: "password" });
+        };
+    }
+
+    validateBirthday(e) {
+        e.stopPropagation();
+        const currDate = new Date();
+        // this.state.month - 1 because months go from 0 - 11
+        const userBirthdayInput = new Date(this.state.year, this.state.month - 1, this.state.day);
+
+        // const currYear = parseInt(this.currentDate.getYear()) + 1900;
+        // the user needs to be at least 5 years old
+        const numDaysInFiveYears = 365 * 5;
+        const numMillisecondsInDay = 1000 * 3600 * 24;
+        if (((currDate - userBirthdayInput) / numMillisecondsInDay) < numDaysInFiveYears) {
+            this.setState({ birthdaySelectorClass: "birthday-selectors error" });
+        } else {
+            this.setState({ birthdaySelectorClass: "birthday-selectors" });
+        }
+    }
+
+
     focusState(e, className) {
         e.stopPropagation();
         if (this.state[className].includes("error")) {
@@ -153,7 +206,8 @@ class Signup extends React.Component {
                         
                         <div className="input-container" onBlur={this.validateFirstName} onFocus={(e) => this.focusState(e, 'firstNameClass')}>
 
-                                <input 
+                                <input
+                                    ref={this.firstNameRef}
                                     type="text"
                                     value={this.state.firstName}
                                     onChange={this.handleInput("firstName")}
@@ -164,11 +218,11 @@ class Signup extends React.Component {
                                 />
 
                                 {this.state.firstNameClass.includes("error") &&
-                                    <MdError className="error-logo" />}
+                                    <MdError className="error-logo" onClick={() => this.firstNameRef.current.focus()}/>}
 
                                 {this.state.firstNameClass.includes("tool-tip") && 
                                     
-                                        <div className="info-field">
+                                        <div className="info-field-arrow-right">
                                             What's your name?
 
                                             <div className="arrow-right"></div>
@@ -181,6 +235,7 @@ class Signup extends React.Component {
 
                         <div className={"input-container"} onBlur={this.validateLastName} onFocus={(e) => this.focusState(e, 'lastNameClass')}>
                                 <input
+                                    ref={this.lastNameRef}
                                     type="text"
                                     value={this.state.lastName}
                                     onChange={this.handleInput("lastName")}
@@ -188,12 +243,12 @@ class Signup extends React.Component {
                                     className={this.state.lastNameClass}
                                 />
 
-                            {this.state.lastNameClass.includes("error") &&
-                                <MdError className="error-logo"/>}
+                                {this.state.lastNameClass.includes("error") &&
+                                    <MdError className="error-logo" onClick={() => this.lastNameRef.current.focus()}/>}
 
                                 {this.state.lastNameClass.includes("tool-tip") &&
 
-                                    <div className="info-field">
+                                    <div className="info-field-arrow-up">
                                         What's your name?
 
                                         <div className="arrow-up"></div>
@@ -204,24 +259,80 @@ class Signup extends React.Component {
 
                     </div>
 
+
+                    <div className="input-container" onBlur={this.validateMobileOrEmail} onFocus={(e) => this.focusState(e, 'mobileOrEmailClass')}>
+
                         <input
+                            ref={this.emailRef}
                             type="text"
                             value={this.state.email}
                             onChange={this.handleInput("email")}
                             placeholder="Mobile number or email"
-                            className="mobile"
+                            className={this.state.mobileOrEmailClass}
                         />
+                        {this.state.mobileOrEmailClass.includes("error") &&
+                            <MdError className="error-logo" onClick={() => this.emailRef.current.focus()} />}
+
+
+                        {this.state.mobileOrEmailClass.includes("tool-tip") &&
+
+                            <div className="info-field-arrow-right">
+                                You'll use this when you log in and if you ever 
+                                need to reset your password.
+                                <div className="arrow-right"></div>
+                            </div>
+                        }
+
+                    </div>
+
+
+
+                    <div id="password" className="input-container" onBlur={this.validatePassword} onFocus={(e) => this.focusState(e, 'passwordClass')}>
 
                         <input
+                            ref={this.passwordRef}
                             type="password"
                             value={this.state.password}
                             onChange={this.handleInput("password")}
                             placeholder="New password"
-                            className="password"
+                            className={this.state.passwordClass}
                         />
 
-                    <div className="birthday">Birthday</div>
-                    <div className="birthday-selectors">
+
+                        {this.state.passwordClass.includes("error") &&
+                            <MdError className="error-logo" onClick={() => this.passwordRef.current.focus()} />}
+
+
+                        {this.state.passwordClass.includes("tool-tip") &&
+
+                            <div className="info-field-arrow-right">
+                                Enter a combination of at least six numbers, letters
+                                and punctuation marks (like ! and &).
+                                <div className="arrow-right"></div>
+                            </div>
+                        }
+
+                    </div>
+
+                    <div className="birthday">
+                        Birthday
+
+                        {this.state.birthdaySelectorClass.includes("error") &&
+                            <MdError className="error-logo" onClick={() => this.birthdayRef.current.focus()}/>}
+                    </div>
+
+
+                    <div className={this.state.birthdaySelectorClass} onBlur={this.validateBirthday} onFocus={(e) => this.focusState(e, 'birthdaySelectorClass')}>
+
+                        {this.state.birthdaySelectorClass.includes("tool-tip") &&
+
+                            <div className="info-field-arrow-right">
+                                It looks like you entered the wrong info. Please be sure to use your real birthday.
+
+                                <div className="arrow-right"></div>
+                            </div>
+                        }
+
                         {this.generateMonths()}
                         <FiChevronDown className="select-arrow" />
 
@@ -232,7 +343,7 @@ class Signup extends React.Component {
                         <FiChevronDown className="select-arrow" />
                     </div>
 
-                    
+
                     <div className="gender">Gender</div>
                     <div className="radio-buttons-container" onChange={this.handleInput("gender")}>
                         <label>
