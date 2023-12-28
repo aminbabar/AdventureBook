@@ -67,11 +67,11 @@ class LoginForm extends React.Component {
                 </div>
 
                 <form className="login-form">
-                    <ul>
+                    {/* <ul>
                         {this.props.errors.map((error, i) => {
                             return (<li key={`error-${i}`}>{error}</li>)
                         })}
-                    </ul>
+                    </ul> */}
 
                     <div className="text-password">
                         <label>

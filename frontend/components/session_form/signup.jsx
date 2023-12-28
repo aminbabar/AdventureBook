@@ -1,7 +1,7 @@
 import React from "react";
 import { FiChevronDown } from 'react-icons/fi';
 import { MdError } from "react-icons/md";
-
+import { ImCross } from "react-icons/im";
 
 class Signup extends React.Component {
 
@@ -10,6 +10,7 @@ class Signup extends React.Component {
         this.currentDate = new Date();
         this.state = {
             email: "",
+            reEnterEmail: "",
             firstName: "",
             lastName: "",
             password: "",
@@ -21,7 +22,9 @@ class Signup extends React.Component {
             lastNameClass: "last-name",
             mobileOrEmailClass: "mobile-or-email",
             passwordClass: "password",
-            birthdaySelectorClass: "birthday-selectors"
+            birthdaySelectorClass: "birthday-selectors",
+            genderClass: "gender",
+            reEnterEmailClass: "re-enter-email-hidden"
         };
         
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,15 +34,18 @@ class Signup extends React.Component {
         this.validatePassword = this.validatePassword.bind(this);
         this.focusState = this.focusState.bind(this);
         this.validateBirthday = this.validateBirthday.bind(this);
-
-        this.inputRef = React.createRef();
-
+        this.validateGender = this.validateGender.bind(this);
+        this.validateReEnterEmail = this.validateReEnterEmail.bind(this);
+        this.generateInputBoxWithErrorHandling = this.generateInputBoxWithErrorHandling.bind(this);
+        this.handleEmailChange = this.handleEmailChange.bind(this);
 
         this.emailRef = React.createRef();
         this.firstNameRef = React.createRef();
         this.lastNameRef = React.createRef();
         this.passwordRef = React.createRef();
         this.birthdayRef = React.createRef();
+        this.genderRef = React.createRef();
+        this.reEnterEmailRef = React.createRef();
 
     };
 
@@ -55,18 +61,27 @@ class Signup extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const user = {
-            email: this.state.email,
-            first_name: this.state.firstName,
-            last_name: this.state.lastName,
-            password: this.state.password,
-            gender: this.state.gender,
-            birthday: `${this.state.year}-${this.state.month}-${this.state.day}`
+
+        // run all validations
+        if (this.validateFirstName() && this.validateLastName() && 
+            this.validateMobileOrEmail() && this.validateReEnterEmail() 
+            && this.validatePassword() && this.validateBirthday() 
+            && this.validateGender()) {
+            const user = {
+                email: this.state.email,
+                first_name: this.state.firstName,
+                last_name: this.state.lastName,
+                password: this.state.password,
+                gender: this.state.gender,
+                birthday: `${this.state.year}-${this.state.month}-${this.state.day}`
+            }
+            this.props.signup(user).then(
+                () => this.props.closeModal(),
+                (err) => {debugger}
+            );
+
         }
-        this.props.signup(user).then(
-            () => this.props.closeModal(),
-            (err) => null
-        );
+
     };
 
     generateDays() {
@@ -122,44 +137,73 @@ class Signup extends React.Component {
     }
 
     validateFirstName(e) {
-        e.stopPropagation();
         if (this.state.firstName.length === 0) {
             this.setState({firstNameClass: "first-name error"});
         } else {
             this.setState({ firstNameClass: "first-name" });
+            return true;
         };
     }
 
     validateLastName(e) {
-        e.stopPropagation();
         if (this.state.lastName.length === 0) {
             this.setState({ lastNameClass: "last-name error" });
         } else {
             this.setState({ lastNameClass: "last-name" });
+            return true;
+        };
+    }
+
+    handleEmailChange(e) {
+        this.setState({ email: e.target.value }, () => {
+            if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.state.email)) {
+                this.setState({ reEnterEmailClass: "re-enter-email" });
+                return true;
+            } else {
+                this.setState({ reEnterEmailClass: "re-enter-email-hidden" })
+            }
+        });
+    }
+
+    validateReEnterEmail(e) {
+        if (this.state.reEnterEmailClass.includes("hidden")) {
+            return true;
+        }
+
+        if (this.state.reEnterEmail !== this.state.email) {
+            this.setState({ reEnterEmailClass: "re-enter-email error" });
+        } else {
+            this.setState({ reEnterEmailClass: "re-enter-email" });
+            return true;
         };
     }
 
     validateMobileOrEmail(e) {
-        e.stopPropagation();
-        if (this.state.email.length === 0) {
-            this.setState({ mobileOrEmailClass: "mobile-or-email error" });
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.state.email)) {
+            let numberCheck = this.state.email;
+            const usPhoneNumberRegex = /^(\+\d{1,2}\s?)?(\(\d{3}\)|\d{3})[- ]?\d{3}[- ]?\d{4}$/;
+            if (usPhoneNumberRegex.test(numberCheck)) {
+                this.setState({ mobileOrEmailClass: "mobile-or-email" });
+                return true;
+            } else {
+                this.setState({ mobileOrEmailClass: "mobile-or-email error" });
+            }
         } else {
             this.setState({ mobileOrEmailClass: "mobile-or-email" });
-        };
+            return true;
+        }
     };
 
-
     validatePassword(e) {
-        e.stopPropagation();
-        if (this.state.password.length === 0) {
+        if (this.state.password.length < 6) {
             this.setState({ passwordClass: "password error" });
         } else {
             this.setState({ passwordClass: "password" });
+            return true;
         };
     }
 
     validateBirthday(e) {
-        e.stopPropagation();
         const currDate = new Date();
         // this.state.month - 1 because months go from 0 - 11
         const userBirthdayInput = new Date(this.state.year, this.state.month - 1, this.state.day);
@@ -172,7 +216,18 @@ class Signup extends React.Component {
             this.setState({ birthdaySelectorClass: "birthday-selectors error" });
         } else {
             this.setState({ birthdaySelectorClass: "birthday-selectors" });
+            return true;
         }
+    }
+
+
+    validateGender() {
+        if (this.state.gender.length === 0) {
+            this.setState({ genderClass: "gender error" });
+        } else {
+            this.setState({ genderClass: "gender" });
+            return true;
+        };
     }
 
 
@@ -183,136 +238,133 @@ class Signup extends React.Component {
         }
     }
 
+    // sample return for following method
+    /* <div className="input-container" onBlur={this.validateFirstName} onFocus={(e) => this.focusState(e, 'firstNameClass')}>
+
+            <input
+                ref={this.firstNameRef}
+                type="text"
+                value={this.state.firstName}
+                onChange={this.handleInput("firstName")}
+                placeholder="First name"
+                className={this.state.firstNameClass}
+                autoFocus
+                
+            />
+
+            {this.state.firstNameClass.includes("error") &&
+                <MdError className="error-logo" onClick={() => this.firstNameRef.current.focus()}/>}
+
+            {this.state.firstNameClass.includes("tool-tip") && 
+                
+                    <div className="info-field-arrow-right">
+                        What's your name?
+
+                        <div className="arrow-right"></div>
+                    </div>
+            }
+
+
+    </div> */
+    generateInputBoxWithErrorHandling(validationMethod, classNameForInput, stateVariableNameForInput, refNameForInput, placeholderText, errorMessage, arrowDirection, handleEmailChange=false, inputType="text") {
+        let inputContainerClass = "";
+
+        if (classNameForInput === 'reEnterEmailClass') {
+            inputContainerClass = ` ${this.state[classNameForInput]}`;
+        }
+
+        return (
+            <div className={`input-container${inputContainerClass}`} onBlur={validationMethod} onFocus={(e) => this.focusState(e, classNameForInput)}>
+
+                <input
+                    ref={refNameForInput}
+                    type={`${inputType}`}
+                    value={this.state[stateVariableNameForInput]}
+                    onChange={handleEmailChange || this.handleInput(stateVariableNameForInput)}
+                    placeholder={placeholderText}
+                    className={this.state[classNameForInput]}
+                    autoFocus={stateVariableNameForInput === 'firstName'}
+                />
+
+                {this.state[classNameForInput].includes("error") &&
+                    <MdError className="error-logo" onClick={() => refNameForInput.current.focus()} />}
+
+                {this.state[classNameForInput].includes("tool-tip") &&
+
+                    <div className={`info-field-${arrowDirection}`}>
+                        {errorMessage}
+
+                        <div className={arrowDirection}></div>
+                    </div>
+                }
+            </div>
+        )
+    }
+
 
     render() {
         return (
             <div className="signup-form">
                 <div className="signup-form-head">
-                    <ul>
-                        {this.props.errors.map((error, i) => {
-                            return (<li key={`error-${i}`}>{error}</li>)
-                        })}
-                    </ul>
                     <h2>Sign Up</h2>
                     <h4>It's quick and easy.</h4>
 
+                    <ImCross className="cross" onClick={() => this.props.closeModal()}/>
                 </div>
 
                 <div className="signup-line"></div>
 
                 <form className="form-body">
+                    
+                    {this.props.errors.map((error, i) => {
+                        return (<div className="errors" key={`error-${i}`}>{error}</div>)
+                    })}
 
                     <div className="last-name-first-name-container">
-                        
-                        <div className="input-container" onBlur={this.validateFirstName} onFocus={(e) => this.focusState(e, 'firstNameClass')}>
+                        {this.generateInputBoxWithErrorHandling(this.validateFirstName,
+                                                                'firstNameClass',
+                                                                'firstName',
+                                                                this.firstNameRef,
+                                                                "First Name",
+                                                                "What's your name?",
+                                                                "arrow-right")}
 
-                                <input
-                                    ref={this.firstNameRef}
-                                    type="text"
-                                    value={this.state.firstName}
-                                    onChange={this.handleInput("firstName")}
-                                    placeholder="First name"
-                                    className={this.state.firstNameClass}
-                                    autoFocus
-                                    
-                                />
-
-                                {this.state.firstNameClass.includes("error") &&
-                                    <MdError className="error-logo" onClick={() => this.firstNameRef.current.focus()}/>}
-
-                                {this.state.firstNameClass.includes("tool-tip") && 
-                                    
-                                        <div className="info-field-arrow-right">
-                                            What's your name?
-
-                                            <div className="arrow-right"></div>
-                                        </div>
-                                }
-
-
-                        </div>
-
-
-                        <div className={"input-container"} onBlur={this.validateLastName} onFocus={(e) => this.focusState(e, 'lastNameClass')}>
-                                <input
-                                    ref={this.lastNameRef}
-                                    type="text"
-                                    value={this.state.lastName}
-                                    onChange={this.handleInput("lastName")}
-                                    placeholder="Last name"
-                                    className={this.state.lastNameClass}
-                                />
-
-                                {this.state.lastNameClass.includes("error") &&
-                                    <MdError className="error-logo" onClick={() => this.lastNameRef.current.focus()}/>}
-
-                                {this.state.lastNameClass.includes("tool-tip") &&
-
-                                    <div className="info-field-arrow-up">
-                                        What's your name?
-
-                                        <div className="arrow-up"></div>
-                                    </div>
-                                }
-
-                        </div>
-
+                        {this.generateInputBoxWithErrorHandling(this.validateLastName,
+                                                                'lastNameClass',
+                                                                'lastName',
+                                                                this.lastNameRef,
+                                                                "Last Name",
+                                                                "What's your name?",
+                                                                "arrow-up")}
                     </div>
 
-
-                    <div className="input-container" onBlur={this.validateMobileOrEmail} onFocus={(e) => this.focusState(e, 'mobileOrEmailClass')}>
-
-                        <input
-                            ref={this.emailRef}
-                            type="text"
-                            value={this.state.email}
-                            onChange={this.handleInput("email")}
-                            placeholder="Mobile number or email"
-                            className={this.state.mobileOrEmailClass}
-                        />
-                        {this.state.mobileOrEmailClass.includes("error") &&
-                            <MdError className="error-logo" onClick={() => this.emailRef.current.focus()} />}
+                    {this.generateInputBoxWithErrorHandling(this.validateMobileOrEmail,
+                                                            'mobileOrEmailClass',                                                            'email',
+                                                            this.emailRef,
+                                                            "Mobile number or email",
+                                                            "You'll use this when you log in and if you ever need to reset your password.",
+                                                            "arrow-right",
+                                                            this.handleEmailChange)}
 
 
-                        {this.state.mobileOrEmailClass.includes("tool-tip") &&
+                    {this.generateInputBoxWithErrorHandling(this.validateReEnterEmail, 
+                                                            'reEnterEmailClass', 
+                                                            'reEnterEmail', 
+                                                            this.reEnterEmailRef, 
+                                                            "Re-enter email", 
+                                                            "Your emails do not match. Please try again.", 
+                                                            "arrow-right")}
+                    
+                    
+                    {this.generateInputBoxWithErrorHandling(this.validatePassword, 
+                                                            'passwordClass',
+                                                            'password',
+                                                            this.passwordRef,
+                                                            "New password",
+                                                            "Enter a combination of at least six numbers, letters and punctuation marks (like ! and &).", "arrow-right", 
+                                                            false,
+                                                            "password")}
 
-                            <div className="info-field-arrow-right">
-                                You'll use this when you log in and if you ever 
-                                need to reset your password.
-                                <div className="arrow-right"></div>
-                            </div>
-                        }
-
-                    </div>
-
-
-
-                    <div id="password" className="input-container" onBlur={this.validatePassword} onFocus={(e) => this.focusState(e, 'passwordClass')}>
-
-                        <input
-                            ref={this.passwordRef}
-                            type="password"
-                            value={this.state.password}
-                            onChange={this.handleInput("password")}
-                            placeholder="New password"
-                            className={this.state.passwordClass}
-                        />
-
-
-                        {this.state.passwordClass.includes("error") &&
-                            <MdError className="error-logo" onClick={() => this.passwordRef.current.focus()} />}
-
-
-                        {this.state.passwordClass.includes("tool-tip") &&
-
-                            <div className="info-field-arrow-right">
-                                Enter a combination of at least six numbers, letters
-                                and punctuation marks (like ! and &).
-                                <div className="arrow-right"></div>
-                            </div>
-                        }
-
-                    </div>
 
                     <div className="birthday">
                         Birthday
@@ -344,11 +396,25 @@ class Signup extends React.Component {
                     </div>
 
 
-                    <div className="gender">Gender</div>
-                    <div className="radio-buttons-container" onChange={this.handleInput("gender")}>
+                    <div className={this.state.genderClass}>
+                        Gender
+                        
+                        {this.state.genderClass.includes("error") &&
+                            <MdError className="error-logo" onClick={() => this.genderRef.current.focus()} />}
+                    </div>
+
+                    <div className="radio-buttons-container" onChange={this.handleInput("gender")} onFocus={(e) => this.focusState(e, 'genderClass')} onBlur={this.validateGender}>
+
+                        {this.state.genderClass.includes("tool-tip") &&
+                            <div className="info-field-arrow-right">
+                                Please choose a gender. You can change who can see this later.
+                                <div className="arrow-right"></div>
+                            </div>
+                        }
+
                         <label>
                             Female
-                            <input type="radio" name="gender" value="Female" />
+                            <input ref={this.genderRef} type="radio" name="gender" value="Female" />
                         </label>
 
                         <label>
