@@ -6,6 +6,19 @@
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 12vh;
+
+    .errors {
+        margin-left: 11px;
+        width: 96%;
+        border: 1px solid red;
+        background-color: #faebe9;
+        text-align: center;
+        margin-top: 13px;
+        margin-bottom: 16px;
+        padding: 7px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 12px;
+    }
 }
 
 .splash-logo-div {
@@ -46,7 +59,7 @@
 }
 
 .login-form input, label {
-    width: 95%;
+    width: 98%;
 }
 
 .login-form input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */

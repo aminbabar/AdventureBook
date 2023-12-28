@@ -77,7 +77,7 @@ class Signup extends React.Component {
             }
             this.props.signup(user).then(
                 () => this.props.closeModal(),
-                (err) => {debugger}
+                // (err) => {debugger}
             );
 
         }

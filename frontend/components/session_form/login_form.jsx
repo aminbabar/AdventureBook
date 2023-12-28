@@ -1,6 +1,5 @@
 
 import React from "react";
-import { Link } from "react-router-dom";
 
 
 class LoginForm extends React.Component {
@@ -30,7 +29,9 @@ class LoginForm extends React.Component {
 
     openSignupModal(e) {
         e.preventDefault();
+        this.props.resetErrors()
         this.props.openModal("create_user");
+        
     };
 
     componentWillUnmount() {
@@ -46,7 +47,6 @@ class LoginForm extends React.Component {
                 password: `${password}`
             }, () => {
                 this.props.login(this.state)
-                // .then(() => this.props.history.push("./"));
             });
         }
     };
@@ -67,11 +67,8 @@ class LoginForm extends React.Component {
                 </div>
 
                 <form className="login-form">
-                    {/* <ul>
-                        {this.props.errors.map((error, i) => {
-                            return (<li key={`error-${i}`}>{error}</li>)
-                        })}
-                    </ul> */}
+
+                    {this.props.errors.length > 0 && !this.props.modal && <div className="errors">Incorrect email or password</div>}
 
                     <div className="text-password">
                         <label>
@@ -123,7 +120,6 @@ class LoginForm extends React.Component {
 
 
                     <div className="signup-link-div">
-                        {/* <Link className="signup-link" to={"/signup"}>Create New Account</Link> */}
                         <button 
                             className="signup-link"
                             onClick={this.openSignupModal}>
