@@ -10,6 +10,7 @@ import { IoMdHome } from "react-icons/io";
 
 import Dropdown from "./dropdown";
 import Search from "../search/search";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -23,27 +24,7 @@ class NavBar extends React.Component {
         // this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-
-
-    // LEFT
-    // facebook logo that takes you to home on click
-    // search bar
-
-    // MIDDLE
-    // Home logo for newsfeed
-    // friends logo
-    // group logo
-
-
-    // RIGHT
-    // profile link
-    // menu link
-    // messenger
-    // notificatinos
-    // dropdown for logout, feedback, settings
-
     focusSearch() {
-        // debugger;
         this.setState({searchClickedOn: true})
     }
 
@@ -56,12 +37,16 @@ class NavBar extends React.Component {
         const logoClassName = this.state.searchClickedOn ? "logo hide" : "logo";
         const arrowClassName = this.state.searchClickedOn ? "arrow" : "arrow hide";
         const leftClass = this.state.searchClickedOn ? "left focused" : "left"
+
+
         return(
             <nav className="navbar">
                 <div className={leftClass}>
-                    <div className={logoClassName}>
-                        a
-                    </div>
+                    <Link to="/">
+                        <div className={logoClassName}>
+                            a
+                        </div>
+                    </Link>
 
                     <GoArrowLeft className={arrowClassName}/>
 
@@ -70,15 +55,21 @@ class NavBar extends React.Component {
 
                 <div className="middle">
                     <div>
-                        <IoMdHome className="home-icon icon"/>
+                        <Link to="/">
+                            <IoMdHome className="home-icon icon"/>
+                        </Link>
                     </div>
 
                     <div>
-                        <FaGithub className="icon"/>
+                        <a href="https://github.com/aminbabar" target="_blank">
+                                <FaGithub className="icon"/>
+                        </a>
                     </div>
 
                     <div>
-                        <FaLinkedin className="icon"/>
+                        <a href="https://www.linkedin.com/in/arbabar/" target="_blank">
+                            <FaLinkedin className="icon"/>
+                        </a>
                     </div>
                 </div>
                 
