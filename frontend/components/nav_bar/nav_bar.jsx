@@ -6,6 +6,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { GrLogout } from "react-icons/gr";
 import { GoArrowLeft } from "react-icons/go";
 // import { FaFacebookMessenger } from "react-icons/fa";
+import { IoMdHome } from "react-icons/io";
 
 import Dropdown from "./dropdown";
 import Search from "../search/search";
@@ -68,9 +69,17 @@ class NavBar extends React.Component {
                 </div>
 
                 <div className="middle">
-                    <FaGithub />
-                    <FaLinkedin />
-                    
+                    <div>
+                        <IoMdHome className="home-icon icon"/>
+                    </div>
+
+                    <div>
+                        <FaGithub className="icon"/>
+                    </div>
+
+                    <div>
+                        <FaLinkedin className="icon"/>
+                    </div>
                 </div>
                 
 

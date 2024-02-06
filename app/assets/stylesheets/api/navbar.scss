@@ -136,6 +136,44 @@
     //     padding-right: 20px;
     // }
     
+    .middle {
+        display: flex;
+        width: 25%;
+        align-items: center;
+        position: relative;
+        // right: 100px;
+        right: 5%;
+
+
+        div {
+            width: 112px;
+            height: 85%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            margin-right: 3px;
+            margin-left: 3px;
+        }
+
+
+        div:first-of-type {
+            border-bottom: 5px solid #1877f2;
+        }
+
+        div:not(:first-child):hover {
+            background-color: #EEF0F3;
+        }
+        
+        .icon {
+            font-size: 40px;
+            color: #65676F;
+        }
+
+        .home-icon {
+            color: #1877f2;
+        }
+    }
     
     .dropdown-container-icon-navbar:hover {
         border: none;
