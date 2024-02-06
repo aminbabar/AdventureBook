@@ -43,24 +43,39 @@ class Search extends React.Component {
             return Object.values(this.state.searchResults).map((user, idx) => {
                 return this.searchItem(user, idx);
             });
-        };
+        } else {
+            return (
+                <div className="no-results">
+                    No results found
+                </div>
+            )
+        }
     }
 
+    preventDefaultBehavior(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+                
     render() {
 
         const searchClassName = this.props.searchClickedOn ? "search focused" : "search";
         return(
-            <div className={searchClassName}>
-                {!this.props.searchClickedOn && <FaSearch className="search-logo"/>}
-                <input type="text"  
-                    onChange={this.update} 
-                    placeholder="Search Algobook"
-                    value={this.state.query}
-                    onFocus={() => this.props.focusSearch()}
-                    onBlur={() => this.props.unFocusSearch()}
-                />
-                {this.searchResults()}
-            </div>
+            <>
+                <div className={searchClassName}>
+                    {!this.props.searchClickedOn && <FaSearch className="search-logo"/>}
+                    <input type="text"  
+                        onChange={this.update} 
+                        placeholder="Search Algobook"
+                        value={this.state.query}
+                        onFocus={() => this.props.focusSearch()}
+                        onBlur={() => this.props.unFocusSearch()}
+                    />
+                </div>
+                {this.props.searchClickedOn && <div className="search-results" onMouseDown={this.preventDefaultBehavior}>
+                    {this.searchResults()}
+                </div>}
+            </>
         );
     }
 }
