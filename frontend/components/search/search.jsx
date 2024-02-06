@@ -1,6 +1,7 @@
 import React from "react";
 import { search } from "../../utils/user_api_util";
 import { Link } from "react-router-dom";
+import { FaSearch } from "react-icons/fa";
 
 
 class Search extends React.Component {
@@ -46,15 +47,20 @@ class Search extends React.Component {
     }
 
     render() {
+
+        const searchClassName = this.props.searchClickedOn ? "search focused" : "search";
         return(
-            <>
+            <div className={searchClassName}>
+                {!this.props.searchClickedOn && <FaSearch className="search-logo"/>}
                 <input type="text"  
                     onChange={this.update} 
                     placeholder="Search Algobook"
                     value={this.state.query}
+                    onFocus={() => this.props.focusSearch()}
+                    onBlur={() => this.props.unFocusSearch()}
                 />
                 {this.searchResults()}
-            </>
+            </div>
         );
     }
 }

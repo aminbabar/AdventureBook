@@ -69,8 +69,8 @@ class Signup extends React.Component {
             && this.validateGender()) {
             const user = {
                 email: this.state.email,
-                first_name: this.state.firstName,
-                last_name: this.state.lastName,
+                first_name: this.state.firstName.charAt(0).toUpperCase() + this.state.firstName.slice(1).toLowerCase(),
+                last_name: this.state.lastName.charAt(0).toUpperCase() + this.state.lastName.slice(1).toLowerCase(),
                 password: this.state.password,
                 gender: this.state.gender,
                 birthday: `${this.state.year}-${this.state.month}-${this.state.day}`
