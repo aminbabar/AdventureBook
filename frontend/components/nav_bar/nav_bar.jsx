@@ -54,30 +54,32 @@ class NavBar extends React.Component {
                 </div>
 
                 <div className="middle">
-                    <div>
-                        <Link to="/">
+                    <Link to="/">
+                        <div>
                             <IoMdHome className="home-icon icon"/>
-                        </Link>
-                    </div>
+                        </div>
+                    </Link>
 
-                    <div>
-                        <a href="https://github.com/aminbabar" target="_blank">
-                                <FaGithub className="icon"/>
-                        </a>
-                    </div>
+                    <a href="https://github.com/aminbabar" target="_blank">
+                        <div>
+                            <FaGithub className="icon"/>
+                        </div>
+                    </a>
 
-                    <div>
-                        <a href="https://www.linkedin.com/in/arbabar/" target="_blank">
+                    <a href="https://www.linkedin.com/in/arbabar/" target="_blank">
+                        <div>
                             <FaLinkedin className="icon"/>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 </div>
                 
 
                 <div className="right">
-                    <span>
-                        {this.props.currentUser.first_name}
-                    </span>
+                    <Link className="user-name-container" to={`/users/${this.props.currentUser.id}`}>
+                        <div className="image-container">
+                            <img src={this.props.currentUser.profilePhoto} />
+                        </div>
+                    </Link>
 
                     <Dropdown icon={<BsFillCaretDownFill size={"15px"} />} myclass="navbar">
                         <li onClick={this.props.logout}>

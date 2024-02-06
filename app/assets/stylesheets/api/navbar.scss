@@ -211,13 +211,7 @@
     //     width: 100%;
     // }
     
-    // .right {
-    //     display: flex;
-    //     align-items: center;
-    //     width: 10%;
-    //     justify-content: space-between;
-    //     padding-right: 20px;
-    // }
+
     
     .middle {
         display: flex;
@@ -228,7 +222,7 @@
         right: 5%;
 
 
-        div {
+        a {
             width: 112px;
             height: 85%;
             display: flex;
@@ -240,11 +234,11 @@
         }
 
 
-        div:first-of-type {
+        a:first-of-type {
             border-bottom: 5px solid #1877f2;
         }
 
-        div:not(:first-child):hover {
+        a:hover {
             background-color: #EEF0F3;
         }
         
@@ -261,9 +255,12 @@
     .dropdown-container-icon-navbar:hover {
         border: none;
         background-color: #D2D5D8;
+        box-sizing: border-box;
         border-radius: 50%;
-        height: 40px;
-        width: 40px;
+        // height: 45px;
+        // width: 45px;
+
+
         display: flex;
         align-items: center;
         justify-content: center;
@@ -271,8 +268,8 @@
     }
     
     .dropdown-container-icon-navbar {
-        height: 40px;
-        width: 40px;
+        height: 45px;
+        width: 45px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -285,8 +282,8 @@
         border: none;
         background-color: #E0E2E8;
         border-radius: 50%;
-        height: 40px;
-        width: 40px;
+        height: 45px;
+        width: 45px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -323,5 +320,44 @@
     
     .dropdown-show-navbar >li > span {
         margin-left: 10px;
+    }
+
+
+    .right {
+        display: flex;
+        align-items: center;
+        width: 55px;
+        position: relative;
+
+        .image-container {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #D2D5D8;
+        }
+        
+        .image-container img {
+            width: 140%;
+            height: auto;
+            display: block;
+        }
+
+        .image-container:hover {
+            opacity: 0.7;
+        }
+
+        .user-name-container {
+            position: absolute;
+            right: 55px;
+            width: 5%;
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px;
+            width: auto;
+        }
     }
 }
