@@ -2,24 +2,87 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.post {
-    padding: 15px;
-    background-color: white;
-    margin: 15px;
-    border-radius: 7px;
-}
+
 
 
 .newsfeed {
     display: flex;
     justify-content: space-between;
+
+    .newsfeed-middle {
+        width: 680px;
+        margin-top: 15px;
+    }
+
+    .create-post-top {
+        // height: 90px;
+        height: 123px;
+        background-color: white;
+        border-radius: 7px;
+
+        .create-post-container {
+            display: flex;
+            align-items: center;
+            border-radius: 20px;
+            text-align: left;
+            font-size: 17px;
+            padding: 12px 16px 10px;
+            // font-family: Helvetica, Arial, sans-serif;
+
+            .create-post-text {
+                width: auto;
+                margin-left: 10px;
+                background-color: #EDF0F3;
+                width: 90%;
+                padding: 8px 12px;
+                display: flex;
+                align-items: center;
+                border-radius: 25px;
+                cursor: pointer;
+            }
+
+            .create-post-text:hover {
+                background-color: #E0E2E4;
+            }
+
+            .image-container {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: grey;
+            }
+
+            .image-container img {
+                width: 140%;
+                height: auto;
+                display: block;
+            }
+
+        }
+        .hr-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+
+            div {
+                border-bottom: 1px solid #E0E2E4;
+                width: 94%;
+            }
+        }
+    }
 }
 
 
-.newsfeed-middle {
-    width: 40%;
-}
-
+  .post {
+      padding: 15px;
+      background-color: white;
+      margin: 15px;
+      border-radius: 7px;
+  }
 
 .hr {
     border-bottom: 1px solid #C7CACE;
@@ -148,39 +211,3 @@
     box-shadow: 0 0 10px #F0F0F0;
 };
 
-
-.create-post-top {
-    // margin: 100px;
-    margin-top: 15px;
-    margin-left: 16px;
-    width: 96%;
-    height: 10vh;
-    background-color: white;
-    border-radius: 7px;
-}
-
-.create-post-top > button {
-    background-color: #EDF0F3;
-    border-style: none;
-    width: 100%;
-    height: 40px;
-    // border-radius: 25%;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    text-align: left;
-    padding-left: 15px;
-    font-size: 17px;
-    // font-family: Helvetica, Arial, sans-serif;
-}
-
-.create-post-top > button:hover {
-    background-color: #E0E2E4;
-}
-
-
-.post-photo {
-    width: 100%;
-    height: auto;
-}

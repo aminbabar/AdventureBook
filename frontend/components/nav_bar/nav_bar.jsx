@@ -1,13 +1,9 @@
 import React from "react";
 import { BsFillCaretDownFill } from "react-icons/bs";
-// import { IoMdNotifications} from "react-icons/io"
-// import { CgMenuGridO} from "react-icons/cg";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { GrLogout } from "react-icons/gr";
 import { GoArrowLeft } from "react-icons/go";
-// import { FaFacebookMessenger } from "react-icons/fa";
 import { IoMdHome } from "react-icons/io";
-
 import Dropdown from "./dropdown";
 import Search from "../search/search";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
@@ -21,7 +17,6 @@ class NavBar extends React.Component {
 
         this.focusSearch = this.focusSearch.bind(this);
         this.unFocusSearch = this.unFocusSearch.bind(this);
-        // this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     focusSearch() {

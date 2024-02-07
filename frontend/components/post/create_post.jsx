@@ -5,12 +5,19 @@ import { openModal } from "../../actions/modal_actions";
 const CreatePost = (props) => {
     return(
         <div className="create-post-top">
-            <button 
-                onClick={() => props.openModal("create_post")}
-            >
-                {`What's on your mind, ${props.currentUser.first_name}?`}
+            <div className="create-post-container" onClick={() => props.openModal("create_post")}>
+                <div className="image-container">
+                    <img src={props.currentUser.profilePhoto} />
+                </div>
 
-            </button>
+                <div className="create-post-text">
+                    {`What's on your mind, ${props.currentUser.first_name}?`}
+                </div>
+
+            </div>
+            <div className="hr-container">
+                <div className="hr"></div>
+            </div>
         </div>
 
     );

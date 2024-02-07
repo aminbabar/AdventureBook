@@ -133,24 +133,16 @@
             top: 64px;
             box-shadow: 0 12px 12px #C8C9CC, inset 0 0 0 0 #C8C9CC;
 
-            // .
 
-            // .search-item:last-of-type {
-            //     background-color: red;
-            // }
-            
             div:first-of-type .search-item {
-                // background-color: red;
                 margin-top: 5px;
             }
 
             div:last-of-type .search-item {
-                // background-color: red;
                 margin-bottom: 10px;
             }
 
             .search-item {
-
                 display: flex;
                 align-items: center;
                 padding: 8px;
@@ -197,30 +189,13 @@
             }
         }
     }
-
-
-    
-    // nav {
-    //     display: flex;
-    //     background-color: #FFFFFF;
-    //     justify-content: space-between;
-    //     height: 65px;
-    //     top: 0px;
-    //     position: sticky;
-    //     z-index: 1;
-    //     width: 100%;
-    // }
-    
-
     
     .middle {
         display: flex;
         width: 25%;
         align-items: center;
         position: relative;
-        // right: 100px;
         right: 5%;
-
 
         a {
             width: 112px;
@@ -257,14 +232,9 @@
         background-color: #D2D5D8;
         box-sizing: border-box;
         border-radius: 50%;
-        // height: 45px;
-        // width: 45px;
-
-
         display: flex;
         align-items: center;
         justify-content: center;
-    
     }
     
     .dropdown-container-icon-navbar {
