@@ -8,6 +8,8 @@
     height: 65px;
     position: sticky;
     top: 0px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
 
     .left.focused {
         box-shadow: 0 12px 12px #C8C9CC, inset 0 0 0 0 #C8C9CC;

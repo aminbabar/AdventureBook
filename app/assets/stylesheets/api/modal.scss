@@ -6,6 +6,8 @@
   left: 0;
   background: rgba(241, 242, 242, 0.8);
   z-index: 10;
+  overflow: hidden;
+  height: 100%;
 }
 
 .modal-child {
@@ -13,4 +15,9 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+
+body:has(.modal-background) {
+  overflow: hidden;
 }

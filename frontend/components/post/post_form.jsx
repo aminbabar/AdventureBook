@@ -1,5 +1,8 @@
 import React from "react";
-
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { RxCross1 } from "react-icons/rx";
+import { MdOutlineVideoCameraFront } from "react-icons/md";
+import { GrGallery } from "react-icons/gr";
 
 class PostForm extends React.Component {
     constructor(props) {
@@ -46,22 +49,65 @@ class PostForm extends React.Component {
 
 
     render() {
+        const currentUser = this.props.currentUser;
+        const submitButtonClass = this.state.body.length < 1 ? " disable" : "";
         const preview = this.state.photoUrl ? <img src={this.state.photoUrl} /> : null;
         return (
             <div className="post-modal">
                 <form onSubmit={this.handleSubmit}>
-                    <label>
-                        <textarea onChange={this.update("body")} value={this.state.body} placeholder="What's on your mind"></textarea>
-                    </label>
-
-                    <div>
-                        {/* <span>Preview:</span> */}
-                        {preview}
+                    <div className="create-post-header">
+                        <div>Create Post</div>
+                        <div className="cross" onClick={() => this.props.closeModal()}>
+                            <RxCross1 />
+                        </div>
                     </div>
 
-                    <input type="file" onChange={this.handleFile.bind(this)} />
+                    <div className="create-post-user-container" >
+                        <div className="image-container">
+                            <Link to={`/users/${currentUser.id}`} onClick={() => this.props.closeModal()}>
+                                <img src={currentUser.profilePhoto} />
+                            </Link>
+                        </div>
 
-                    <button>Post</button>
+                        <div className="create-post-user">
+                            {currentUser.first_name} {currentUser.last_name}
+                        </div>
+                    </div>
+
+                    <label>
+                        <textarea 
+                            onChange={this.update("body")} 
+                            value={this.state.body} 
+                            placeholder={`What's on your mind, ${currentUser.first_name}`}>
+                        </textarea>
+                    </label>
+
+                    <div className="preview">
+                        {preview}
+                    </div>
+                    <label htmlFor="file-upload">
+                        <div className="file-upload">
+                            <div>
+                                Add video or photo to your post
+                            </div>
+
+                            <div className="logos">
+                                <div className="video">
+                                    <MdOutlineVideoCameraFront />
+                                </div>
+
+                                <div>
+                                    <GrGallery className="photo" />
+                                </div>
+                            </div>
+                        </div>
+                    </label>
+                    <input type="file" id="file-upload" onChange={this.handleFile.bind(this)} />
+
+                    <div className={`create-post-submit${submitButtonClass}`} onClick={this.handleSubmit}>Post</div>
+
+                    {/* // following div for spacing at bottom*/}
+                    <div className="bottom-space"></div>
                 </form>
                 
             </div>

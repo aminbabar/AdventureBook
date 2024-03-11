@@ -11,7 +11,8 @@ const mstp = (state) => {
             photoFile: null,
             photoUrl: null
         },
-        formType: "Create Post"
+        formType: "Create Post",
+        currentUser: state.entities.users[state.session.currentUser]
     });
 };
 
