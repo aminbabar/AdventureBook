@@ -159,7 +159,12 @@ class PostIndexItem extends React.Component {
                 </div>
 
                 <div className="post-body">
-                    {this.props.post.body}
+                    {this.props.post.body.split('\r\n').map((line, index) => (
+                    <div key={`${index}${line}`}>
+                        {line}
+                        <br />
+                    </div>
+                    ))}
                 </div>
 
                 <div>

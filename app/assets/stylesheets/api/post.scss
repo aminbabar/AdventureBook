@@ -124,6 +124,10 @@
     .post-body {
         padding-top: 10px;
         padding-bottom: 10px;
+        white-space: 'pre-wrap';
+        div {
+            white-space: pre-wrap;
+        }
     }
 
     .post-buttons button {
