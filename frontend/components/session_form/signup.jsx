@@ -76,8 +76,7 @@ class Signup extends React.Component {
                 birthday: `${this.state.year}-${this.state.month}-${this.state.day}`
             }
             this.props.signup(user).then(
-                () => this.props.closeModal(),
-                // (err) => {debugger}
+                () => this.props.closeModal()
             );
 
         }

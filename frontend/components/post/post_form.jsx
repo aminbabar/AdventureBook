@@ -3,6 +3,9 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { RxCross1 } from "react-icons/rx";
 import { MdOutlineVideoCameraFront } from "react-icons/md";
 import { GrGallery } from "react-icons/gr";
+import heic2any from 'heic2any';
+import { BiLoaderAlt } from "react-icons/bi";
+
 
 class PostForm extends React.Component {
     constructor(props) {
@@ -10,7 +13,9 @@ class PostForm extends React.Component {
         this.state = {
             body: props.post.body,
             photoFile: props.post.photoFile,
-            photoUrl: props.post.photoUrl
+            photoUrl: props.post.photoUrl,
+            isPhotoLoading: false,
+            isPostLoading: false
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     };
@@ -25,36 +30,57 @@ class PostForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        if (e.target.classList.contains("disable")) {
+            return;
+        }
         const formData = new FormData();
         formData.append('post[body]', this.state.body);
         if (this.state.photoFile) {
             formData.append('post[photo]', this.state.photoFile);
         };
         const id = this.props.post.id;
-        this.props.action(formData, id)
-        .then(this.setState({ body: "" }))
-        .then(this.props.closeModal());
+        this.setState({isPostLoading: true}, () => {
+            this.props.action(formData, id)
+                .then(() => this.setState({ body: "" }))
+                .then(() => this.props.closeModal());
+        })
     };
 
     handleFile(e) {
         const file = e.currentTarget.files[0];
-        const fileReader = new FileReader();
-        fileReader.onloadend = () => {
-            this.setState({photoFile: file, photoUrl: fileReader.result})
-        };
-        if (file) {
-            fileReader.readAsDataURL(file);
-        };
-    };
+        this.setState({isPhotoLoading: true, photoUrl: "" }, () => {
+            if (file) {
+                if (file.type === 'image/heic') {
+                    heic2any({ blob: file })
+                        .then((result) => {
+                            const convertedFile = new File([result], file.name.replace('.heic', '.jpg'), { type: 'image/jpeg' });
+                            this.setState({ photoFile: convertedFile, photoUrl: URL.createObjectURL(convertedFile) });
+                            this.setState({ isPhotoLoading: false });
+                        })
+                        .catch((error) => {
+                            console.error('Error converting HEIC to JPEG:', error);
+                        });
+                } else {
+                    // for non-HEIC images
+                    const fileReader = new FileReader();
+                    fileReader.onloadend = () => {
+                        this.setState({ photoFile: file, photoUrl: fileReader.result, isPhotoLoading: false });
+                    };
+                    fileReader.readAsDataURL(file);
+                }
+            } 
+        });
+    }
 
 
     render() {
         const currentUser = this.props.currentUser;
-        const submitButtonClass = this.state.body.length < 1 ? " disable" : "";
+        const submitButtonClass = this.state.body.length < 1 || this.state.isPostLoading ? " disable" : "";
         const preview = this.state.photoUrl ? <img src={this.state.photoUrl} /> : null;
-        debugger;
+        const postSpinner = <div className="post-spinner-container"> <div> <BiLoaderAlt className="spinner" /></div>   <div>Posting</div></div>
         return (
             <div className="post-modal">
+                {this.state.isPostLoading ? postSpinner : ""}
                 <form onSubmit={this.handleSubmit}>
                     <div className="create-post-header">
                         { this.props.formType === "Create Post" ? <div>Create Post</div> : <div>Edit Post</div> }
@@ -84,6 +110,7 @@ class PostForm extends React.Component {
                     </label>
 
                     <div className="preview">
+                        {this.state.isPhotoLoading ? <BiLoaderAlt className="spinner"/> : ""}
                         {preview}
                     </div>
                     <label htmlFor="file-upload">
