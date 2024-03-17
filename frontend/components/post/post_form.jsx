@@ -52,11 +52,12 @@ class PostForm extends React.Component {
         const currentUser = this.props.currentUser;
         const submitButtonClass = this.state.body.length < 1 ? " disable" : "";
         const preview = this.state.photoUrl ? <img src={this.state.photoUrl} /> : null;
+        debugger;
         return (
             <div className="post-modal">
                 <form onSubmit={this.handleSubmit}>
                     <div className="create-post-header">
-                        <div>Create Post</div>
+                        { this.props.formType === "Create Post" ? <div>Create Post</div> : <div>Edit Post</div> }
                         <div className="cross" onClick={() => this.props.closeModal()}>
                             <RxCross1 />
                         </div>
@@ -104,7 +105,9 @@ class PostForm extends React.Component {
                     </label>
                     <input type="file" id="file-upload" onChange={this.handleFile.bind(this)} />
 
-                    <div className={`create-post-submit${submitButtonClass}`} onClick={this.handleSubmit}>Post</div>
+                    <div className={`create-post-submit${submitButtonClass}`} onClick={this.handleSubmit}>
+                        { this.props.formType === "Create Post" ? "Post" : "Save" }
+                    </div>
 
                     {/* // following div for spacing at bottom*/}
                     <div className="bottom-space"></div>

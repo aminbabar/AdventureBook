@@ -14,14 +14,14 @@
  */
 
 @import "./reset";
-@import "./api/post.scss";
 @import "./api/login_form";
 @import "./api/navbar";
 @import "./api/newsfeed";
+@import "./api/post";
 @import "./api/modal";
 @import "./api/sign_up";
 @import "./api/profile";
-@import "./api/like_index.scss";
+@import "./api/like_index";
 
 
 body {

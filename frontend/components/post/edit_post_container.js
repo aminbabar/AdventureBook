@@ -8,7 +8,8 @@ import PostForm from "./post_form";
 const mstp = (state, ownProps) => {
     return ({
         post: state.entities.posts[ownProps.postId],
-        formType: "Edit Post"
+        formType: "Edit Post",
+        currentUser: state.entities.users[state.session.currentUser]
     });
 };
 

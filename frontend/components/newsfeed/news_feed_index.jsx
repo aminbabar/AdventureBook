@@ -20,13 +20,13 @@ class NewsFeedIndex extends React.Component {
     
                 <div className="newsfeed">
                     <div>
-                            Left scroll bar
+                            {/* Left scroll bar */}
                     </div>
     
                     <PostIndexContainer />
     
                     <div>
-                        Right scroll bar
+                        {/* Right scroll bar */}
                     </div>
     
                 </div>

@@ -6,6 +6,8 @@ import CreateCommentContainer from "../comment/create_comment_container";
 import CommentIndex from "../comment/comment_index";
 import LikeContainer from "../like/like_container";
 import LikeButton from "../like/like_button";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import TimeElapsed from "./post_time_elapsed";
 
 // Post header
 
@@ -136,13 +138,17 @@ class PostIndexItem extends React.Component {
 
             <div className="post">
                 <div className="post-header">
-                    <div className="post-header-photo">
-                    </div>
+                    <Link to={`/users/${this.props.currentUser.id}`}>
+                        <div className="image-container">
+                            <img src={this.props.currentUser.profilePhoto} />
+                        </div>
+                    </Link>
 
                     <div className="post-header-middle">
                         <a className="post-author-name" href="#"> {postAuthor} </a>
-                        <a className="post-date" href="#"> {createdDate}</a>
+                        <TimeElapsed  createdDate={this.props.post.created_at}/>
                     </div>
+
 
                     <button className="post-header-dropdown" onClick={this.toggleDropDown} onBlur={this.closeDropDown}>
                         <BsThreeDots color="#55575B" size={"20px"}/>
