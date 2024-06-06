@@ -89,9 +89,9 @@
 
 .login-button, .demo-login-button {
     cursor: pointer;
-    background-color: #1877f2; 
+    background-color: $facebook-blue; 
     border-radius: 5px;
-    border: 1px solid #1877f2;
+    border: 1px solid $facebook-blue;
     width: 100%;
     font-size: 20px;
     color: white;

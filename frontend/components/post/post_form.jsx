@@ -75,7 +75,7 @@ class PostForm extends React.Component {
 
     render() {
         const currentUser = this.props.currentUser;
-        const submitButtonClass = this.state.body.length < 1 || this.state.isPostLoading ? " disable" : "";
+        const submitButtonClass = this.state.body.length < 1 || this.state.isPostLoading || this.state.isPhotoLoading ? " disable" : "";
         const preview = this.state.photoUrl ? <img src={this.state.photoUrl} /> : null;
         const postSpinner = <div className="post-spinner-container"> <div> <BiLoaderAlt className="spinner" /></div>   <div>Posting</div></div>
         return (

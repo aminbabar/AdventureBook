@@ -12,8 +12,6 @@ class Dropdown extends React.Component {
     };
 
     changeState() {
-        // let newState = !this.state.show;
-        // this.setState({show: newState});
 
         this.setState((prevState) => {
             return { show: !prevState.show }

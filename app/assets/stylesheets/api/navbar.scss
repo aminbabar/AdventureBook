@@ -9,6 +9,7 @@
     position: sticky;
     top: 0px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
 
 
     .left.focused {
@@ -112,7 +113,7 @@
         .logo {
             opacity: 1;
             max-width: 300px;
-            background-color: #1877f2;
+            background-color: $facebook-blue;
             border-radius: 50%;
             width: 45px;
             height: 45px; 
@@ -212,7 +213,7 @@
 
 
         a:first-of-type {
-            border-bottom: 5px solid #1877f2;
+            border-bottom: 5px solid $facebook-blue;
         }
 
         a:hover {
@@ -225,12 +226,13 @@
         }
 
         .home-icon {
-            color: #1877f2;
+            color: $facebook-blue;
         }
     }
     
     .dropdown-container-icon-navbar:hover {
         border: none;
+        cursor: pointer;
         background-color: #D2D5D8;
         box-sizing: border-box;
         border-radius: 50%;
@@ -252,7 +254,7 @@
         border: 0px;
         padding: 0px;
         border: none;
-        background-color: #E0E2E8;
+        background-color: $icon-color-navbar;
         border-radius: 50%;
         height: 45px;
         width: 45px;
@@ -269,6 +271,7 @@
         top: 69px;
         right: 20px;
         border-radius: 5px;
+        box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
     }
     
     .dropdown-hide-navbar {
@@ -288,6 +291,7 @@
     .dropdown-show-navbar li:hover {
         background-color: #D2D5D8;
         border-radius: 5px;
+        cursor: pointer;
     }
     
     .dropdown-show-navbar >li > span {
@@ -309,7 +313,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #D2D5D8;
+            background-color: $icon-color-navbar;
         }
         
         .image-container img {
