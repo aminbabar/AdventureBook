@@ -7,7 +7,7 @@ Friend.destroy_all
 
 
 user1 = User.create!(
-        email: "demouser1@gmail.com",
+        email: "demouser@gmail.com",
         first_name: "demo",
         last_name: "user",
         city: "New York",
@@ -21,7 +21,7 @@ user1 = User.create!(
     )
 
 
-    user1 = User.create!(
+    user2 = User.create!(
         email: "demouser2@gmail.com",
         first_name: "demo2",
         last_name: "user2",
@@ -39,7 +39,7 @@ user1 = User.create!(
 
 
 # Create users
-users = []
+users = [user1, user2]
 
 15.times do |n|
   users << User.create!(
@@ -71,9 +71,12 @@ comments = []
 
 users.each do |user|
   posts.each do |post|
+    if rand(1..10) < 8
+      next
+    end
     comments << post.comments.create!(
       body: Faker::Lorem.sentence,
-      comment_author: user
+      comment_author_id: user.id
     )
   end
 end
@@ -82,8 +85,11 @@ likes = []
 
 users.each do |user|
   posts.each do |post|
+    if rand(1..10) < 7
+      next
+    end
     likes << post.likes.create!(
-      author: user
+      author_id: user.id
     )
   end
 end

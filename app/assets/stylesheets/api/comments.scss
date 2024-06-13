@@ -1,3 +1,20 @@
 // Place all the styles related to the api/comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.post {
+    .comments-count {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    
+    .comments-logo {
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        font-size: 23px;
+        font-weight: 100;
+        margin-right: 6px;
+        color: rgb(101, 103, 107);
+    }
+}

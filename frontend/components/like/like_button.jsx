@@ -1,4 +1,6 @@
 import React from "react"
+import { AiFillLike, AiOutlineLike} from "react-icons/ai";
+
 
 class LikeButton extends React.Component {
     constructor(props) {
@@ -21,12 +23,12 @@ class LikeButton extends React.Component {
 
     likedOrUnliked() {
         if (this.props.postLikedByCurrentUser) {
-            return <button onClick={this.toggleLike}>Unlike</button>
+            return <button onClick={this.toggleLike}> <AiFillLike className="like-logo-button clicked"/> Like </button>
         } else {
-            return <button onClick={this.toggleLike}>Like</button>
+            return <button onClick={this.toggleLike}><AiOutlineLike className="like-logo-button" />Like</button>
         }
     }
-
+    
     render() {
         return (this.likedOrUnliked());
     }

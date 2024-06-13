@@ -1,4 +1,6 @@
 import React from "react";
+import { AiFillLike } from "react-icons/ai";
+
 
 class Like extends React.Component {
     constructor(props) {
@@ -31,8 +33,8 @@ class Like extends React.Component {
             }
         }
         return (
-            <div onClick={() => this.props.openModal("like_index", this.props.postId)}>
-                {likeText}
+            <div onClick={() => this.props.openModal("like_index", this.props.postId)} className="likes-count">
+                <AiFillLike className="like-logo-count" /> {likeText}
             </div>
         );
     }

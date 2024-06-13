@@ -16,10 +16,11 @@
         background-color: $icon-color-navbar;
     }
 
-    .post-photo {
-        width: 100%;
-        margin-bottom: 4px;
-    }
+    // not doing anything i think
+    // .post-photo {
+    //     width: 100%;
+    //     margin-bottom: 4px;
+    // }
     
     .image-container img {
         width: 140%;
@@ -43,12 +44,12 @@
     }
 
 
-    .post-header-photo {
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        background-color: #C7CACE;
-    }
+    // .post-header-photo {
+    //     border-radius: 50%;
+    //     width: 40px;
+    //     height: 40px;
+    //     background-color: #C7CACE;
+    // }
 
     .post-header {
         display: flex;
@@ -169,12 +170,20 @@
         }
     }
 
+
     .post-buttons button {
         border-style: none;
         background-color: white;
         height: 40px;
         width: 49%;
         margin: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: system-ui, -apple-system, "system-ui", ".SFNSText-Regular", sans-serif;
+        font-size: 15px;
+        color: rgb(101, 103, 107);
+        cursor: pointer;
     }
 
     .post-buttons button:hover {
@@ -186,6 +195,11 @@
     .post-buttons {
         display: flex;
         justify-content: space-between;
+    }
+
+    .post-likes-comments-count {
+        display: flex;
+        height: 40px;
     }
   }
 

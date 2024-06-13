@@ -90,11 +90,11 @@ class PostForm extends React.Component {
                     </div>
 
                     <div className="create-post-user-container" >
-                        <div className="image-container">
-                            <Link to={`/users/${currentUser.id}`} onClick={() => this.props.closeModal()}>
-                                <img src={currentUser.profilePhoto} />
-                            </Link>
-                        </div>
+                        <Link to={`/users/${currentUser.id}`} onClick={() => this.props.closeModal()}>
+                            <div className="image-container">
+                                    <img src={currentUser.profilePhoto} />
+                            </div>
+                        </Link>
 
                         <div className="create-post-user">
                             {currentUser.first_name} {currentUser.last_name}

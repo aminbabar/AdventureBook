@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { closeModal } from "../../actions/modal_actions";
 import {selectLikesForPost} from "../../reducers/selectors";
+import { RxCross1 } from "react-icons/rx";
+import { AiFillLike } from "react-icons/ai";
 
 class LikeIndex extends React.Component {
     constructor(props) {
@@ -12,17 +14,18 @@ class LikeIndex extends React.Component {
     likeItem(like, idx) {
         const user = this.props.users[like.author_id];
         return (
-            <div key={`${like.id.toString()} ${idx.toString()}`}>
-                <Link to={`/users/${like.author_id}`} onClick={this.props.closeModal}>
-                    <div className='like-photo'>
-                        <img src={user.profilePhoto} />
-                    </div>
+            <div key={`${like.id.toString()} ${idx.toString()}`} className="likes-index-item">
+                    <Link to={`/users/${like.author_id}`} onClick={this.props.closeModal}>
+                        <div className="image-container">
+                                <img src={user.profilePhoto} />
+                        </div>
+                    </Link>
 
-                    <div>
-                        {user.first_name + " " + user.last_name}
-                    </div>
-
-                </Link>
+                    <Link to={`/users/${like.author_id}`} onClick={this.props.closeModal}>
+                        <div className="likes-index-name">
+                                {user.first_name + " " + user.last_name}
+                        </div>
+                    </Link>
             </div>
         );
     }
@@ -35,8 +38,24 @@ class LikeIndex extends React.Component {
 
 
 
+
     render() {
-        return (this.likeIndex());
+        return (
+            <div className="likes-index-modal">
+                <div className="like-index-header">
+                    <div>
+                        <AiFillLike className="like-logo-index" />
+                        <div>{Object.values(this.props.likes).length} </div>
+                    </div>
+                    <div className="cross" onClick={() => this.props.closeModal()}>
+                        <RxCross1 />
+                    </div>
+                </div>
+                <div className="likes-index-body">
+                    {this.likeIndex()}
+                </div>
+            </div>
+        );
     }
 }
 

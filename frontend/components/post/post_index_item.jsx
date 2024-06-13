@@ -8,6 +8,7 @@ import LikeButton from "../like/like_button";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import TimeElapsed from "./post_time_elapsed";
 import { MdModeEdit } from "react-icons/md";
+import { FaRegComment } from "react-icons/fa6";
 
 class PostIndexItem extends React.Component {
 
@@ -64,7 +65,7 @@ class PostIndexItem extends React.Component {
             commentCountText = `${commentLength} Comment`
         }
         return (
-            <div onClick={() => this.setState((prevProps) => {return {displayComments: !prevProps.displayComments}})}>
+            <div onClick={() => this.setState((prevProps) => {return {displayComments: !prevProps.displayComments}})} className="comments-count">
                 {commentCountText}
             </div>
         );
@@ -96,14 +97,14 @@ class PostIndexItem extends React.Component {
 
             <div className="post">
                 <div className="post-header">
-                    <Link to={`/users/${this.props.currentUser.id}`}>
+                    <Link to={`/users/${this.props.postUser.id}`}>
                         <div className="image-container">
                             <img src={this.props.currentUser.profilePhoto} />
                         </div>
                     </Link>
 
                     <div className="post-header-middle">
-                        <Link to={`/users/${this.props.currentUser.id}`}>
+                        <Link to={`/users/${this.props.postUser.id}`}>
                             <div className="post-author-name"> {postAuthor} </div>
                         </Link>
                         <TimeElapsed  createdDate={this.props.post.created_at}/>
@@ -151,7 +152,7 @@ class PostIndexItem extends React.Component {
                     />
 
                     <button onClick={() => this.setState({displayComments: true})}>
-                        Comment
+                        <FaRegComment className="comments-logo"/> Comment
                     </button>
                 </div>
                 <div className="hr" />

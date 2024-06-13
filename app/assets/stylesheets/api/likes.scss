@@ -1,0 +1,191 @@
+.post{
+    .likes-count {
+        display: flex;
+        align-items: center;
+    }
+    
+    .like-logo-count {
+        color: white;
+        background-color: $facebook-blue;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        padding: 3px;
+        box-sizing: border-box;
+        margin-right: 6px;
+    }
+    
+    .likes-count, .comments-count {
+        font-family: system-ui, -apple-system, "system-ui", ".SFNSText-Regular", sans-serif;
+        font-size: 15px;
+        color: #949597;
+        font-weight: 0;
+        cursor: pointer;
+    }
+    
+    
+    .likes-count:hover, .comments-count:hover {
+        text-decoration: underline;
+    }
+
+    .like-logo-button.clicked {
+        color: $facebook-blue;
+        animation: rotate-and-scale 0.2s ease;
+    }
+
+    .like-logo-button {
+        padding-right: 5px;
+        font-size: 30px;
+        color: rgb(101, 103, 107)
+    }
+
+
+    @keyframes rotate-and-scale {
+        0% {
+            transform: rotate(0deg);
+            font-size: 2rem;
+        }
+
+        50% {
+            transform: rotate(-20deg);
+            font-size: 2.5rem;
+        }
+
+        100% {
+            transform: rotate(0deg);
+            font-size: 2rem;
+        }
+    }
+}
+
+
+.likes-index-modal {
+    width: 500px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    position: relative;
+    height: 40vh;
+
+
+    .like-index-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 60px;
+        // position: absolute;
+        // left: 16px;
+        
+
+        div:first-child {
+            padding-left: 10px;
+            padding-right: 10px;
+            height: 55px;
+            box-sizing: border-box;
+            margin-left: 16px;
+            display: flex;
+            align-items: center;
+            border-bottom: 4px solid $facebook-blue;
+
+            div:last-child {
+                color: $facebook-blue;
+            }
+        }
+
+        .like-logo-index {
+            color: white;
+            background-color: $facebook-blue;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            padding: 3px;
+            box-sizing: border-box;
+            margin-right: 6px;
+        }
+
+        .cross {
+            position: absolute;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: $light-gray;
+            color: #65676B;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+    }
+
+    .likes-index-body {
+        overflow: scroll;
+        height: 100%;
+        padding-bottom: 100px;
+        margin-left: 10px;
+
+
+        .likes-index-item {
+            display: flex;
+            align-items: center;
+            margin: 8px;
+            // justify-content: space-between;
+
+            .likes-index-name {
+                padding-left: 15px;
+                font-weight: 600;
+                color: black;
+
+            }
+
+            div:last-child:hover {
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+
+    }
+
+
+
+    .cross:hover {
+        background-color: #E0E2E4;
+    }
+
+    // .like-photo {
+    //     width: 30px;
+    //     height: 30px;
+    //     background-color: grey;
+    //     border-radius: 50%;
+    //     overflow: hidden;
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    //     border: 3.5px solid white;
+    // }
+
+        .image-container {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $icon-color-navbar;
+            box-sizing: border-box;
+        }
+    
+        .image-container img {
+            width: 140%;
+            height: auto;
+            display: block;
+
+        }
+    
+        .image-container:hover {
+            opacity: 0.7;
+            transition: opacity 0.4s;
+        }
+
+
+}

@@ -9,11 +9,11 @@ const CreatePost = (props) => {
     return(
         <div className="create-post-top">
             <div className="create-post-container" >
-                <div className="image-container">
-                    <Link to={`/users/${props.currentUser.id}`}>
-                        <img src={props.currentUser.profilePhoto} />
-                    </Link>
-                </div>
+                <Link to={`/users/${props.currentUser.id}`}>
+                    <div className="image-container">
+                            <img src={props.currentUser.profilePhoto} />
+                    </div>
+                </Link>
 
                 <div className="create-post-text" onClick={() => props.openModal("create_post")}>
                     {`What's on your mind, ${props.currentUser.first_name}?`}
