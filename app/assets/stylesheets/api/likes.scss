@@ -23,7 +23,6 @@
         cursor: pointer;
     }
     
-    
     .likes-count:hover, .comments-count:hover {
         text-decoration: underline;
     }
@@ -38,7 +37,6 @@
         font-size: 30px;
         color: rgb(101, 103, 107)
     }
-
 
     @keyframes rotate-and-scale {
         0% {
@@ -58,7 +56,6 @@
     }
 }
 
-
 .likes-index-modal {
     width: 500px;
     background-color: #FFFFFF;
@@ -66,16 +63,12 @@
     position: relative;
     height: 40vh;
 
-
     .like-index-header {
         display: flex;
         align-items: center;
         justify-content: space-between;
         height: 60px;
-        // position: absolute;
-        // left: 16px;
         
-
         div:first-child {
             padding-left: 10px;
             padding-right: 10px;
@@ -123,12 +116,10 @@
         padding-bottom: 100px;
         margin-left: 10px;
 
-
         .likes-index-item {
             display: flex;
             align-items: center;
             margin: 8px;
-            // justify-content: space-between;
 
             .likes-index-name {
                 padding-left: 15px;
@@ -142,26 +133,11 @@
                 cursor: pointer;
             }
         }
-
     }
-
-
 
     .cross:hover {
         background-color: #E0E2E4;
     }
-
-    // .like-photo {
-    //     width: 30px;
-    //     height: 30px;
-    //     background-color: grey;
-    //     border-radius: 50%;
-    //     overflow: hidden;
-    //     display: flex;
-    //     justify-content: center;
-    //     align-items: center;
-    //     border: 3.5px solid white;
-    // }
 
         .image-container {
             width: 50px;
