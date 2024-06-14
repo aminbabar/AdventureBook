@@ -80,6 +80,11 @@ class PostIndexItem extends React.Component {
                     </div>
 
                     <div className="create-comment">
+                        <Link to={`/users/${this.props.currentUser.id}`}>
+                            <div className="image-container">
+                                <img src={this.props.currentUser.profilePhoto} />
+                            </div>
+                        </Link>
                         <CreateCommentContainer postId={this.props.post.id} />
                     </div>
                 </>
@@ -99,7 +104,7 @@ class PostIndexItem extends React.Component {
                 <div className="post-header">
                     <Link to={`/users/${this.props.postUser.id}`}>
                         <div className="image-container">
-                            <img src={this.props.currentUser.profilePhoto} />
+                            <img src={this.props.postUser.profilePhoto} />
                         </div>
                     </Link>
 
