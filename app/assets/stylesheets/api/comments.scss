@@ -9,6 +9,30 @@
         align-items: center;
     }
     
+    .image-container {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $icon-color-navbar;
+        box-sizing: border-box;
+    }
+
+    .image-container img {
+        width: 140%;
+        height: auto;
+        display: block;
+    }
+
+    .image-container:hover {
+        opacity: 0.7;
+        transition: opacity 0.4s;
+        cursor: pointer;
+    }
+    
     .comments-logo {
         -webkit-transform: scaleX(-1);
         transform: scaleX(-1);
@@ -22,28 +46,7 @@
         display: flex;
         justify-content: space-between;
         margin-top: 12px;
-        .image-container {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: $icon-color-navbar;
-            box-sizing: border-box;
-        }
-    
-        .image-container img {
-            width: 140%;
-            height: auto;
-            display: block;
-        }
-    
-        .image-container:hover {
-            opacity: 0.7;
-            transition: opacity 0.4s;
-        }
+        
 
         .create-comment-form {
             background-color: $light-gray;
@@ -53,6 +56,7 @@
             padding: 8px 12px;
             border-radius: 25px;
             position: relative;
+            z-index: 0;
 
             .post-comment-logo {
                 position: absolute;
@@ -81,6 +85,109 @@
                 padding: 5px;
                 font-family: system-ui, -apple-system, "system-ui", ".SFNSText-Regular", sans-serif;
                 font-size: 15px;
+            }
+        }
+    }
+
+    .post-comments {
+
+            .dropdown-container-icon-comment:hover {
+                border: none;
+                background-color: $icon-color-navbar;
+                cursor: pointer;
+            }
+        
+            .dropdown-container-icon-comment {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                height: 30px;
+                width: 30px;
+                position: absolute;
+            }
+
+            .dropdown-container-comment ul:not(.dropdown-hide-comment) {
+                z-index: 1;
+            }
+
+            .dropdown-container-comment ul:not(.dropdown-hide-comment) ~ .dropdown-container-comment {
+                z-index: 0;
+            }
+
+            .comment-body-container:hover .dropdown-container-icon-comment {
+                display: flex;
+            }
+
+            .comment-body-container .dropdown-container-icon-comment {
+                display: none;
+            }
+
+        
+            .dropdown-container-comment {
+                
+                position: relative;
+                // height: px;
+                width: 17px;
+                left: 12px;
+                border: none;
+                background-color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        
+            .dropdown-show-comment {
+                padding: 10px;
+                width: 300px;
+                box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+                margin-top: 120px;
+                position: absolute;
+                border-radius: 5px;
+                background-color: white;
+            }
+        
+            .dropdown-hide-comment {
+                display: none;
+            }
+        
+            .dropdown-show-comment li {
+                height: 30px;
+                font-weight: 600;
+                font-size: 15px;
+                display: flex;
+                align-items: center;
+                padding: 10px;
+            }
+        
+            .dropdown-show-comment li:hover {
+                background-color: $light-gray;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        
+            .dropdown-show-comment>li>span {
+                margin-left: 10px;
+            }
+        .comment-and-dropdown-container {
+            display: flex;
+            align-items: center;
+        }
+        .comment-body-container {
+            // padding-top: 4px;
+            // background-color: red;
+            padding: 0px;
+
+            display: flex;
+            // align-items: center;
+            // position: relative;
+            .comment-body {
+                // position: relative;
+                background-color: $light-gray;
+                padding: 8px 12px;
+                margin-left: 5px;
+
+                border-radius: 25px;
             }
         }
     }

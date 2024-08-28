@@ -1,8 +1,10 @@
 
 import React from "react";
 import EditCommentContainer  from "./edit_comment_container";
-import { BsFillCaretDownFill } from "react-icons/bs";
+import { BsThreeDots } from "react-icons/bs";
+
 import Dropdown from "../nav_bar/dropdown";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 class CommentIndexItem extends React.Component {
 
@@ -26,7 +28,45 @@ class CommentIndexItem extends React.Component {
         if (this.state.editBool) {
             return(<EditCommentContainer commentId={this.props.comment.id}/>);
         } else {
-            return(<div>{this.props.comment.body}</div>);
+            return(
+                <div className="comment-body-container">
+                    <Link to={`/users/${this.props.commentAuthor.id}`}>
+                        <div className="image-container">
+                            <img src={this.props.commentAuthor.profilePhoto} />
+                        </div>
+                    </Link>
+
+                    <div className="comment-and-dropdown-and-likes-container">
+                        <div className="comment-and-dropdown-container">
+                            <div className="comment-body">
+                                <div>
+                                    {this.props.commentAuthor.first_name}
+                                    {" "}
+                                    {this.props.commentAuthor.last_name}
+                                </div>
+                                <div>
+                                    {this.props.comment.body}
+                                </div>
+                            </div>
+
+                            <Dropdown icon={<BsThreeDots color="#55575B" size={"20px"} />} myclass="comment">
+                                <li className="edit-button-now" onClick={() => this.switchToggle("editBool")}>Edit</li>
+                                <li onClick={() => this.props.deleteComment(this.props.commentId)}>Delete</li>
+                            </ Dropdown>
+                        </div>
+
+                        <div className="likes-container">
+                            <div>count</div>
+                            <div>like</div>
+                            <div>num likes</div>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+                );
         };
     };
 
@@ -70,18 +110,14 @@ class CommentIndexItem extends React.Component {
             <>
                 <div>
                     {this.editOrDisplay()}
-                    <Dropdown icon={<BsFillCaretDownFill size={"15px"} />} myclass="comment">
-                        <li className="edit-button-now" onClick={() => this.switchToggle("editBool")}>Edit</li>
-                        <li onClick={() => this.props.deleteComment(commentId)}>Delete</li>
-                    </ Dropdown>
                 </div>
 
                 <div>
 
                     
-                    {!this.state.editBool && this.likeButton()}
+                    {/* {!this.state.editBool && this.likeButton()} */}
 
-                    {!this.state.editBool && this.numLikesBox()}
+                    {/* {!this.state.editBool && this.numLikesBox()} */}
                 </div>
             </>
         );

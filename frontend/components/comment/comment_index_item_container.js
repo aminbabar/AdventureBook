@@ -9,9 +9,11 @@ const mstp = (state, ownProps) => {
     const likesArr = state.entities.comments[ownProps.commentId].likes;
     const  currentUserId = state.session.currentUser;
     const likes = state.entities.likes;
+    const comment = state.entities.comments[ownProps.commentId];
     return ({
-        comment: state.entities.comments[ownProps.commentId],
-        likes: selectLikesForPost(likes, likesArr, currentUserId)
+        comment: comment,
+        likes: selectLikesForPost(likes, likesArr, currentUserId),
+        commentAuthor: state.entities.users[comment.comment_author_id]
     });
 }
 

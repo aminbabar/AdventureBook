@@ -165,3 +165,14 @@
 
 
 }
+
+
+.comment-body-container {
+    .likes-container {
+        position: relative;
+        left: 0px;
+        // top: 0px;
+        display: flex;
+        bottom: 0px;
+    }
+}
