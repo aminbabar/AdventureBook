@@ -5,6 +5,7 @@ import { BsThreeDots } from "react-icons/bs";
 
 import Dropdown from "../nav_bar/dropdown";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import CommentTimeElapsed from "./comment_time_elapsed";
 
 class CommentIndexItem extends React.Component {
 
@@ -56,7 +57,7 @@ class CommentIndexItem extends React.Component {
                         </div>
 
                         <div className="likes-container">
-                            <div>count</div>
+                            <div><CommentTimeElapsed createdDate={this.props.comment.created_at} /></div>
                             <div>like</div>
                             <div>num likes</div>
                         </div>
