@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 const FriendItem = function (props) {
     const {friend} = props;
-    console.log(friend)
     return (
         <>
             <Link to={`${friend.id}`}>

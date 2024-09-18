@@ -30,7 +30,6 @@ class CommentForm extends React.Component {
     };
 
     updateBody(e) {
-        console.log(e.target.scrollHeight);
         const textareaLineHeight = 18;
         const previousRows = e.target.rows;
         e.target.rows = 1;
@@ -47,7 +46,6 @@ class CommentForm extends React.Component {
 
     render() {
         const commentLogoClass = this.state.body.length === 0 ? "disabled" : "";
-        console.log(this.state.body.length)
         return(
             <form className="create-comment-form">
                 <textarea 

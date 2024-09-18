@@ -6,6 +6,8 @@ import { BsThreeDots } from "react-icons/bs";
 import Dropdown from "../nav_bar/dropdown";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import CommentTimeElapsed from "./comment_time_elapsed";
+import { AiFillLike } from "react-icons/ai";
+
 
 class CommentIndexItem extends React.Component {
 
@@ -57,9 +59,12 @@ class CommentIndexItem extends React.Component {
                         </div>
 
                         <div className="likes-container">
-                            <div><CommentTimeElapsed createdDate={this.props.comment.created_at} /></div>
-                            <div>like</div>
-                            <div>num likes</div>
+                            <div className="date-like-button">
+                                <div className="comment-date"><CommentTimeElapsed createdDate={this.props.comment.created_at} /></div>
+                                <div className="like-button-comment">{this.likeButton()}</div>
+                            </div>
+                            
+                            <div>{this.numLikesBox()}</div>
                         </div>
 
                     </div>
@@ -81,9 +86,12 @@ class CommentIndexItem extends React.Component {
         const numLikes = Object.values(this.props.likes).length;
         if (numLikes > 0) {
             return (
-                <span onClick={() => this.props.openModal("like_index_comments", this.props.commentId)}>
-                    num likes:{numLikes}
-                </span>
+                <div className="like-logo-and-num-likes" onClick={() => this.props.openModal("like_index_comments", this.props.commentId)}>
+                    <AiFillLike className="like-logo-count"/>
+                    <div className="likes-count-comment">
+                        {numLikes}
+                    </div>
+                </div>
             );
         }
     }
@@ -94,11 +102,11 @@ class CommentIndexItem extends React.Component {
         if (!likes.currentUser) {
             const like = {likeable_type: "Comment", likeable_id: commentId}
             return(
-                <span onClick={() => createLike(like)}>like</span>
+                <span onClick={() => createLike(like)}>Like</span>
             );
         } else {
             return(
-                <span onClick={() => deleteLike(likes.currentUser.id)}>unlike</span>
+                <span className="comment-liked" onClick={() => deleteLike(likes.currentUser.id)}>Like</span>
             );
         };
     }
