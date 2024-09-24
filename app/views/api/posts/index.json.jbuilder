@@ -4,7 +4,7 @@ all_associated_users << current_user.id
 user = User.find_by(id: params[:user_id])
 
 @posts.each do |post|
-    comments = post.comments
+    comments = post.comments.order(:created_at)
 
     post_like_ids = []
     comment_like_ids = Hash.new {|h, k| h[k] = Array.new}

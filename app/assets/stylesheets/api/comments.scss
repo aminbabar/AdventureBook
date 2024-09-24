@@ -174,25 +174,27 @@
             align-items: center;
         }
         .comment-body-container {
-            // padding-top: 4px;
-            // background-color: red;
             padding: 0px;
-
+            margin-top: 5px;
             display: flex;
-            // align-items: center;
-            // position: relative;
             .comment-body {
-                // position: relative;
                 background-color: $light-gray;
                 padding: 8px 12px;
                 margin-left: 5px;
-
                 border-radius: 25px;
+
+                .author-name-comment {
+                    font-family: system-ui, -apple-system, "system-ui", ".SFNSText-Regular", sans-serif;
+                    font-weight: 550;
+                    color: black;
+                    // padding-top: 5px;
+                    padding-bottom: 10px;
+                }
             }
         }
         .comment-date {
-            color: #949597;
-            font-size: 0.8125rem;
+            // color: #949597;
+            // font-size: 0.8125rem;
             font-weight: 0;
             width: 25px;
             margin-left: 5px;
@@ -202,6 +204,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 2px;   
+            color: #65676B;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            font-family: system-ui, -apple-system, "system-ui", ".SFNSText-Regular", sans-serif
         }
     
         .date-like-button {
@@ -230,17 +237,19 @@
         }
 
         .like-button-comment {
-            // position: relative;
-            // left: 5px;
             margin-left: 14px;
-            color: #65676B;
-            font-weight: 600;
+            // color: #65676B;
+            // font-weight: 600;
             font-size: 0.8125rem;
         }
 
         .like-button-comment:hover {
             text-decoration: underline;
             cursor: pointer;
+        }
+
+        .comment-liked {
+            color: $facebook-blue;
         }
     }
 }

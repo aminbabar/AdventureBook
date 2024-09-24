@@ -42,11 +42,14 @@ class CommentIndexItem extends React.Component {
                     <div className="comment-and-dropdown-and-likes-container">
                         <div className="comment-and-dropdown-container">
                             <div className="comment-body">
-                                <div>
-                                    {this.props.commentAuthor.first_name}
-                                    {" "}
-                                    {this.props.commentAuthor.last_name}
-                                </div>
+                                <Link to={`/users/${this.props.commentAuthor.id}`}>
+                                    <div className="author-name-comment">
+                                        {this.props.commentAuthor.first_name}
+                                        {" "}
+                                        {this.props.commentAuthor.last_name}
+                                    </div>
+                                </Link>
+
                                 <div>
                                     {this.props.comment.body}
                                 </div>
