@@ -6,7 +6,9 @@ import CommentForm from "./comment_form";
 
 const mstp = (state, ownProps) => {
     return({
-        comment: state.entities.comments[ownProps.commentId]
+        comment: state.entities.comments[ownProps.commentId],
+        currentUser: state.entities.users[state.session.currentUser],
+        formType: "edit"
     });
 };
 

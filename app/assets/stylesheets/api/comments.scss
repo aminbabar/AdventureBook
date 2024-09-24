@@ -42,51 +42,50 @@
         color: rgb(101, 103, 107);
     }
 
+    .create-comment-form {
+        background-color: $light-gray;
+        height: 100%;
+        width: 100%;
+        margin-left: 5px;
+        padding: 8px 12px;
+        border-radius: 25px;
+        position: relative;
+        z-index: 0;
+
+        .post-comment-logo {
+            position: absolute;
+            right: 7px;
+            bottom: 15px;
+            color: $facebook-blue;
+            cursor: pointer;
+        }
+
+        .post-comment-logo.disabled {
+            color: #BEC3C9;
+            cursor: not-allowed;
+        }
+
+        textarea {
+            border-radius: 25px;
+            border: none;
+            background-color: $light-gray;
+            overflow: auto;
+            outline: none;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            resize: none;
+            width: 100%;
+            padding: 5px;
+            font-family: system-ui, -apple-system, "system-ui", ".SFNSText-Regular", sans-serif;
+            font-size: 15px;
+        }
+    }
+
     .create-comment {
         display: flex;
         justify-content: space-between;
         margin-top: 12px;
-        
-
-        .create-comment-form {
-            background-color: $light-gray;
-            height: 100%;
-            width: 100%;
-            margin-left: 5px;
-            padding: 8px 12px;
-            border-radius: 25px;
-            position: relative;
-            z-index: 0;
-
-            .post-comment-logo {
-                position: absolute;
-                right: 7px;
-                bottom: 15px;
-                color: $facebook-blue;
-                cursor: pointer;
-            }
-
-            .post-comment-logo.disabled {
-                color: #BEC3C9;
-                cursor: not-allowed;
-            }
-
-            textarea {
-                border-radius: 25px;
-                border: none;
-                background-color: $light-gray;
-                overflow: auto;
-                outline: none;
-                -webkit-box-shadow: none;
-                -moz-box-shadow: none;
-                box-shadow: none;
-                resize: none;
-                width: 100%;
-                padding: 5px;
-                font-family: system-ui, -apple-system, "system-ui", ".SFNSText-Regular", sans-serif;
-                font-size: 15px;
-            }
-        }
     }
 
     .post-comments {
@@ -253,5 +252,3 @@
         }
     }
 }
-
-

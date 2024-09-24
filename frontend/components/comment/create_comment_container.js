@@ -1,11 +1,13 @@
 import { connect } from "react-redux";
 import { createComment } from "../../actions/comment_actions";
-import CreateComment from "./comment_form";
+import CommentForm from "./comment_form";
 
 
 const mstp = (state, ownProps) => {
     return({
-        comment: { body: "", post_id: ownProps.postId}
+        comment: { body: "", post_id: ownProps.postId },
+        currentUser: state.entities.users[state.session.currentUser],
+        formType: "create"
     });
 };
 
@@ -17,4 +19,4 @@ const mdtp = (disptach) => {
 };
 
 
-export default connect(mstp, mdtp)(CreateComment);
+export default connect(mstp, mdtp)(CommentForm);

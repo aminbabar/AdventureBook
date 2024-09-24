@@ -29,7 +29,11 @@ class CommentIndexItem extends React.Component {
 
     editOrDisplay() {
         if (this.state.editBool) {
-            return(<EditCommentContainer commentId={this.props.comment.id}/>);
+            return(
+                <div className="comment-body-container">
+                    <EditCommentContainer commentId={this.props.comment.id}/>
+                </div>
+        );
         } else {
             return(
                 <div className="comment-body-container">
