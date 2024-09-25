@@ -15,7 +15,7 @@
 
 .profile-cover-photo-div {
     width: 75%;
-    background-color: grey;
+    background: linear-gradient(to bottom, rgba(240, 240, 240, 0), rgba(169, 169, 169, 0.5));
     height: 300px;
     margin-left: auto;
     margin-right: auto;
@@ -25,10 +25,29 @@
     flex-wrap: wrap;
     overflow: hidden;
     border-radius: 5px;
+    position: relative;
 }
 
+// .profile-cover-photo-div.current {
+//     // cursor: pointer;
+// }
+
+// .profile-cover-photo-div.current:hover {
+//     background: linear-gradient(to bottom, rgba(240, 240, 240, 0.2), rgba(169, 169, 169, 0.7));
+//     // opacity: 0.8;
+// }
+
+
 .profile-cover-photo-div > img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     width: 100%;
+    height: auto;
+    transform: translate(-50%, -50%);
+    min-height: 100%;
+    min-width: 100%;
+    object-fit: cover;
 }
 
 
@@ -64,27 +83,45 @@
     display: none;
 }
 .profile-cover-photo-button-label:active {
-    background-color: red;
+    // background-color: red;
 }
 
 .profile-cover-photo-button:hover {
-    background-color: red;
+    // background-color: red;
 }
 
 .profile-profile-photo-button-label {
     background-color: blue;
 }
 
+.profile-cover-photo-button {
+}
+
 .profile-cover-photo-button-label {
     position: absolute;
-    // display: block;
+    display: flex;
+    align-items: center;
     width: fit-content;
     padding: 8px;
-    right: 13vw;
-    bottom: 30px;
+    right: 35px;
+    bottom: 16px;
+    // bottom: 0px;
     border-radius: 5px;
-    // width: max-content;
     background-color: white;
+    cursor: pointer;
+
+    font-family: system-ui, -apple-system, "system-ui", ".SFNSText-Regular", sans-serif;
+    font-weight: 550;
+    font-size: 15px;
+}
+
+.profile-cover-photo-button-label:hover {
+    background-color: $light-gray;
+}
+
+.facamera {
+    margin-right: 10px;
+    margin-bottom: 2px;
 }
 
 

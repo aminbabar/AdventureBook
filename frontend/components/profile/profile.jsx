@@ -49,16 +49,16 @@ class Profile extends React.Component {
 
                 <div className='profile-body'>
                     <div className='profile-left'>
-                        <Intro 
+                        {/* <Intro 
                             user={user} 
                             updateUser={updateUser}
                             openModal={openModal}
-                        />
+                        /> */}
                         
-                        <Photos photos={photos}/>
+                        {/* <Photos photos={photos}/> */}
 
 
-                        <Friends friends={friends} />
+                        {/* <Friends friends={friends} /> */}
 
                         
 
@@ -67,7 +67,7 @@ class Profile extends React.Component {
                     </div>
 
                     <div className='profile-right'>
-                        <PostIndexContainer />
+                        {/* <PostIndexContainer /> */}
                     </div>
                 </div>
             </>
