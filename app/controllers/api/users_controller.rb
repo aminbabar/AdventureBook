@@ -21,8 +21,10 @@ class Api::UsersController < ApplicationController
 
         if @user.first_name
             @user.first_name.capitalize!
+        end
         if @user.last_name
             @user.last_name.capitalize!
+        end
 
         if @user.save
             login(@user)
