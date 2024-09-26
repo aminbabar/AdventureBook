@@ -28,16 +28,6 @@
     position: relative;
 }
 
-// .profile-cover-photo-div.current {
-//     // cursor: pointer;
-// }
-
-// .profile-cover-photo-div.current:hover {
-//     background: linear-gradient(to bottom, rgba(240, 240, 240, 0.2), rgba(169, 169, 169, 0.7));
-//     // opacity: 0.8;
-// }
-
-
 .profile-cover-photo-div > img {
     position: absolute;
     top: 50%;
@@ -51,23 +41,113 @@
 }
 
 
-.profile-profile-photo-div {
-    width: 140px;
-    height: 140px;
-    background-color: grey;
-    border-radius: 50%;
-    overflow: hidden;
+.profile-profile-photo-bar {
     display: flex;
-    justify-content: center;
     align-items: center;
-    border: 3.5px solid white;
-    position: absolute;
-    left: 15vw;
-    bottom: -55px;
-}
+    justify-content: space-between;
+    width: 70%;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
 
-.profile-profile-photo-div > img {
-    width: 120%;
+    .profile-photo-and-username {
+        display: flex;
+    }
+
+    .profile-user-full-name {
+        font-family: system-ui, -apple-system, "system-ui", ".SFNSText-Regular", sans-serif;
+        font-size: 32px;
+        font-weight: 700;
+        -webkit-font-smoothing: antialiased;
+        position: relative;
+        top: 35px;
+        left: 7px;
+    }
+
+    .profile-profile-photo-div {
+        width: 140px;
+        height: 140px;
+        background-color: white;
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 3.5px solid white;
+        position: relative;
+        left: 0px;
+        bottom: 50px;
+    }
+
+    .profile-profile-photo-div > img {
+        width: 120%;
+    }
+
+    .profile-profile-photo-and-button {
+        position: relative;
+    }
+
+    .profile-profile-photo-button-label {
+        position: absolute;
+        left: 100px;
+        top: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $light-gray;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        border: 0px solid $light-gray;
+        cursor: pointer;
+    }
+
+    .profile-profile-photo-button-label:hover {
+        background-color: #D2D5D8;
+        cursor: pointer;
+    }
+
+    .profile-profile-photo-button-label:active {
+        transform: scale(0.95);
+        transition: transform 0.1s ease-in-out;
+    }
+
+    .profile-photo-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $light-gray;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .facamera-profile-photo {
+        cursor: pointer;
+    }
+
+    .edit-profile-button {
+        background-color: $light-gray;
+        margin-right: 10px;
+        margin-bottom: 40px;
+        width: fit-content;
+        padding: 8px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: system-ui, -apple-system, "system-ui", ".SFNSText-Regular", sans-serif;
+        font-weight: 550;
+        font-size: 15px;
+    }
+
+    .edit-profile-button:active {
+        transform: scale(0.95);
+        transition: transform 0.1s ease-in-out;
+    }
+
+    .edit-profile-button:hover {
+        background-color: #D2D5D8;
+    }
 }
 
 .profile-and-cover-photo {
@@ -75,26 +155,8 @@
     background-color: white;
 }
 
-// Styling for upload buttons
-
 .profile-cover-photo-button, .profile-profile-photo-button  {
-    // position: absolute;
-    // right: 0px;
     display: none;
-}
-.profile-cover-photo-button-label:active {
-    // background-color: red;
-}
-
-.profile-cover-photo-button:hover {
-    // background-color: red;
-}
-
-.profile-profile-photo-button-label {
-    background-color: blue;
-}
-
-.profile-cover-photo-button {
 }
 
 .profile-cover-photo-button-label {
@@ -105,15 +167,19 @@
     padding: 8px;
     right: 35px;
     bottom: 16px;
-    // bottom: 0px;
     border-radius: 5px;
     background-color: white;
     cursor: pointer;
-
     font-family: system-ui, -apple-system, "system-ui", ".SFNSText-Regular", sans-serif;
     font-weight: 550;
     font-size: 15px;
 }
+
+.profile-cover-photo-button-label:active {
+        transform: scale(0.95);
+        transition: transform 0.1s ease-in-out;
+}
+
 
 .profile-cover-photo-button-label:hover {
     background-color: $light-gray;
@@ -127,6 +193,4 @@
 
 .unclickable {
     pointer-events: none;
-    // cursor: not-allowed;
 }
-

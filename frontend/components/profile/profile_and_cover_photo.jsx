@@ -1,6 +1,6 @@
 import React from 'react';
 import FriendButton from './friend_button';
-import { FaCamera } from "react-icons/fa";
+import { FaCamera, FaPen } from "react-icons/fa";
 
 class ProfileAndCoverPhoto extends React.Component {
     constructor(props) {
@@ -36,8 +36,8 @@ class ProfileAndCoverPhoto extends React.Component {
     editProfileOrFriend() {
         if (this.props.currentUserId == this.props.user?.id) {
             return(
-                <div onClick={this.editProfile}>
-                    <button>Edit profile</button>
+                <div className='edit-profile-button' onClick={this.editProfile}>
+                    <FaPen /> Edit profile
                 </div>
             );
         } else {
@@ -68,17 +68,23 @@ class ProfileAndCoverPhoto extends React.Component {
                 </div>
 
                 <div className='profile-profile-photo-bar'>
-                    <div className='profile-profile-photo-and-button'>
-                        <div className='profile-profile-photo-div'>
-                            <img src={profilePhoto} />
+                    <div className='profile-photo-and-username'>
+                        <div className='profile-profile-photo-and-button'>
+                            <div className='profile-profile-photo-div'>
+                                <img src={profilePhoto} />
+                            </div>
+                            {
+                                loggedInUsersProfile &&  
+                                <label className='profile-profile-photo-button-label'>
+                                        <FaCamera className='facamera-profile-photo'/>
+                                    <input className='profile-profile-photo-button' type="file" onChange={this.handlePhotoSubmit('profile_photo')}/>
+                                </label>
+                            }
                         </div>
-                        {
-                            loggedInUsersProfile &&  
-                            <label className='profile-profile-photo-button-label'>
-                                profile
-                                <input className='profile-profile-photo-button' type="file" onChange={this.handlePhotoSubmit('profile_photo')}/>
-                            </label>
-                        }
+
+                        <div className='profile-user-full-name'>
+                            {this.props.user?.first_name} {this.props.user?.last_name}
+                        </div>
                     </div>
                     
                     {this.editProfileOrFriend()}
