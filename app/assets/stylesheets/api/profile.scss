@@ -46,12 +46,15 @@
     align-items: center;
     justify-content: space-between;
     width: 70%;
-    height: 100px;
+    height: 80px;
     margin-left: auto;
     margin-right: auto;
 
     .profile-photo-and-username {
         display: flex;
+        height: fit-content;
+        margin-bottom: 90px;
+        align-items: center;
     }
 
     .profile-user-full-name {
@@ -60,8 +63,9 @@
         font-weight: 700;
         -webkit-font-smoothing: antialiased;
         position: relative;
-        top: 35px;
+        top: 40px;
         left: 7px;
+        height: fit-content;
     }
 
     .profile-profile-photo-div {
@@ -75,8 +79,8 @@
         align-items: center;
         border: 3.5px solid white;
         position: relative;
-        left: 0px;
-        bottom: 50px;
+        // left: 0px;
+        // bottom: 50px;
     }
 
     .profile-profile-photo-div > img {
@@ -90,7 +94,7 @@
     .profile-profile-photo-button-label {
         position: absolute;
         left: 100px;
-        top: 45px;
+        top: 99px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -134,7 +138,7 @@
     .edit-profile-button, .friend-button {
         background-color: $light-gray;
         margin-right: 10px;
-        margin-bottom: 40px;
+        margin-bottom: 15px;
         width: fit-content;
         padding: 8px;
         border-radius: 5px;
@@ -175,6 +179,12 @@
     }
 }
 
+.hr {
+    border-bottom: 1px solid #E0E2E4;
+    width: 72%;
+    margin-left: auto;
+    margin-right: auto;
+}
 .profile-and-cover-photo {
     position: relative;
     background-color: white;
@@ -218,4 +228,51 @@
 
 .unclickable {
     pointer-events: none;
+}
+
+
+.profile-navigation {
+    display: flex;
+    width: 72%;
+    margin-right: auto;
+    margin-left: auto;
+    align-items: center;
+
+    div {
+        // box-sizing: border-box;
+        font-family: system-ui, -apple-system, "system-ui", ".SFNSText-Regular", sans-serif;
+        color: rgb(101, 103, 107);
+        font-size: 15px;
+        font-weight: 600;
+        -webkit-font-smoothing: antialiased;
+        // width: 82px;
+        height: 52px;
+        padding: 0px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        margin-top: 4px;
+        border-bottom: 4px solid white;
+    }
+
+    div.active {
+        color: $facebook-blue;
+        border-bottom: 4px solid $facebook-blue;
+        border-radius: 0px;
+    }
+
+    div.active:hover {
+        background-color: white;
+    }
+
+
+    div:hover {
+        background-color: $light-gray;
+        cursor: pointer;
+    }
+
+    div:active {
+        background-color: #DDE1E5;
+    }
 }

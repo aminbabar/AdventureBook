@@ -9,7 +9,10 @@ import Friends from './friends';
 class Profile extends React.Component {
     constructor(props) {
         super(props);
-
+        this.renderTabs = this.renderTabs.bind(this);
+        this.state = {
+            navigation: "posts"
+        }
     }
 
     componentDidMount() {
@@ -24,6 +27,19 @@ class Profile extends React.Component {
         };
     }
 
+    renderTabs() {
+        switch (this.state.navigation) {
+            case "posts":
+                return <div> photos and posts </div>
+            case "friends":
+                return <div> friends </div>
+            case "photos":
+                return <div> photos </div>
+            default:
+                return null;
+        }
+    }
+
 
 
     render() {
@@ -32,6 +48,7 @@ class Profile extends React.Component {
         return(
             <>
                 <NavBarContainer />
+
                 <div className='profile-and-cover-photo'>
                     <ProfileAndCoverPhoto 
                         updateUser={updateUser} 
@@ -41,14 +58,37 @@ class Profile extends React.Component {
                         openModal={openModal}
                         currentUserId={currentUserId}
                     />
+
+                    <div className='hr'></div>
+                    <div className='profile-navigation'>
+                        <div
+                            onClick={() => this.setState({navigation:"posts"})}
+                            className={this.state.navigation === "posts" ? "active" : ""}
+                        >
+                            Posts
+                        </div>
+                        <div
+                            onClick={() => this.setState({navigation:"friends"})}
+                            className={this.state.navigation === "friends" ? "active" : ""}
+                        >
+                            Friends
+                        </div>
+                        <div
+                            onClick={() => this.setState({navigation:"photos"})}
+                            className={this.state.navigation === "photos" ? "active" : ""}
+                        >
+                            Photos
+                        </div>
+                    </div>
                 </div>
 
-                <div>
-                    Nav bar for the profile page with posts and friends tab and add friends
-                </div>
+
 
                 <div className='profile-body'>
                     <div className='profile-left'>
+                        {this.renderTabs()}
+
+                        
                         {/* <Intro 
                             user={user} 
                             updateUser={updateUser}
