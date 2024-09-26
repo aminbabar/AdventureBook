@@ -8,8 +8,8 @@ Friend.destroy_all
 
 user1 = User.create!(
         email: "demouser@gmail.com",
-        first_name: "demo",
-        last_name: "user",
+        first_name: "Demo",
+        last_name: "User",
         city: "New York",
         work: "Software Engineer",
         password: "123456",
@@ -23,8 +23,8 @@ user1 = User.create!(
 
     user2 = User.create!(
         email: "demouser2@gmail.com",
-        first_name: "demo2",
-        last_name: "user2",
+        first_name: "Demo2",
+        last_name: "User2",
         city: "New York",
         work: "Software Engineer",
         password: "123456",

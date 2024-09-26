@@ -37,7 +37,7 @@ class ProfileAndCoverPhoto extends React.Component {
         if (this.props.currentUserId == this.props.user?.id) {
             return(
                 <div className='edit-profile-button' onClick={this.editProfile}>
-                    <FaPen /> Edit profile
+                    <FaPen className='edit-profile-logo'/> Edit profile
                 </div>
             );
         } else {

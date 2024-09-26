@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { createFriend, deleteFriend, updateFriend } from "../../actions/friend_actions";
 import { selectFriendForProfile } from "../../reducers/selectors";
+import { FaUserFriends } from "react-icons/fa";
+import { TbFriendsOff } from "react-icons/tb";
 
 
 class FriendButton extends React.Component {
@@ -26,31 +28,31 @@ class FriendButton extends React.Component {
 
         // if two users are not friends
         if (!friend) {
-            return (<button onClick={this.createFriendRequest}>Add Friend</button>);
+            return (<div className="friend-button" onClick={this.createFriendRequest}> <FaUserFriends className="friend-logo"/> Add Friend</div>);
         }
 
         // if they are friends
         else if (friend.friend_status) {
             return (
                 <>
-                    <h1>Friends</h1>
-                    <button onClick={() => this.deleteFriend(this.props.user.id)}>Unfriend</button>
+                    {/* <div>Friends</div> */}
+                    <div className="friend-button" onClick={() => this.deleteFriend(this.props.user.id)}><TbFriendsOff className="unfriend-logo"/> Unfriend</div>
                 </>
             );
         }
         // outgoing friend request
         else if (friend.friend_id === profileId) {
             return (
-                <button onClick={this.deleteFriend}>Cancel Request</button>
+                <div className="friend-button" onClick={this.deleteFriend}>Cancel Request</div>
             );
         }
         // incoming friends request
         else if (friend.user_id === profileId) {
             return (
-                <>
-                    <button onClick={() => this.props.updateFriend(this.props.user.id)}>confirm request</button>
-                    <button onClick={this.deleteFriend}> delete request</button>
-                </>
+                <div className="friend-buttons-container">
+                    <div className="friend-button blue" onClick={() => this.props.updateFriend(this.props.user.id)}>Confirm request</div>
+                    <div className="friend-button" onClick={this.deleteFriend}> Delete request</div>
+                </div>
             );
         };
     }
