@@ -47,7 +47,7 @@ class Intro extends React.Component {
     render() {
         const {user, updateUser} = this.props;
         return (
-            <div>
+            <div className="profile-intro">
                 <h1>Intro</h1>
                 <Bio user={user} updateUser={updateUser}/>
                 {this.city()}

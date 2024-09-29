@@ -276,3 +276,39 @@
         background-color: #DDE1E5;
     }
 }
+
+.profile-body {
+    width: 72%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 17px;
+
+    .profile-right {
+        width: 58%;
+        // .newsfeed-middle {
+        //     width: 100%;
+        // }
+    }
+
+    .profile-left {
+        position: sticky;
+        bottom: 500px;
+        width: 40.7%;
+        position: -webkit-sticky;
+        position: sticky;
+        // CHANGE THIS. Only for when I had no photos. 
+        top: 80px;
+        align-self: start;
+
+        .profile-intro {
+            background-color: white;
+            border-radius: 7px;
+            padding: 20px 16px;
+        }
+    }
+
+
+}
+

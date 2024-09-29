@@ -30,7 +30,21 @@ class Profile extends React.Component {
     renderTabs() {
         switch (this.state.navigation) {
             case "posts":
-                return <div> photos and posts </div>
+                return (
+                    <>
+                        <div className='profile-left'>
+                            <Intro
+                                user={this.props.user}
+                                updateUser={this.props.updateUser}
+                                openModal={this.props.openModal}
+                            />
+                        </div>
+
+                        <div className='profile-right'>
+                            <PostIndexContainer />
+                        </div>
+                    </>
+                )
             case "friends":
                 return <div> friends </div>
             case "photos":
@@ -85,17 +99,17 @@ class Profile extends React.Component {
 
 
                 <div className='profile-body'>
-                    <div className='profile-left'>
-                        {this.renderTabs()}
+                    {this.renderTabs()}
+                    {/* <div className='profile-left'>
 
                         
-                        {/* <Intro 
+                        <Intro 
                             user={user} 
                             updateUser={updateUser}
                             openModal={openModal}
-                        /> */}
+                        />
                         
-                        {/* <Photos photos={photos}/> */}
+                        <Photos photos={photos}/>
 
 
                         {/* <Friends friends={friends} /> */}
@@ -104,11 +118,11 @@ class Profile extends React.Component {
 
 
 
-                    </div>
+                    {/* </div> */}
 
-                    <div className='profile-right'>
+                    {/* <div className='profile-right'> */}
                         {/* <PostIndexContainer /> */}
-                    </div>
+                    {/* </div>  */}
                 </div>
             </>
         );
