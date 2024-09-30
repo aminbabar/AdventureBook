@@ -1,0 +1,88 @@
+.profile-left {
+    .profile-friends-preview {
+        margin-top: 15px;
+        background-color: white;
+        border-radius: 7px;
+        padding: 20px 16px;
+
+        .photos-header {
+
+            div {
+                display: inline;
+            }
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            font-family: system-ui,
+            -apple-system,
+            "system-ui",
+            ".SFNSText-Regular",
+            sans-serif;
+
+            div:first-child {
+                font-size: 20px;
+                -webkit-font-smoothing: antialiased;
+                font-weight: 700;
+            }
+
+            div:first-child:hover {
+                text-decoration: underline;
+                cursor: pointer;
+            }
+
+            div:last-child {
+                color: $facebook-blue;
+            }
+
+            div:last-child:hover {
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+
+        .friends-container {
+            display: grid;
+            // grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
+            // grid-auto-rows: auto;
+            gap: 10px;
+            padding-top: 10px;
+        }
+
+        .single-photo-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        p {
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 5px;
+            color: black;
+        }
+
+        p:hover {
+            text-decoration: underline;
+        }
+
+        .friends-count {
+            font-size: 17px;
+            color: rgb(101, 103, 107);
+            margin-top: 5px;
+            font-weight: 100;
+        }
+
+    }
+}

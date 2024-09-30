@@ -4,8 +4,9 @@ import PostIndexContainer from '../post/post_index_container';
 import ProfileAndCoverPhoto from './profile_and_cover_photo';
 import Intro from './intro';
 import PhotosPreview from './photosPreview';
-import Friends from './friends';
 import PhotosTab from './photosTab';
+import FriendsTab from './friendsTab';
+import FriendsPreview from './friendsPreview';
 
 class Profile extends React.Component {
     constructor(props) {
@@ -44,22 +45,36 @@ class Profile extends React.Component {
                                 updateUser={this.props.updateUser}
                                 openModal={this.props.openModal}
                             />
-                            <PhotosPreview photos={this.props.photos} switchTab={this.switchTab}/>
+
+                            <PhotosPreview 
+                                photos={this.props.photos} 
+                                switchTab={this.switchTab}
+                            />
+
+                            <FriendsPreview
+                                friends={this.props.friends} 
+                                switchTab={this.switchTab} 
+                            /> 
                         </div>
 
                         <div className='profile-right'>
                             <PostIndexContainer />
                         </div>
                     </>
-                )
+                );
             case "friends":
-                return <div> friends </div>
+                return (
+                    <FriendsTab
+                        friends={this.props.friends}
+                        switchTab={this.switchTab}
+                    /> 
+                );
             case "photos":
                 return (
                     <>
                         <PhotosTab photos={this.props.photos} />
                     </>
-                )
+                );
             default:
                 return null;
         }
