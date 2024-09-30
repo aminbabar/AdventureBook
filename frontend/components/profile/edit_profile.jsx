@@ -40,8 +40,10 @@ class EditProfile extends React.Component {
     render() {
         const {user, updateUser} = this.props;
         return(
-            <form onSubmit={this.handleSubmit}>
-                <h1>Edit profile</h1>
+            <form className="edit-profile" onSubmit={this.handleSubmit}>
+                <h1 className="header">Edit Profile</h1>
+
+                <div className="hr"></div>
 
                 <label>
                     First Name

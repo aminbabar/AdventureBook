@@ -179,15 +179,15 @@
     }
 }
 
-.hr {
-    border-bottom: 1px solid #E0E2E4;
-    width: 72%;
-    margin-left: auto;
-    margin-right: auto;
-}
 .profile-and-cover-photo {
     position: relative;
     background-color: white;
+    .hr {
+        border-bottom: 1px solid #E0E2E4;
+        width: 72%;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 .profile-cover-photo-button, .profile-profile-photo-button  {
@@ -299,8 +299,8 @@
         position: -webkit-sticky;
         position: sticky;
         // CHANGE THIS. Only for when I had no photos. 
-        top: 80px;
-        align-self: start;
+        bottom: 10px;
+        align-self: end;
 
         .profile-intro {
             background-color: white;
@@ -308,7 +308,101 @@
             padding: 20px 16px;
         }
     }
-
-
 }
 
+
+
+.edit-profile {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    width: 432px;
+    box-shadow: 0 0 10px #C8C9CC;
+    color: black;
+
+    font-family: system-ui, -apple-system, "system-ui", ".SFNSText-Regular", sans-serif;
+    -webkit-font-smoothing: antialiased;
+
+    .hr {
+        border-bottom: 1px solid #E0E2E4;
+        width: 100%;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 59px;
+        font-size: 20px;
+        font-weight: 700;
+    }
+}
+
+
+// Styling for photos component
+.profile-left {
+    .photos-preview {
+        margin-top: 15px;
+        background-color: white;
+        border-radius: 7px;
+        padding: 20px 16px;
+
+        .photos-header {
+
+            div {
+                display: inline;
+            }
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            font-family: system-ui,
+            -apple-system,
+            "system-ui",
+            ".SFNSText-Regular",
+            sans-serif;
+
+            div:first-child {
+                font-size: 20px;
+                -webkit-font-smoothing: antialiased;
+                font-weight: 700;
+            }
+
+            div:first-child:hover {
+                text-decoration: underline;
+                cursor: pointer;
+            }
+
+            div:last-child {
+                color: $facebook-blue;
+            }
+
+            div:last-child:hover {
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+
+        .photos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            grid-auto-rows: auto;
+            gap: 10px;
+            padding-top: 10px;
+        }
+
+        .single-photo-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+    }
+}

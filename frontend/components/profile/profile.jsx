@@ -3,8 +3,9 @@ import NavBarContainer from '../nav_bar/nav_bar_container';
 import PostIndexContainer from '../post/post_index_container';
 import ProfileAndCoverPhoto from './profile_and_cover_photo';
 import Intro from './intro';
-import Photos from './photos';
+import PhotosPreview from './photosPreview';
 import Friends from './friends';
+import PhotosTab from './photosTab';
 
 class Profile extends React.Component {
     constructor(props) {
@@ -13,6 +14,7 @@ class Profile extends React.Component {
         this.state = {
             navigation: "posts"
         }
+        this.switchTab = this.switchTab.bind(this);
     }
 
     componentDidMount() {
@@ -27,6 +29,10 @@ class Profile extends React.Component {
         };
     }
 
+    switchTab(tabName) {
+        this.setState({navigation: tabName})
+    }
+
     renderTabs() {
         switch (this.state.navigation) {
             case "posts":
@@ -38,6 +44,7 @@ class Profile extends React.Component {
                                 updateUser={this.props.updateUser}
                                 openModal={this.props.openModal}
                             />
+                            <PhotosPreview photos={this.props.photos} switchTab={this.switchTab}/>
                         </div>
 
                         <div className='profile-right'>
@@ -48,7 +55,11 @@ class Profile extends React.Component {
             case "friends":
                 return <div> friends </div>
             case "photos":
-                return <div> photos </div>
+                return (
+                    <>
+                        <PhotosTab photos={this.props.photos} />
+                    </>
+                )
             default:
                 return null;
         }
@@ -109,7 +120,6 @@ class Profile extends React.Component {
                             openModal={openModal}
                         />
                         
-                        <Photos photos={photos}/>
 
 
                         {/* <Friends friends={friends} /> */}

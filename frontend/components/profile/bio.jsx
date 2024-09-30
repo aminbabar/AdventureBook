@@ -45,11 +45,6 @@ class Bio extends React.Component {
         const {user} = this.props;
         return (
             <div>
-                <div>a</div>
-                <div>a</div>
-                <div>a</div>
-                <div>a</div>
-
                 {this.bioOrEditBio()}
             </div>
 
