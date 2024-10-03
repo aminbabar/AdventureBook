@@ -1,4 +1,5 @@
 import React from "react";
+import { FaGlobeAmericas } from "react-icons/fa";
 
 class EditBio extends React.Component {
     constructor(props) {
@@ -43,12 +44,20 @@ class EditBio extends React.Component {
                 <textarea 
                     onChange={this.updateBio}
                     value={this.state.bio}
+                    placeholder="Describe who you are"
                 />
-                <span>
+                <div className="chars-remaining">
                     {charsLength} characters remaining
-                </span>
-                <button onClick={this.props.switchToggle}>Cancel</button>
-                <button className={buttonClass} onClick={this.handleSubmit}>Save</button>
+                </div>
+
+                <div className="bio-save-cancel-bar">
+                    <div> <FaGlobeAmericas /> <div>Public</div></div>
+
+                    <div>
+                        <div onClick={this.props.switchToggle}>Cancel</div>
+                        <div className={buttonClass} onClick={this.handleSubmit}>Save</div>
+                    </div>
+                </div>
             </>
         );
     }

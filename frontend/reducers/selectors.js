@@ -35,7 +35,10 @@ export const selectPhotos = function (posts, user) {
     });
 
     if (user.profilePhoto) {
-        photos.push(user.profilePhoto);
+        // dont want the default picture. 
+        if (user.profilePhoto !== "https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_1280.png") {
+            photos.push(user.profilePhoto);
+        }
     };
 
     if (user.coverPhoto) {

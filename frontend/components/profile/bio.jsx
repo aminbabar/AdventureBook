@@ -13,7 +13,8 @@ class Bio extends React.Component {
     }
 
     bioOrEditBio() {
-        const {updateUser, user} = this.props;
+        const {updateUser, user, currentUserId} = this.props;
+        const currentUser = currentUserId === user?.id;
         if (this.state.bioEditBool) {
             return( <EditBio 
                         bio={user?.bio} 
@@ -25,10 +26,12 @@ class Bio extends React.Component {
         else {
             const buttonText = (user?.bio) ? "Edit Bio" : "Add Bio";
             return(
-                <div className="profile-bio">
-                    {this.props.user?.bio}
-                    <button onClick={this.switchToggle}>{buttonText}</button>
-                </div>
+                <>
+                    {user?.bio && <div className="profile-bio">
+                        {user.bio}
+                    </div>}
+                    {currentUser && <div className="bio-button" onClick={this.switchToggle}>{buttonText}</div>}
+                </>
             );
         } 
     }

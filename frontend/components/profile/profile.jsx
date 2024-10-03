@@ -35,24 +35,31 @@ class Profile extends React.Component {
     }
 
     renderTabs() {
+        const {user, 
+            updateUser, 
+            openModal, 
+            currentUserId, 
+            photos, 
+            friends} = this.props;
         switch (this.state.navigation) {
             case "posts":
                 return (
                     <>
                         <div className='profile-left'>
                             <Intro
-                                user={this.props.user}
-                                updateUser={this.props.updateUser}
-                                openModal={this.props.openModal}
+                                user={user}
+                                updateUser={updateUser}
+                                openModal={openModal}
+                                currentUserId={currentUserId}
                             />
 
                             <PhotosPreview 
-                                photos={this.props.photos} 
+                                photos={photos} 
                                 switchTab={this.switchTab}
                             />
 
                             <FriendsPreview
-                                friends={this.props.friends} 
+                                friends={friends} 
                                 switchTab={this.switchTab} 
                             /> 
                         </div>
@@ -126,28 +133,6 @@ class Profile extends React.Component {
 
                 <div className='profile-body'>
                     {this.renderTabs()}
-                    {/* <div className='profile-left'>
-
-                        
-                        <Intro 
-                            user={user} 
-                            updateUser={updateUser}
-                            openModal={openModal}
-                        />
-                        
-
-
-                        {/* <Friends friends={friends} /> */}
-
-                        
-
-
-
-                    {/* </div> */}
-
-                    {/* <div className='profile-right'> */}
-                        {/* <PostIndexContainer /> */}
-                    {/* </div>  */}
                 </div>
             </>
         );

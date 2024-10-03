@@ -293,20 +293,18 @@
     }
 
     .profile-left {
-        position: sticky;
-        bottom: 500px;
-        width: 40.7%;
-        position: -webkit-sticky;
-        position: sticky;
-        // CHANGE THIS. Only for when I had no photos. 
-        bottom: 10px;
-        align-self: end;
+        // position: -webkit-sticky;
+            // position: sticky;
+            // top: 20px;
+            width: 40.7%;
+            // max-height: calc(100vh - 20px);
 
-        .profile-intro {
-            background-color: white;
-            border-radius: 7px;
-            padding: 20px 16px;
-        }
+
+        // .profile-intro {
+        //     background-color: white;
+        //     border-radius: 7px;
+        //     padding: 20px 16px;
+        // }
     }
 }
 
