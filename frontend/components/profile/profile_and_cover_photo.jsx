@@ -72,7 +72,6 @@ class ProfileAndCoverPhoto extends React.Component {
                         <div className='profile-profile-photo-and-button'>
                             <div className='profile-profile-photo-div'>
                                 <img onClick={() => this.props.openModal("photo", profilePhoto)} src={profilePhoto} />
-                                <img src={profilePhoto} />
                             </div>
                             {
                                 loggedInUsersProfile &&  
