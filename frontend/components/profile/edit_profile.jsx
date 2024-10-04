@@ -11,7 +11,8 @@ class EditProfile extends React.Component {
             city: user.city || "",
             education: user.education || "",
             work: user.work || "",
-            portfolio: user.portfolio || ""
+            portfolio: user.portfolio || "",
+            bio: user.bio || ""
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,55 +33,82 @@ class EditProfile extends React.Component {
         formData.append('user[education]', this.state.education);
         formData.append('user[work]', this.state.work);
         formData.append('user[portfolio]', this.state.portfolio);
+        formData.append('user[bio]', this.state.bio);
+
         formData.id = this.props.user.id;
         this.props.updateUser(formData)
             .then(this.props.closeModal());
     }
 
     render() {
-        const {user, updateUser} = this.props;
+        let { bio } = this.state;
+
+        // removing all the carriage returns
+        bio = bio.replaceAll(/[\r]/g, '');
+        const charsLength = bio.length >= 0 ? 101 - bio.length : 101;
+
+        let buttonClass = null;
+        if (this.prevBio === bio || charsLength < 0) {
+            buttonClass = "unclickable";
+        }
+
+        const {user, updateUser, currentUserId} = this.props;
         return(
-            <form className="edit-profile" onSubmit={this.handleSubmit}>
+            <form className="edit-profile">
                 <h1 className="header">Edit Profile</h1>
 
                 <div className="hr"></div>
 
-                <label>
-                    First Name
-                    <input type="text" value={this.state.first_name} onChange={this.update("first_name")} />
-                </label>
+                <div className="edit-profile-body">
 
-                <label>
-                    Last Name
-                    <input type="text" value={this.state.last_name} onChange={this.update("last_name")} />
-                </label>
+                    <div className="name-container">
+                        <label>
+                            <span>First Name</span>
+                            <input type="text" value={this.state.first_name} onChange={this.update("first_name")} />
+                        </label>
 
-                <label>
-                    Bio
-                    <Bio user={user} updateUser={updateUser}/>
-                </label>
-                
-                <label>
-                    City
-                    <input type="text" value={this.state.city} onChange={this.update("city")} />
-                </label>
+                        <label>
+                            <span>Last Name</span>
+                            <input type="text" value={this.state.last_name} onChange={this.update("last_name")} />
+                        </label>
+                    </div>
 
-                <label>
-                    Education
-                    <input type="text" value={this.state.education} onChange={this.update("education")} />
-                </label>
+                    <div className="bio-container">
+                        <label className="bio">
+                            <span>Bio</span>
+                            <textarea value={this.state.bio} onChange={this.update("bio")}></textarea>
+                        </label>
+                        <div className="chars-remaining">
+                            {charsLength} characters remaining
+                        </div>
+                    </div>
 
-                <label>
-                    Work
-                    <input type="text" value={this.state.work} onChange={this.update("work")} />
-                </label>
+                    <div className="city-education-container">
+                        <label>
+                            <span>City</span>
+                            <input type="text" value={this.state.city} onChange={this.update("city")} />
+                        </label>
 
-                <label>
-                    Portfolio Website
-                    <input type="text" value={this.state.portfolio} onChange={this.update("portfolio")} />
-                </label>
+                        <label>
+                            <span>Education</span>
+                            <input type="text" value={this.state.education} onChange={this.update("education")} />
+                        </label>
+                    </div>
+                    
+                    <div className="work-portfolio-container">
+                        <label>
+                            <span>Work</span>
+                            <input type="text" value={this.state.work} onChange={this.update("work")} />
+                        </label>
 
-                <input type="submit" value="Update Profile"/>
+                        <label>
+                            <span>Portfolio Website</span>
+                            <input type="text" value={this.state.portfolio} onChange={this.update("portfolio")} />
+                        </label>
+                    </div>
+
+                    <div className={`update-profile-button ${buttonClass}`} onClick={this.handleSubmit} > Update Profile</div>
+                </div>
             </form>
         );
     }

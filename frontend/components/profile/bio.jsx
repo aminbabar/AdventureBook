@@ -14,7 +14,8 @@ class Bio extends React.Component {
 
     bioOrEditBio() {
         const {updateUser, user, currentUserId} = this.props;
-        const currentUser = currentUserId === user?.id;
+        // debugger;
+        const currentUser = parseInt(currentUserId) === user?.id;
         if (this.state.bioEditBool) {
             return( <EditBio 
                         bio={user?.bio} 
