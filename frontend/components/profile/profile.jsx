@@ -19,7 +19,8 @@ class Profile extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchPosts(this.props.userId, "profile");
+        this.props.fetchPosts(this.props.userId, "profile")
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }
     
 
