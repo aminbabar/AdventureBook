@@ -56,6 +56,7 @@ class Profile extends React.Component {
                             <PhotosPreview 
                                 photos={photos} 
                                 switchTab={this.switchTab}
+                                openModal={openModal}
                             />
 
                             <FriendsPreview
@@ -72,14 +73,17 @@ class Profile extends React.Component {
             case "friends":
                 return (
                     <FriendsTab
-                        friends={this.props.friends}
+                        friends={friends}
                         switchTab={this.switchTab}
                     /> 
                 );
             case "photos":
                 return (
                     <>
-                        <PhotosTab photos={this.props.photos} />
+                        <PhotosTab 
+                            photos={photos} 
+                            openModal={openModal}
+                        />
                     </>
                 );
             default:

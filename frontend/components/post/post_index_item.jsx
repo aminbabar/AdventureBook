@@ -91,7 +91,13 @@ class PostIndexItem extends React.Component {
 
     render() {
         let postAuthor = this.capitalize(this.props.postUser.first_name) + " " + this.capitalize(this.props.postUser.last_name);
-        let postImage = this.props.post.photoUrl ? <img className="post-photo" src={this.props.post.photoUrl} /> : null;
+        let postImage = this.props.post.photoUrl ? (
+            <img
+                className="post-photo"
+                onClick={() => this.props.openModal("photo", this.props.post.photoUrl)}
+                src={this.props.post.photoUrl}
+            />
+        ) : null;
         return (
 
 

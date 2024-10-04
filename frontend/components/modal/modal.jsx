@@ -6,6 +6,7 @@ import EditPostContainer from "../post/edit_post_container";
 import SignupContainer from "../session_form/signup_container";
 import EditProfileContainer from "../profile/edit_profile_container";
 import LikeIndex from "../like/like_index";
+import PhotoViewer from "../photo/photoViewer";
 
 const Modal = ({modal, closeModal}) => {
     if (!modal) {
@@ -17,21 +18,25 @@ const Modal = ({modal, closeModal}) => {
             component = <CreatePostContainer />
             break;
         case "edit_post":
-            component = <EditPostContainer postId={modal.id}/>
+            component = <EditPostContainer postId={modal.modalInfo}/>
             break;
         case "create_user":
             component = <SignupContainer />
             break;
         case "edit_profile":
-            component = <EditProfileContainer userId={modal.id} />
+            component = <EditProfileContainer userId={modal.modalInfo} />
             break;
         // like index for posts
         case "like_index":
-            component = <LikeIndex postOrCommentId={modal.id} indexType={"posts"}/> 
+            component = <LikeIndex postOrCommentId={modal.modalInfo} indexType={"posts"}/> 
             break;
         case "like_index_comments":
-            component = <LikeIndex postOrCommentId={modal.id} indexType={"comments"}/> 
+            component = <LikeIndex postOrCommentId={modal.modalInfo} indexType={"comments"}/> 
             break;
+        case "photo":
+            component = <PhotoViewer photoURL={modal.modalInfo}  />
+            break;
+
         default:
             return null;
     };

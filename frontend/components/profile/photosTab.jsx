@@ -1,8 +1,18 @@
 import React from "react";
 
-const PhotosTab = (props) => {
-    let photoItems = props.photos.map((url, idx) => {
-        return (<div key={url + idx.toString()} className="single-photo-container"><img src={url} /></div>)
+const PhotosTab = ({photos, openModal, switchTab}) => {
+    let photoItems = photos.map((url, idx) => {
+        return (
+            <div
+                key={url + idx.toString()}
+                className="single-photo-container"
+            >
+                <img
+                    src={url}
+                    onClick={() => openModal("photo", url)}
+                />
+            </div>
+        );
     });
 
 
@@ -16,7 +26,7 @@ const PhotosTab = (props) => {
         <div className="photos-tab">
 
             <div className="photos-header">
-                <div onClick={() => props.switchTab("photos")}>
+                <div onClick={() => switchTab("photos")}>
                     Photos
                 </div>
             </div>

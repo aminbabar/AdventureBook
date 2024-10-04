@@ -56,7 +56,7 @@ class ProfileAndCoverPhoto extends React.Component {
             <>
                 <div className="profile-cover-photo-and-button">
                     <div className={loggedInUsersProfile ? 'profile-cover-photo-div current' : 'profile-cover-photo-div'}>
-                        <img src={coverPhoto} />
+                        {coverPhoto && <img onClick={() => this.props.openModal("photo", coverPhoto)}  src={coverPhoto} />}
                         {
                             loggedInUsersProfile &&  
                             <label className='profile-cover-photo-button-label'>
@@ -71,6 +71,7 @@ class ProfileAndCoverPhoto extends React.Component {
                     <div className='profile-photo-and-username'>
                         <div className='profile-profile-photo-and-button'>
                             <div className='profile-profile-photo-div'>
+                                <img onClick={() => this.props.openModal("photo", profilePhoto)} src={profilePhoto} />
                                 <img src={profilePhoto} />
                             </div>
                             {
