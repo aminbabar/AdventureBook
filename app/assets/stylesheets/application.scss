@@ -32,5 +32,6 @@
 
 body {
     background-color: #EEF0F3;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: system-ui, -apple-system, "system-ui", ".SFNSText-Regular", sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
