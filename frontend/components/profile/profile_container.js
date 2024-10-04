@@ -26,7 +26,7 @@ const mdtp = (dispatch) => {
         fetchUser: (userId) => dispatch(fetchUser(userId)),
         openModal: (modal, user_id) => dispatch(openModal(modal, user_id)),
         fetchFriends: () => dispatch(fetchFriends()),
-        fetchPosts: (userId) => dispatch(fetchPosts(userId))
+        fetchPosts: (userId, source) => dispatch(fetchPosts(userId, source))
     };
 };
 

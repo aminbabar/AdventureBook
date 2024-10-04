@@ -12,7 +12,7 @@ const mstp = (state) => {
 
 const mdtp = (dispatch) => {
     return ({
-        fetchPosts: (userId) => dispatch(fetchPosts(userId))
+        fetchPosts: (userId, source) => dispatch(fetchPosts(userId, source))
     });
 };
 

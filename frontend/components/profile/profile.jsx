@@ -19,13 +19,13 @@ class Profile extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchPosts(this.props.userId);
+        this.props.fetchPosts(this.props.userId, "profile");
     }
     
 
     componentDidUpdate(prevProps) {
         if (this.props.userId !== prevProps.userId) {
-            this.props.fetchPosts(this.props.userId);
+            this.props.fetchPosts(this.props.userId, "profile");
             window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
         };
     }
@@ -65,7 +65,7 @@ class Profile extends React.Component {
                         </div>
 
                         <div className='profile-right'>
-                            <PostIndexContainer />
+                            <PostIndexContainer source="profile"/>
                         </div>
                     </>
                 );

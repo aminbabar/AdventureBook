@@ -1,6 +1,12 @@
 class Api::PostsController < ApplicationController
     def index
-        @posts = Post.all.includes(:author, :photo_blob, :photo_attachment, author: [:profile_photo_blob, :profile_photo_attachment])
+        # @posts = Post.all.includes(:author, :photo_blob, :photo_attachment, author: [:profile_photo_blob, :profile_photo_attachment])
+        # debugger
+        if params[:source] == 'newsfeed'
+            @posts = Post.newsfeed_posts(current_user)
+        elsif params[:source] == 'profile' && params[:user_id]
+            @posts = Post.profile_posts(params[:user_id])
+        end
         render :index
     end
 

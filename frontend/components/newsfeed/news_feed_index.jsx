@@ -10,7 +10,7 @@ class NewsFeedIndex extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchPosts(this.props.userId);
+        this.props.fetchPosts(this.props.userId, "newsfeed");
     }
 
     render() {
@@ -23,7 +23,7 @@ class NewsFeedIndex extends React.Component {
                             {/* Left scroll bar */}
                     </div>
     
-                    <PostIndexContainer />
+                    <PostIndexContainer source="newsfeed"/>
     
                     <div>
                         {/* Right scroll bar */}
