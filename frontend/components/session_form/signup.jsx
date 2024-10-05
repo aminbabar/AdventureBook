@@ -429,7 +429,7 @@ class Signup extends React.Component {
 
                     <div className="bottom-text">
                         <p>People who use our service may have uploaded your 
-                            contact information to Algobook.
+                            contact information to AdventureBook.
                         </p>
                     </div>
 

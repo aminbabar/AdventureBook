@@ -58,11 +58,11 @@ class LoginForm extends React.Component {
 
                 <div className="splash-logo-div">
                     <div className="splash-logo">
-                        algobook
+                        AdventureBook
                     </div>
 
                     <div className="splash-text">
-                        Connect with friends and the world around you on Algobook.
+                        Connect with friends and the world around you on AdventureBook.
                     </div>
                 </div>
 

@@ -1,5 +1,5 @@
 {
-  "name": "AlgoBook",
+  "name": "AdventureBook",
   "version": "1.0.0",
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "main": "index.js",
@@ -18,15 +18,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aminbabar/AlgoBook.git"
+    "url": "git+https://github.com/aminbabar/AdventureBook.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/aminbabar/AlgoBook/issues"
+    "url": "https://github.com/aminbabar/AdventureBook/issues"
   },
-  "homepage": "https://github.com/aminbabar/AlgoBook#readme",
+  "homepage": "https://github.com/aminbabar/AdventureBook#readme",
   "dependencies": {
     "@babel/core": "^7.15.5",
     "@babel/preset-env": "^7.15.4",

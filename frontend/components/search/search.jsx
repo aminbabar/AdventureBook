@@ -71,7 +71,7 @@ class Search extends React.Component {
                     {!this.props.searchClickedOn && <FaSearch className="search-logo"/>}
                     <input type="text"  
                         onChange={this.update} 
-                        placeholder="Search Algobook"
+                        placeholder="Search AdventureBook"
                         value={this.state.query}
                         onFocus={() => this.props.focusSearch()}
                         onBlur={() => this.props.unFocusSearch()}
