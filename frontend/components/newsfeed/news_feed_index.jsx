@@ -1,6 +1,8 @@
 import React from "react";
 import NavBarContainer from "../nav_bar/nav_bar_container";
 import PostIndexContainer from "../post/post_index_container";
+import PotentialFriends from "./potentialFriends";
+import MyLinks from "./MyLinks";
 
 
 class NewsFeedIndex extends React.Component {
@@ -20,15 +22,14 @@ class NewsFeedIndex extends React.Component {
     
                 <div className="newsfeed">
                     <div>
-                            {/* Left scroll bar */}
+                        <MyLinks />
                     </div>
     
                     <PostIndexContainer source="newsfeed"/>
     
                     <div>
-                        {/* Right scroll bar */}
+                        <PotentialFriends />
                     </div>
-    
                 </div>
             </div>
         );

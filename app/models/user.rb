@@ -30,6 +30,19 @@ class User < ApplicationRecord
     def self.get_users(users_set)
         User
             .where(id: users_set)
+            .includes(:profile_photo_attachment, :cover_photo_attachment, :cover_photo_blob, :profile_photo_blob) 
+    end
+
+    def potential_friends(max_count = 10)
+        friend_ids = Friend.where("user_id = ? OR friend_id = ?", self.id, self.id)
+                            .pluck(:user_id, :friend_id)
+                            .flatten.uniq
+                            .reject { |id| id == self.id } 
+    
+        potential_users = User.where.not(id: friend_ids).where.not(id: self.id)
+                                .includes(:profile_photo_attachment, :profile_photo_blob) 
+        
+        potential_users.order(Arel.sql('RANDOM()')).limit(max_count)
     end
 
     def self.find_by_credentials(email, password)
