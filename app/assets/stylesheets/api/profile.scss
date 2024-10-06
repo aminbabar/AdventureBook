@@ -6,6 +6,17 @@
 .profile-body {
     display: flex;
     justify-content: center;
+
+    .no-results {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #65676B;
+        font-size: 17px;
+        margin-top: 15px;
+        font-weight: 400;
+    }
 }
 
 .profile-right {

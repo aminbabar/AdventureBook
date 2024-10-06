@@ -11,7 +11,9 @@ class Search extends React.Component {
             query: "",
             searchResults: {}
         };
+        this.inputRef = React.createRef();
         this.update = this.update.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     update(e) {
@@ -30,7 +32,7 @@ class Search extends React.Component {
     searchItem(user, idx) {
         return (
             <div key={user.id.toString() + idx.toString()}>
-                <Link className="search-item" to={`/users/${user.id}`} onClick={() => this.setState({query: "", searchResults: {}})}>
+                <Link className="search-item" to={`/users/${user.id}`} onClick={this.handleClick}>
                     <div className="image-container">
                         <img src={user.profilePhoto}/>
                     </div>
@@ -61,6 +63,12 @@ class Search extends React.Component {
         e.preventDefault();
         e.stopPropagation();
     }
+
+    handleClick() {
+        this.setState({ query: "", searchResults: {} })
+        this.props.unFocusSearch();
+        this.inputRef.current.blur();
+    }
                 
     render() {
 
@@ -75,6 +83,7 @@ class Search extends React.Component {
                         value={this.state.query}
                         onFocus={() => this.props.focusSearch()}
                         onBlur={() => this.props.unFocusSearch()}
+                        ref={this.inputRef}
                     />
                 </div>
                 {this.props.searchClickedOn && <div className="search-results" onMouseDown={this.preventDefaultBehavior}>

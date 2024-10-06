@@ -1,6 +1,9 @@
 all_associated_users = Set.new
 all_associated_users << current_user.id
 user = User.find_by(id: params[:user_id])
+if user
+  all_associated_users << user
+end
 
 @posts.each do |post|
   comments = post.comments
