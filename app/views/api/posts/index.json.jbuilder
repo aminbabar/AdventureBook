@@ -4,9 +4,10 @@ user = User.find_by(id: params[:user_id])
 if user
   all_associated_users << user
 end
+orderedPostIds = []
 
 @posts.each do |post|
-  comments = post.comments
+  comments = post.comments.order(created_at: :asc)
 
   post_like_ids = []
   comment_like_ids = Hash.new { |h, k| h[k] = Array.new }
@@ -33,6 +34,7 @@ end
 
   json.posts do
     json.set! post.id do
+      orderedPostIds << (post.id)
       all_associated_users << post.author_id
       json.extract! post, :author_id, :body, :id, :created_at
       json.photoUrl url_for(post.photo) if post.photo.attached?
@@ -49,6 +51,10 @@ end
       json.likes do
         json.array! post_like_ids
       end
+    end
+
+    json.orderedPostIds do
+      json.array! orderedPostIds
     end
   end
 

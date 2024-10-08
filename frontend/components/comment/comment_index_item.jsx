@@ -28,6 +28,7 @@ class CommentIndexItem extends React.Component {
     };
 
     editOrDisplay() {
+        const currentUser = this.props.currentUserId === this.props.commentAuthor.id;
         if (this.state.editBool) {
             return(
                 <div className="comment-body-container">
@@ -58,11 +59,12 @@ class CommentIndexItem extends React.Component {
                                     {this.props.comment.body}
                                 </div>
                             </div>
-
+                            
+                            {currentUser &&
                             <Dropdown icon={<BsThreeDots color="#55575B" size={"20px"} />} myclass="comment">
                                 <li className="edit-button-now" onClick={() => this.switchToggle("editBool")}>Edit</li>
                                 <li onClick={() => this.props.deleteComment(this.props.commentId)}>Delete</li>
-                            </ Dropdown>
+                            </ Dropdown>}
                         </div>
 
                         <div className="likes-container">
@@ -126,14 +128,6 @@ class CommentIndexItem extends React.Component {
             <>
                 <div>
                     {this.editOrDisplay()}
-                </div>
-
-                <div>
-
-                    
-                    {/* {!this.state.editBool && this.likeButton()} */}
-
-                    {/* {!this.state.editBool && this.numLikesBox()} */}
                 </div>
             </>
         );

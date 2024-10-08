@@ -42,7 +42,7 @@ class User < ApplicationRecord
         potential_users = User.where.not(id: friend_ids).where.not(id: self.id)
                                 .includes(:profile_photo_attachment, :profile_photo_blob) 
         
-        potential_users.order(Arel.sql('RANDOM()')).limit(max_count)
+        potential_users.order(Arel.sql('RANDOM()'))#.limit(max_count)
     end
 
     def self.find_by_credentials(email, password)

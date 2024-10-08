@@ -13,7 +13,8 @@ const mstp = (state, ownProps) => {
     return ({
         comment: comment,
         likes: selectLikesForPost(likes, likesArr, currentUserId),
-        commentAuthor: state.entities.users[comment.comment_author_id]
+        commentAuthor: state.entities.users[comment.comment_author_id],
+        currentUserId
     });
 }
 

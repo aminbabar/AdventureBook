@@ -11,9 +11,13 @@ const PostsReducer = (oldState={}, action) => {
             return action.posts.posts || {};
         case RECEIVE_POST:
             newState[action.post.post.id] = action.post.post;
+            if (!newState["orderedPostIds"].includes(action.post.post.id)) {
+                newState["orderedPostIds"] = [action.post.post.id, ...(newState["orderedPostIds"] || [])];
+            }
             return newState;
         case REMOVE_POST:
             delete newState[action.postId];
+            newState["orderedPostIds"] = newState["orderedPostIds"].filter(id => id !== action.postId);
             return newState;
         case RECEIVE_COMMENT:
             // Have to dup the post object, and then dup the array to avoid
