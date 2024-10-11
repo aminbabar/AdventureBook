@@ -19,6 +19,8 @@ user1 = User.create!(
         gender: "male",
         birthday: Date.new(1995, 11, 04)
     )
+# demo_user_profile_pic = URI.open('https://lecture-seeds.s3.amazonaws.com/dog.jpeg')
+# user1.profile_photo.attach(io: demo_user_profile_pic, filename: 'dog.jpeg')
 
 
     user2 = User.create!(
@@ -101,42 +103,154 @@ user1 = User.create!(
 require 'faker'
 
 adventure_types = [
-  { type: 'Mountain Hiker', bio: 'Lover of the mountains and all things hiking. Always on the lookout for the next great trail!' },
-  { type: 'Road Biker', bio: 'Cycling is my passion. Whether it is mountain biking or a long road trip, I am ready to ride.' },
-  { type: 'Rock Climber', bio: 'Scaling cliffs and reaching the top is the ultimate adventure.' },
-  { type: 'River Kayaker', bio: 'Whitewater, lakes, or oceans, kayaking is what sets me free.' },
-  { type: 'Skydiving Enthusiast', bio: 'Jumping out of planes to feel the thrill of the skies.' },
-  { type: 'Scuba Diver', bio: 'Exploring the underwater world one dive at a time.' },
-  { type: 'Camp Lover', bio: 'Camping under the stars and in the wild is where I find peace.' },
-  { type: 'Trail Runner', bio: 'Running on trails, in nature, far from the noise of the city.' },
-  { type: 'World Backpacker', bio: 'Exploring the world one country at a time, with nothing but a backpack.' },
-  { type: 'Snowboard Rider', bio: 'Shredding down the slopes, living for the winter.' },
-  { type: 'Lake Paddleboarder', bio: 'Gliding across calm waters on a paddleboard brings me joy.' },
-  { type: 'Paragliding Pilot', bio: 'Flying through the skies with nothing but a paraglider and the wind.' },
-  { type: 'Mountain Climber', bio: 'Conquering the tallest peaks and living life above the clouds.' },
-  { type: 'Ocean Sailor', bio: 'Navigating the open seas, feeling the wind in my sails.' },
-  { type: 'Cave Explorer', bio: 'Venturing into the depths of the earth, exploring hidden caves.' },
-  { type: 'Wild Swimmer', bio: 'Diving into lakes, rivers, and oceans, embracing the wild waters.' },
-  { type: 'Horseback Rider', bio: 'Galloping through fields and forests, connecting with nature on horseback.' },
-  { type: 'Snow Skier', bio: 'Carving down snowy mountains, feeling the rush of the descent.' },
-  { type: 'Desert Trekker', bio: 'Traversing vast deserts, experiencing the beauty of the arid landscape.' },
-  { type: 'Bird Watcher', bio: 'Watching and documenting different bird species in their natural habitats.' },
-  { type: 'Whitewater Rafter', bio: 'Enjoys the thrill of navigating wild rivers and rapids.' },
-  { type: 'Glider Pilot', bio: 'Soaring through the skies without an engine, just the wind to guide me.' },
-  { type: 'Ocean Kite Surfer', bio: 'Harnessing the power of the wind and waves to glide across the ocean.' },
-  { type: 'Forest Forager', bio: 'Exploring forests and gathering edible plants, mushrooms, and herbs.' },
-  { type: 'Mountain Biker', bio: 'Taking on rugged trails and steep descents on two wheels.' },
-  { type: 'Arctic Explorer', bio: 'Traveling to the most frigid parts of the world, braving the cold.' },
-  { type: 'Cave Speleologist', bio: 'Studying and exploring caves, from tight passages to vast underground chambers.' },
-  { type: 'Off-Road Driver', bio: 'Driving through uncharted paths and rugged terrain in a 4x4.' },
+  { type: 'Mountain Hiker', 
+    bio: 'Lover of the mountains and all things hiking. Always on the lookout for the next great trail!', 
+    profile_photo: "https://lecture-seeds.s3.amazonaws.com/hiker_profile.jpg",
+    cover_photo: "https://lecture-seeds.s3.amazonaws.com/hiker_cover.jpeg"
+  }, 
+  { type: 'Road Biker',
+    bio: 'Cycling is my passion. Whether it is mountain biking or a long road trip, I am ready to ride.',
+    profile_photo: "https://lecture-seeds.s3.amazonaws.com/biker_profile.webp",
+    cover_photo: "https://lecture-seeds.s3.amazonaws.com/biker_cover.webp"
+   },
+  { type: 'Rock Climber',
+    bio: 'Scaling cliffs and reaching the top is the ultimate adventure.',
+    profile_photo: "https://lecture-seeds.s3.amazonaws.com/rock_profile.jpeg",
+    cover_photo: "https://lecture-seeds.s3.amazonaws.com/rock_cover.jpg"
+   },
+  { type: 'River Kayaker',
+    bio: 'Whitewater, lakes, or oceans, kayaking is what sets me free.',
+    profile_photo: "https://lecture-seeds.s3.amazonaws.com/kayaker_profile.webp",
+    cover_photo: "https://lecture-seeds.s3.amazonaws.com/kayaker_cover.jpg"
+   },
+  { type: 'Skydiving Enthusiast',
+    bio: 'Jumping out of planes to feel the thrill of the skies.',
+    profile_photo: "https://lecture-seeds.s3.amazonaws.com/skydiving_profile.jpg",
+    cover_photo: "https://lecture-seeds.s3.amazonaws.com/skydiving_cover.jpg"
+   },
+  { type: 'Scuba Diver',
+    bio: 'Exploring the underwater world one dive at a time.',
+    profile_photo: "https://lecture-seeds.s3.amazonaws.com/scuba_profile.jpg",
+    cover_photo: "https://lecture-seeds.s3.amazonaws.com/scuba_cover.jpg"
+   },
+  { type: 'Camp Lover',
+    bio: 'Camping under the stars and in the wild is where I find peace.',
+    profile_photo: "https://lecture-seeds.s3.amazonaws.com/camp_profile.JPG",
+    cover_photo: "https://lecture-seeds.s3.amazonaws.com/camp_cover.jpg"
+   },
+  { type: 'Trail Runner',
+    bio: 'Running on trails, in nature, far from the noise of the city.',
+    profile_photo: "https://lecture-seeds.s3.amazonaws.com/trail_profile.jpg",
+    cover_photo: "https://lecture-seeds.s3.amazonaws.com/trail_cover.jpg"
+   },
+  { type: 'World Backpacker',
+    bio: 'Exploring the world one country at a time, with nothing but a backpack.',
+    profile_photo: "https://lecture-seeds.s3.amazonaws.com/backpacker_profile.webp",
+    cover_photo: "https://lecture-seeds.s3.amazonaws.com/backpacker_cover.webp"
+   },
+  { type: 'Snowboard Rider',
+    bio: 'Shredding down the slopes, living for the winter.',
+    profile_photo: "https://lecture-seeds.s3.amazonaws.com/snowboard_profile.jpg",
+    cover_photo: "https://lecture-seeds.s3.amazonaws.com/snowboard_cover.jpg.webp"
+   },
+  { type: 'Lake Paddleboarder',
+    bio: 'Gliding across calm waters on a paddleboard brings me joy.',
+    profile_photo: "https://lecture-seeds.s3.amazonaws.com/paddleboard_profile.jpg.webp",
+    cover_photo: "https://lecture-seeds.s3.amazonaws.com/paddleboard_cover.jpg.webp"
+   },
+  { type: 'Paragliding Pilot',
+    bio: 'Flying through the skies with nothing but a paraglider and the wind.',
+    profile_photo: "https://lecture-seeds.s3.amazonaws.com/paraglide_profile.jpeg.webp",
+    cover_photo: "https://lecture-seeds.s3.amazonaws.com/paraglide_cover.jpg"
+   },
+  # { type: 'Mountain Climber',
+  #   bio: 'Conquering the tallest peaks and living life above the clouds.',
+  #   profile_photo: "",
+  #   cover_photo: ""
+  #  },
+  { type: 'Ocean Sailor',
+    bio: 'Navigating the open seas, feeling the wind in my sails.',
+    profile_photo: "https://lecture-seeds.s3.amazonaws.com/sailor_profile.webp",
+    cover_photo: "https://lecture-seeds.s3.amazonaws.com/sailor_cover.jpg"
+   },
+  # { type: 'Cave Explorer',
+  #   bio: 'Venturing into the depths of the earth, exploring hidden caves.',
+  #   profile_photo: "",
+  #   cover_photo: ""
+  #  },
+  # { type: 'Wild Swimmer',
+  #   bio: 'Diving into lakes, rivers, and oceans, embracing the wild waters.',
+  #   profile_photo: "",
+  #   cover_photo: ""
+  #  },
+  { type: 'Horseback Rider',
+    bio: 'Galloping through fields and forests, connecting with nature on horseback.',
+    profile_photo: "https://lecture-seeds.s3.amazonaws.com/horeserider_profile.jpeg",
+    cover_photo: "https://lecture-seeds.s3.amazonaws.com/horserider_cover.jpg"
+   },
+  { type: 'Snow Skier',
+    bio: 'Carving down snowy mountains, feeling the rush of the descent.',
+    profile_photo: "https://lecture-seeds.s3.amazonaws.com/skiier_profile.jpeg",
+    cover_photo: "https://lecture-seeds.s3.amazonaws.com/skiier_cover.jpg"
+   },
+  { type: 'Desert Trekker',
+    bio: 'Traversing vast deserts, experiencing the beauty of the arid landscape.',
+    profile_photo: "https://lecture-seeds.s3.amazonaws.com/desert_profile.webp",
+    cover_photo: "https://lecture-seeds.s3.amazonaws.com/desert_cover.jpg.webp"
+   },
+  # { type: 'Bird Watcher',
+  #   bio: 'Watching and documenting different bird species in their natural habitats.',
+  #   profile_photo: "",
+  #   cover_photo: ""
+  #  },
+  # { type: 'Whitewater Rafter',
+  #   bio: 'Enjoys the thrill of navigating wild rivers and rapids.',
+  #   profile_photo: "",
+  #   cover_photo: ""
+  #  },
+  { type: 'Glider Pilot',
+    bio: 'Soaring through the skies without an engine, just the wind to guide me.',
+    profile_photo: "https://lecture-seeds.s3.amazonaws.com/glider_profile.jpg",
+    cover_photo: "https://lecture-seeds.s3.amazonaws.com/glider_cover.jpg.webp"
+   },
+  # { type: 'Ocean Kite Surfer',
+  #   bio: 'Harnessing the power of the wind and waves to glide across the ocean.',
+  #   profile_photo: "",
+  #   cover_photo: ""
+  #  },
+  # { type: 'Forest Forager',
+  #   bio: 'Exploring forests and gathering edible plants, mushrooms, and herbs.',
+  #   profile_photo: "",
+  #   cover_photo: ""
+  #  },
+  # { type: 'Mountain Biker',
+  #   bio: 'Taking on rugged trails and steep descents on two wheels.',
+  #   profile_photo: "",
+  #   cover_photo: ""
+  #  },
+  { type: 'Arctic Explorer',
+    bio: 'Traveling to the most frigid parts of the world, braving the cold.',
+    profile_photo: "https://lecture-seeds.s3.amazonaws.com/arctic_profile.jpg",
+    cover_photo: "https://lecture-seeds.s3.amazonaws.com/arctic_cover.jpg"
+   },
+  { type: 'Cave Speleologist',
+    bio: 'Studying and exploring caves, from tight passages to vast underground chambers.',
+    profile_photo: "https://lecture-seeds.s3.amazonaws.com/cave_profile.jpg",
+    cover_photo: "https://lecture-seeds.s3.amazonaws.com/cave_cover.jpeg"
+   }
+  # { type: 'Off-Road Driver',
+  #   bio: 'Driving through uncharted paths and rugged terrain in a 4x4.',
+  #   profile_photo: "",
+  #   cover_photo: ""
+  #  },
 ]
 
 # Seed Users
-adventure_types.each do |adventure|
+adventure_types.each_with_index do |adventure, idx|
   first_name = adventure[:type].split.first
   last_name = adventure[:type].split.last || 'Adventurer'
 
-  User.create!(
+  user = User.create!(
     first_name: first_name,
     last_name: last_name,
     email: Faker::Internet.unique.email,
@@ -150,6 +264,21 @@ adventure_types.each do |adventure|
     gender: %w[Male Female Non-binary].sample,
     birthday: Faker::Date.birthday(min_age: 18, max_age: 65)
   )
+
+    if adventure[:profile_photo]
+      file_type = adventure[:profile_photo].split(".")[-1]
+      file_name = first_name + file_type
+      profile_pic = URI.open(adventure[:profile_photo])
+      user.profile_photo.attach(io: profile_pic, filename: file_name)
+    end
+
+    if adventure[:cover_photo]
+      file_type = adventure[:profile_photo].split(".")[-1]
+      file_name = first_name + file_type
+      profile_pic = URI.open(adventure[:cover_photo])
+      user.cover_photo.attach(io: profile_pic, filename: file_name)
+    end
+
 end
 
 # Seed Posts
@@ -200,11 +329,12 @@ User.all.each do |user|
       created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
     )
   when 'Skydiving'
+    img = URI.open('https://lecture-seeds.s3.amazonaws.com/post-pictures/skydiving-plane.jpg')
     Post.create!(
       author_id: user.id,
       body: "Jumped out of a plane today! The adrenaline rush was like nothing else.",
       created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
-    )
+    ).photo.attach(io: img, filename: "skydiving-plane.jpg")
     Post.create!(
       author_id: user.id,
       body: "Tandem skydive complete! I can't wait to do it solo next time.",
@@ -227,11 +357,13 @@ User.all.each do |user|
       body: "Set up camp in a beautiful spot by the lake. Nothing beats a night under the stars.",
       created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
     )
+    img = URI.open('https://lecture-seeds.s3.amazonaws.com/post-pictures/camp-food.jpg')
     Post.create!(
       author_id: user.id,
       body: "Cooked some delicious food over the campfire. Camping is all about simple joys!",
       created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
-    )
+    ).photo.attach(io: img, filename: "camp-food.jpg")
+    
   when 'Trail'
     Post.create!(
       author_id: user.id,
@@ -266,16 +398,18 @@ User.all.each do |user|
       created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
     )
   when 'Lake'
+    img = URI.open('https://lecture-seeds.s3.amazonaws.com/post-pictures/lake-calm-water.webp')
     Post.create!(
       author_id: user.id,
       body: "Spent the day paddleboarding on the lake. The calm waters were so relaxing!",
       created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
-    )
+    ).photo.attach(io: img, filename: "lake-calm-water.webp")
+    img = URI.open('https://lecture-seeds.s3.amazonaws.com/post-pictures/sunset-paddleboarding.jpg')
     Post.create!(
       author_id: user.id,
       body: "Saw a beautiful sunset while paddleboarding. Moments like these make it all worth it.",
       created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
-    )
+    ).photo.attach(io: img, filename: "sunset-paddleboarding.jpg")
   when 'Paragliding'
     Post.create!(
       author_id: user.id,
@@ -299,11 +433,12 @@ User.all.each do |user|
       created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
     )
   when 'Ocean'
+    img = URI.open('https://lecture-seeds.s3.amazonaws.com/post-pictures/sail-ocean.jpg')
     Post.create!(
       author_id: user.id,
       body: "Set sail for the open ocean today. Nothing beats the feeling of freedom out here!",
       created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
-    )
+    ).photo.attach(io: img, filename: "sail-ocean.jpg")
     Post.create!(
       author_id: user.id,
       body: "Caught some wind and made great time today. Sailing is my happy place!",
@@ -320,17 +455,17 @@ User.all.each do |user|
       body: "Went spelunking with friends and discovered a hidden chamber. Amazing experience!",
       created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
     )
-  when 'Wild'
-    Post.create!(
-      author_id: user.id,
-      body: "Went for a wild swim in a beautiful lake today. The water was crystal clear!",
-      created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
-    )
-    Post.create!(
-      author_id: user.id,
-      body: "Swam across the river and felt so connected to nature. What a refreshing adventure!",
-      created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
-    )
+  # when 'Wild'
+  #   Post.create!(
+  #     author_id: user.id,
+  #     body: "Went for a wild swim in a beautiful lake today. The water was crystal clear!",
+  #     created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
+  #   )
+  #   Post.create!(
+  #     author_id: user.id,
+  #     body: "Swam across the river and felt so connected to nature. What a refreshing adventure!",
+  #     created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
+  #   )
   when 'Horseback'
     Post.create!(
       author_id: user.id,
@@ -348,12 +483,14 @@ User.all.each do |user|
       body: "Had an awesome day skiing down the slopes. The snow was perfect for carving!",
       created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
     )
+    img = URI.open('https://lecture-seeds.s3.amazonaws.com/post-pictures/ski-challenge.avif')
     Post.create!(
       author_id: user.id,
       body: "Took on a new challenging run today while skiing. Can't wait to do it again!",
       created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
-    )
+    ).photo.attach(io: img, filename: "ski-challenge.avif")
   when 'Desert'
+    img = URI.open('https://lecture-seeds.s3.amazonaws.com/post-pictures/sunset-desert.webp')
     Post.create!(
       author_id: user.id,
       body: "Hiked across the desert today. The vast landscapes were both challenging and beautiful.",
@@ -363,24 +500,25 @@ User.all.each do |user|
       author_id: user.id,
       body: "Watched the sunset over the desert dunes. It was one of the most beautiful sights I've ever seen.",
       created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
-    )
-  when 'Bird'
-    Post.create!(
-      author_id: user.id,
-      body: "Spent the day birdwatching in a nearby forest. Saw some rare species that made my day!",
-      created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
-    )
-    Post.create!(
-      author_id: user.id,
-      body: "Identified over 20 different birds today. What a fulfilling experience!",
-      created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
-    )
+    ).photo.attach(io: img, filename: "sunset-desert.webp")
+  # when 'Bird'
+  #   Post.create!(
+  #     author_id: user.id,
+  #     body: "Spent the day birdwatching in a nearby forest. Saw some rare species that made my day!",
+  #     created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
+  #   )
+  #   Post.create!(
+  #     author_id: user.id,
+  #     body: "Identified over 20 different birds today. What a fulfilling experience!",
+  #     created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
+  #   )
   when 'Whitewater'
+    img = URI.open('https://lecture-seeds.s3.amazonaws.com/post-pictures/whitewater-rafting-rapids.jpg')
     Post.create!(
       author_id: user.id,
       body: "Went whitewater rafting today. The rapids were intense and exhilarating!",
       created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
-    )
+    ).photo.attach(io: img, filename: "whitewater-rafting-rapids.jpg")
     Post.create!(
       author_id: user.id,
       body: "Managed to navigate some really challenging rapids today. What an adrenaline rush!",
@@ -397,28 +535,28 @@ User.all.each do |user|
       body: "Caught some perfect thermals and stayed up in the air for hours. Loved every second!",
       created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
     )
-  when 'Ocean Kite'
-    Post.create!(
-      author_id: user.id,
-      body: "Went kite surfing today. The combination of wind and waves is pure bliss!",
-      created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
-    )
-    Post.create!(
-      author_id: user.id,
-      body: "Had an incredible session kite surfing with some great friends. The ocean was perfect today!",
-      created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
-    )
-  when 'Forest'
-    Post.create!(
-      author_id: user.id,
-      body: "Spent the day foraging in the forest. Found some edible mushrooms and herbs!",
-      created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
-    )
-    Post.create!(
-      author_id: user.id,
-      body: "Foraged some wild berries today. Nothing beats the taste of fresh, natural food!",
-      created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
-    )
+  # when 'Ocean Kite'
+  #   Post.create!(
+  #     author_id: user.id,
+  #     body: "Went kite surfing today. The combination of wind and waves is pure bliss!",
+  #     created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
+  #   )
+  #   Post.create!(
+  #     author_id: user.id,
+  #     body: "Had an incredible session kite surfing with some great friends. The ocean was perfect today!",
+  #     created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
+  #   )
+  # when 'Forest'
+  #   Post.create!(
+  #     author_id: user.id,
+  #     body: "Spent the day foraging in the forest. Found some edible mushrooms and herbs!",
+  #     created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
+  #   )
+  #   Post.create!(
+  #     author_id: user.id,
+  #     body: "Foraged some wild berries today. Nothing beats the taste of fresh, natural food!",
+  #     created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
+  #   )
   when 'Mountain Biker'
     Post.create!(
       author_id: user.id,
@@ -436,44 +574,46 @@ User.all.each do |user|
       body: "Explored the Arctic today. The icy landscape was both beautiful and challenging!",
       created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
     )
+    img = URI.open('https://lecture-seeds.s3.amazonaws.com/post-pictures/icy-arctic.webp')
     Post.create!(
       author_id: user.id,
       body: "Saw some incredible wildlife today while exploring the Arctic. What a humbling experience!",
       created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
-    )
+    ).photo.attach(io: img, filename: "icy-arctic.webp")
   when 'Cave'
+    img = URI.open('https://lecture-seeds.s3.amazonaws.com/post-pictures/https://lecture-seeds.s3.amazonaws.com/post-pictures/explore-cave.jpg')
     Post.create!(
       author_id: user.id,
       body: "Explored a complex cave system today. The underground chambers were fascinating!",
       created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
-    )
+    ).photo.attach(io: img, filename: "explore-cave.jpg")
     Post.create!(
       author_id: user.id,
       body: "Spent hours navigating tight cave passages. It's amazing to see what lies beneath the surface.",
       created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
     )
-  when 'Off-Road'
-    Post.create!(
-      author_id: user.id,
-      body: "Took my 4x4 off-road today. The rough terrain made for an exhilarating ride!",
-      created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
-    )
-    Post.create!(
-      author_id: user.id,
-      body: "Explored some remote areas off-road. It's always an adventure getting off the beaten path!",
-      created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
-    )
-  when 'Wild'
-    Post.create!(
-      author_id: user.id,
-      body: "Built a shelter in the wild today using just natural materials. It was a real test of my bushcraft skills!",
-      created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
-    )
-    Post.create!(
-      author_id: user.id,
-      body: "Foraged and cooked my own meal in the wild today. Living off the land feels so rewarding!",
-      created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
-    )
+  # when 'Off-Road'
+  #   Post.create!(
+  #     author_id: user.id,
+  #     body: "Took my 4x4 off-road today. The rough terrain made for an exhilarating ride!",
+  #     created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
+  #   )
+  #   Post.create!(
+  #     author_id: user.id,
+  #     body: "Explored some remote areas off-road. It's always an adventure getting off the beaten path!",
+  #     created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
+  #   )
+  # when 'Wild'
+  #   Post.create!(
+  #     author_id: user.id,
+  #     body: "Built a shelter in the wild today using just natural materials. It was a real test of my bushcraft skills!",
+  #     created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
+  #   )
+  #   Post.create!(
+  #     author_id: user.id,
+  #     body: "Foraged and cooked my own meal in the wild today. Living off the land feels so rewarding!",
+  #     created_at: Faker::Time.between(from: 30.days.ago, to: Time.now)
+  #   )
 end
 end
 
