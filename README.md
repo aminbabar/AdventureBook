@@ -1,4 +1,4 @@
-# WELCOME TO AdventureBook
+# Welcome To AdventureBook
 
 Check out the [Live Site](https://adventure-book-56226fae6061.herokuapp.com)!
 
@@ -14,9 +14,9 @@ As someone passionate about both technology and travel, I was inspired to create
 * Asset Storage: AWS Simple Cloud Storage (S3)
 * Hosting: Heroku
 
-![Logo](app/assets/images/)
+![Logo](app/assets/images/adventure_book_splash.png)
 
-### Features
+# Features
 
 ## User Authentication
 
