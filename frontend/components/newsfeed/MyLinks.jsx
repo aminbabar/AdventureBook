@@ -1,5 +1,6 @@
 import React from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaPersonSnowboarding } from "react-icons/fa6";
 
 const MyLinks = () => {
     return (
@@ -17,6 +18,12 @@ const MyLinks = () => {
                         <FaLinkedin className="icon" />
                     </div>
                     <div className="my-link-text">LinkedIn</div>
+                </a>
+                <a href="https://www.aminbabar.dev" target="_blank" className="my-link-item">
+                    <div className="my-link-icon-container">
+                        <FaPersonSnowboarding className="icon" />
+                    </div>
+                    <div className="my-link-text">Portfolio Site</div>
                 </a>
             </div>
         </div>
