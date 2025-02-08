@@ -9,6 +9,7 @@ import Search from "../search/search";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 class NavBar extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -26,7 +27,34 @@ class NavBar extends React.Component {
     unFocusSearch() {
         this.setState({ searchClickedOn: false })
     }
-    
+
+
+    loadGoogleAnalytics() {
+        if (!document.getElementById("google-analytics")) {
+            const script = document.createElement("script");
+            script.id = "google-analytics";
+            script.async = true;
+            script.src = "https://www.googletagmanager.com/gtag/js?id=G-WKHT1LM5SS";
+            document.head.appendChild(script);
+
+            script.onload = () => {
+                window.dataLayer = window.dataLayer || [];
+                function gtag() {
+                    window.dataLayer.push(arguments);
+                }
+                window.gtag = gtag;
+                gtag("js", new Date());
+                gtag("config", "G-WKHT1LM5SS");
+            };
+        }
+    }
+
+    componentDidMount() {
+        if (this.props.currentUser) {
+            this.loadGoogleAnalytics();
+        }
+    }
+
     render() {
 
         const logoClassName = this.state.searchClickedOn ? "logo hide" : "logo";
